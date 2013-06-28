@@ -128,7 +128,7 @@ nav a:hover {
    ============== */
 
 .main {
-    padding: 30px 0;
+    padding: 20px 0;
 }
 
 .main article h1 {
@@ -157,6 +157,12 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
+h2 {
+    margin: 0.5em 0;
+}
+ul li {
+    list-style: none;
+}
 
 #search-form {
     float: left;
@@ -164,7 +170,6 @@ nav a:hover {
 #search {
     margin: 1.5em 2em;
 }
-
 
 #ticker {
     margin: 0.2em 0;
@@ -197,10 +202,6 @@ nav a:hover {
     float: right;
 }
 
-ul li {
-    list-style: none;
-}
-
 
 
 
@@ -210,6 +211,12 @@ ul li {
 /* ==========================================================================
    Media Queries
    ========================================================================== */
+
+@media only screen and (min-height: 768px) {
+    .main-container {
+        min-height: 564px;
+    }
+}
 
 @media only screen and (min-width: 480px) {
 
