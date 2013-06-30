@@ -52,8 +52,9 @@ var displayFundamentals = function( data ) {
 	gainOrLoss( document.getElementById( 'price-change' ), quote.Change );
 	$( '#range .value' ).html( quote.DaysRange );
 	$( '#year-range .value' ).html( quote.YearRange );
-	$( '#daily-volume' ).html( quote.Volume );
-	$( '#avg-volume' ).html( quote.AverageDailyVolume );
+	$( '#volume .value' ).html( quote.Volume + ' / ' + quote.AverageDailyVolume );
+	// $( '#daily-volume' ).html( quote.Volume );
+	// $( '#avg-volume' ).html( quote.AverageDailyVolume );
 	$( '#market-cap .value' ).html( quote.MarketCapitalization );
 	$( '#price-earnings .value' ).html( quote.PERatio );
 	$( '#dividend-yield .value' ).html( quote.DividendYield );
@@ -154,22 +155,25 @@ var displayMarketDataChart = function( selector, data ) {
   });
 };
 
+// takes a Date object, returns a string in yyyy-mm-dd format
+var yyyymmdd = function( date ) {
+ var yyyy = date.getFullYear().toString();
+ var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
+ var dd  = date.getDate().toString();
+ return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]); // padding
+};
+
 // Get today's date as a string 'yyyy-mm-dd'
 var today = function() {
 	var d = new Date();
-  var date = d.getDate();
-  var month = d.getMonth() + 1; //Months are zero based
-  var year = d.getFullYear();
-	return year + '-' + month + '-' + date;
+  return yyyymmdd( d );
 };
 
 // Get this day last year as a string 'yyyy-mm-dd'
 var lastYear = function() {
 	var d = new Date();
-  var date = d.getDate();
-  var month = d.getMonth() + 1; //Months are zero based
-  var year = d.getFullYear() - 5;
-	return year + '-' + month + '-' + date;
+  d.setFullYear( d.getFullYear() - 1 );
+	return yyyymmdd( d );
 };
 
 $( document ).ready( function() {
