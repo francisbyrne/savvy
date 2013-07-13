@@ -67,25 +67,24 @@ var loadYQLMarketDataChart = function( ticker, startDate, endDate ) {
 		+ ticker + '" AND startDate="' + startDate + '" AND endDate="' + endDate + '"';
 	var url = buildYqlUrl( yqlQuery );
 	$.getJSON( url, function( data ) {
-    console.log(data);
-		var chartData = convertYqlQuotesToChartData ( data );
+    quotes = data.query.results.quote;
+		var chartData = convertYahooQuotesToChartData ( quotes );
 		displayMarketDataChart( '#chart', chartData );
 	} );
 };
 
-// Convert the data response from YQL to a format usable by HighStock
+// Convert the data response from Yahoo Finance to a format usable by HighStock
 // Input: [ { Date: '2013-06-29', Close: 31.80 }, 
 // 				{ Date: '2013-06-28', Close: 31.41 } ]
 // Output: [ 
 //					 [ 1372472064968, 31.41 ], the big number is a timestamp for '2013-06-28'
 //					 [ 1372461129679, 31.80 ]  this one is '2013-06-29'
 // 				 ] 
-// Note: the reverse order because HighStock requires ascending order
-var convertYqlQuotesToChartData = function( yqlData ) {
-	var quotes 		= yqlData.query.results.quote,
-			chartData	=	[];
-	var length = quotes.length,
-			quote  = {};
+// Note: the reverse order is because HighStock requires ascending order
+var convertYahooQuotesToChartData = function( quotes ) {
+	var length    = quotes.length,
+      chartData = [],
+			quote     = {};
 	for ( var i = length - 1; i >= 0; i-- ) {
 		quote = quotes[i];
 		var point	 = [
@@ -100,13 +99,13 @@ var convertYqlQuotesToChartData = function( yqlData ) {
 var loadMarketDataChart = function( ticker, startDate, endDate ) {
 	var url = 'http://localhost:8888?callback=?&symbol=' + ticker + '&startDate=' + startDate + '&endDate=' + endDate;
 	$.getJSON( url, function( data ) {
-		displayMarketDataChart( '#chart', data.data );
+    var quotes = convertYahooQuotesToChartData ( data.data );
+		displayMarketDataChart( '#chart', quotes );
 	} );
 };
 
 // Generate a HighStock chart in a particular selector
 var displayMarketDataChart = function( selector, data ) {
-  console.log( data );
   Highcharts.setOptions({
     global: {
       useUTC: false
