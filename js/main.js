@@ -62,13 +62,14 @@ var displayFundamentals = function( data ) {
 	//$( '#num-shares .value' ).html( quote.DaysRange );
 };
 
-var loadMarketDataChart = function( ticker, startDate, endDate ) {
+var loadYQLMarketDataChart = function( ticker, startDate, endDate ) {
 	var yqlQuery = 'SELECT * FROM yahoo.finance.historicaldata WHERE symbol="'
 		+ ticker + '" AND startDate="' + startDate + '" AND endDate="' + endDate + '"';
 	var url = buildYqlUrl( yqlQuery );
 	$.getJSON( url, function( data ) {
+    console.log(data);
 		var chartData = convertYqlQuotesToChartData ( data );
-		displayMarketDataChart( chartData );
+		displayMarketDataChart( '#chart', chartData );
 	} );
 };
 
@@ -96,8 +97,16 @@ var convertYqlQuotesToChartData = function( yqlData ) {
 	return chartData;
 };
 
+var loadMarketDataChart = function( ticker, startDate, endDate ) {
+	var url = 'http://localhost:8888?callback=?&symbol=' + ticker + '&startDate=' + startDate + '&endDate=' + endDate;
+	$.getJSON( url, function( data ) {
+		displayMarketDataChart( '#chart', data.data );
+	} );
+};
+
 // Generate a HighStock chart in a particular selector
 var displayMarketDataChart = function( selector, data ) {
+  console.log( data );
   Highcharts.setOptions({
     global: {
       useUTC: false
@@ -181,6 +190,7 @@ $( document ).ready( function() {
 		e.preventDefault();
 		var ticker = $( '#search' ).val();
 		loadFundamentals( ticker );
+		// loadYQLMarketDataChart( ticker, lastYear(), today() );
 		loadMarketDataChart( ticker, lastYear(), today() );
 	});
 });
