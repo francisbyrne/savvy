@@ -1,8 +1,8 @@
-<!DOCTYPE html ng-app>
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="finance"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,18 +16,81 @@
         <!-- <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script> -->
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    <body>
+    <body ng-controller="StockSearchCtrl">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+
+        <div class="toolbar">
+            <form ng-submit="executeSearch()">
+                <label for="search">Search</label>
+                <input ng-model="search.key" id="search" name="search" type="search">
+            </form>
+        </div>
+
+        <div id="stock-results" ng-show="search.ready" style="display:none">
+            <h2>
+                <span id="ticker" ng-bind="stock.ticker"></span> 
+                -
+                <span id="stock-name" ng-bind="stock.name"></span>
+            </h2>
+
+            <article>
+                <div id="price">
+                    <span id="last-trade" ng-bind="stock.lastTrade">0.00</span>
+                    <span id="price-change" ng-bind="stock.priceChange">+0.00</span>
+                </div>
+                <div id="chart">
+                </div>
+            </article>
+
+            <aside id="fundamentals" class="clearfix">
+                <div id="other-fundamentals">
+                    <ul>
+                        <li id="range">
+                            <span class="label">Range</span>
+                            <span class="value" ng-bind="stock.dayRange"></span>
+                        </li>
+                        <li id="year-range">
+                            <span class="label">52-Week</span>
+                            <span class="value" ng-bind="stock.yearRange"></span>
+                        </li>
+                        <li id="volume">
+                            <span class="label">Vol/Avg.</span>
+                            <span class="value">
+                                <span ng-bind="stock.volume"></span>
+                                /
+                                <span ng-bind="stock.avgVolume"></span>
+                            </span>
+                        </li>
+                        <li id="market-cap">
+                            <span class="label">Mkt Cap</span>
+                            <span class="value" ng-bind="stock.marketCap"></span>
+                        </li>
+                        <li id="price-earnings">
+                            <span class="label">P/E</span>
+                            <span class="value" ng-bind="stock.priceEarnings"></span>
+                        </li>
+                        <li id="dividend-yield">
+                            <span class="label">Div Yield</span>
+                            <span class="value" ng-bind="stock.dividendYield"></span>
+                        </li>
+                        <li id="EPS">
+                            <span class="label">EPS</span>
+                            <span class="value" ng-bind="stock.earningsPerShare"></span>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
         <script src="js/vendor/angular.js"></script>
 
+        <script src="js/controllers.js"></script>
         <script src="js/vendor/highstock.js"></script>
-        <script src="js/stocksearch.js"></script>
 
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
