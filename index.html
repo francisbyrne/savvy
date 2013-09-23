@@ -6,13 +6,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Finance</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/boiler.css">
         <link rel="stylesheet" href="css/main.css">
 
+        <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -23,9 +25,6 @@
         <div class="header-container">
             <header class="wrapper clearfix">
                 <h1 class="title">Shares</h1>
-                <form id="search-form">
-                    <input id="search" type="search">
-                </form>
                 <nav>
                     <ul>
                         <li><a href="#">nav ul li a</a></li>
@@ -38,8 +37,20 @@
 
         <div class="main-container">
             <div class="main wrapper clearfix">
+                
+                <div class="toolbar">
+                    <form id="search-form">
+                        <label for="search">Search</label>
+                        <input id="search" name="search" type="search">
+                    </form>
+                </div>
 
-                <h2><span id="ticker">Stock Ticker</span> - <span id="stock-name">Stock Name</span></h2>
+                <h2>
+                    <span id="ticker">Stock Ticker</span> 
+                    -
+                    <span id="stock-name">Stock Name</span>
+                </h2>
+
                 <article>
                     <div id="price">
                         <span id="last-trade">0.00</span>
@@ -80,7 +91,7 @@
                                 <span class="label">EPS</span>
                                 <span class="value"></span>
                             </li>
-                          <!--   <li id="num-shares">
+                              <!-- <li id="num-shares">
                                 <span class="label">Shares</span>
                                 <span class="value"></span>
                             </li> -->
@@ -101,7 +112,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
         <script src="js/vendor/highstock.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/stocksearch.js"></script>
 
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
