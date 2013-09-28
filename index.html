@@ -24,9 +24,10 @@
         <div class="toolbar">
             <form ng-submit="executeSearch()">
                 <label for="search">Search</label>
-                <input ng-model="search.key" id="search" name="search" type="search">
+                <input ng-model="key" id="search" name="search" type="search">
             </form>
         </div>
+        <div ng-bind="key"></div>
 
         <div id="stock-results" ng-show="search.ready" style="display:none">
             <h2>
@@ -44,7 +45,7 @@
                 </div>
             </article>
 
-            <aside id="fundamentals" class="clearfix">
+            <aside id="fundamentals" ng-controller="FundamentalsCtrl">
                 <div id="other-fundamentals">
                     <ul>
                         <li id="range">
@@ -89,6 +90,7 @@
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
         <script src="js/vendor/angular.js"></script>
 
+        <script src="js/app.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/vendor/highstock.js"></script>
 
