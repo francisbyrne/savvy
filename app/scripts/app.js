@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('financeApp', [])
+angular.module('financeApp', ['financeServices'])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/:stockId', {
+        templateUrl: 'views/stock.html',
+        controller: 'StockCtrl'
       })
       .otherwise({
         redirectTo: '/'

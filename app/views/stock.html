@@ -1,0 +1,61 @@
+<div class="toolbar">
+    <form ng-submit="search()">
+        <label for="search">Search</label>
+        <input ng-model="query" name="search" type="search">
+    </form>
+</div>
+
+<div id="stock-results">
+    <article>
+        <h2>
+            <span id="ticker" ng-bind="stock.ticker"></span> 
+            -
+            <span id="stock-name" ng-bind="stock.name"></span>
+        </h2>
+        <div id="price">
+            <span id="last-trade" ng-bind="stock.lastTrade">0.00</span>
+            <span id="price-change" ng-bind="stock.priceChange">+0.00</span>
+        </div>
+        <div id="chart">
+        </div>
+
+        <aside id="fundamentals">
+            <div id="other-fundamentals">
+                <ul>
+                    <li id="range">
+                        <span class="label">Range</span>
+                        <span class="value" ng-bind="stock.dayRange"></span>
+                    </li>
+                    <li id="year-range">
+                        <span class="label">52-Week</span>
+                        <span class="value" ng-bind="stock.yearRange"></span>
+                    </li>
+                    <li id="volume">
+                        <span class="label">Vol/Avg.</span>
+                        <span class="value">
+                            <span ng-bind="stock.volume"></span>
+                            /
+                            <span ng-bind="stock.avgVolume"></span>
+                        </span>
+                    </li>
+                    <li id="market-cap">
+                        <span class="label">Mkt Cap</span>
+                        <span class="value" ng-bind="stock.marketCap"></span>
+                    </li>
+                    <li id="price-earnings">
+                        <span class="label">P/E</span>
+                        <span class="value" ng-bind="stock.priceEarnings"></span>
+                    </li>
+                    <li id="dividend-yield">
+                        <span class="label">Div Yield</span>
+                        <span class="value" ng-bind="stock.dividendYield"></span>
+                    </li>
+                    <li id="EPS">
+                        <span class="label">EPS</span>
+                        <span class="value" ng-bind="stock.earningsPerShare"></span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </article>
+</div>
