@@ -1,0 +1,62 @@
+<template name="stocksearch">
+  <div class="toolbar">
+      <form id="search-form">
+          <label for="search">Search</label>
+          <input id="search" name="search" type="search">
+      </form>
+  </div>
+
+  <h2>
+      <span id="ticker">Stock Ticker</span> 
+      -
+      <span id="stock-name">Stock Name</span>
+  </h2>
+
+  <article>
+      <div id="price">
+          <span id="last-trade">0.00</span>
+          <span id="price-change" class='blah'>+0.00</span>
+      </div>
+      <div id="chart">
+      </div>
+  </article>
+
+  <aside id="fundamentals" class="clearfix">
+      <div id="other-fundamentals">
+          <ul>
+              <li id="range">
+                  <span class="label">Range</span>
+                  <span class="value"></span>
+              </li>
+              <li id="year-range">
+                  <span class="label">52-Week</span>
+                  <span class="value"></span>
+              </li>
+              <li id="volume">
+                  <span class="label">Vol/Avg.</span>
+                  <span class="value"></span>
+              </li>
+              <li id="market-cap">
+                  <span class="label">Mkt Cap</span>
+                  <span class="value"></span>
+              </li>
+              <li id="price-earnings">
+                  <span class="label">P/E</span>
+                  <span class="value"></span>
+              </li>
+              <li id="dividend-yield">
+                  <span class="label">Div Yield</span>
+                  <span class="value"></span>
+              </li>
+              <li id="EPS">
+                  <span class="label">EPS</span>
+                  <span class="value"></span>
+              </li>
+                <!-- <li id="num-shares">
+                  <span class="label">Shares</span>
+                  <span class="value"></span>
+              </li> -->
+          </ul>
+      </div>
+  </aside>
+</template>
