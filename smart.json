@@ -1,5 +1,7 @@
 {
   "packages": {
-    "highcharts": {}
+    "highcharts": {},
+    "iron-router": {},
+    "reactive-table": {}
   }
 }

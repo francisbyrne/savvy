@@ -182,7 +182,7 @@ var lastYear = function() {
   return yyyymmdd( d );
 };
 
-Template.stocksearch.rendered = function() {
+Template.stock_detail.rendered = function() {
   $( '#search-form' ).submit( function( e ) {
     e.preventDefault();
     var ticker = $( '#search' ).val();

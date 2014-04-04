@@ -1,0 +1,39 @@
+<template name="portfolio">
+  <div class="portfolio">
+    <h2>Portfolio</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>Shares</th>
+          <th>Cost Basis</th>
+          <th>Market Value</th>
+          <th>Gain</th>
+          <th>Gain (%)</th>
+          <th>Day's Gain</th>
+          <th>Overall Return</th>
+        </tr>
+      </thead>
+      <tbody>
+    {{#each holdings}}
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>Shares</th>
+          <th>Cost Basis</th>
+          <th>Market Value</th>
+          <th>Gain</th>
+          <th>Gain (%)</th>
+          <th>Day's Gain</th>
+          <th>Overall Return</th>
+        </tr>
+    {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

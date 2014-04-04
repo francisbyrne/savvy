@@ -1,0 +1,38 @@
+<head>
+  <title>finance</title>
+</head>
+
+<template name="body">
+    <div class="header-container">
+        <header class="wrapper clearfix">
+
+            <h1 class="title">Finance</h1>
+
+            <div class="toolbar">
+                {{> stock_search}}
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li><a href="{{pathFor 'portfolio'}}">Portfolio</a></li>
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+
+    <div class="main-container">
+        <div class="main wrapper clearfix">
+            
+          {{> yield}}
+
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <footer class="wrapper">
+            <h3>Francis Byrne 2014</h3>
+        </footer>
+    </div>
+</template>

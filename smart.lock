@@ -2,13 +2,35 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "highcharts": {}
+      "highcharts": {},
+      "iron-router": {},
+      "reactive-table": {}
     },
     "packages": {
       "highcharts": {
         "git": "https://github.com/mikeschaekermann/meteor-highcharts.git",
         "tag": "v0.1.0",
         "commit": "eca115ee55e1cc083e389171717760dbaa727534"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+      },
+      "reactive-table": {
+        "git": "https://github.com/ecohealthalliance/reactive-table.git",
+        "tag": "v0.3.1",
+        "commit": "d96cb8c2c4c683ddd4c9ab9e954443614c8b6ce8"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+      },
+      "just-i18n": {
+        "git": "https://github.com/subhog/meteor-just-i18n.git",
+        "tag": "v0.2.4",
+        "commit": "91decfcf5b3b5e67f202a67658350b862330bf3d"
       }
     }
   }

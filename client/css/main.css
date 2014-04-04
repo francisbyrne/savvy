@@ -14,6 +14,7 @@ ul li {
 
 .toolbar {
     display: inline-block;
+    color: white;
 }
 
 #search {
