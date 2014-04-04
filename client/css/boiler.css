@@ -178,7 +178,7 @@ nav a:hover {
         float: left;
         width: 27%;
         margin: 0 1.7%;
-        padding: 25px 2%;
+        padding: 1em 2%;
         margin-bottom: 0;
     }
 
@@ -222,6 +222,7 @@ nav a:hover {
 
     .title {
         float: left;
+        margin-right: 2rem;
     }
 
     nav {

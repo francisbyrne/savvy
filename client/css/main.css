@@ -1,16 +1,23 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+h1 {
+    margin: 0.5em 0;
+}
 h2 {
     margin: 0.5em 0;
 }
+
 ul li {
     list-style: none;
 }
 
+.toolbar {
+    display: inline-block;
+}
+
 #search {
-    margin: 1.5em 2em;
+    margin: 1.3rem 0.5rem 0 0.5rem;
 }
 
 #ticker {
