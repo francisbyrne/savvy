@@ -115,12 +115,12 @@ Meteor.methods({
   getStockDetails: function(options) {
     if (_.isUndefined(options)) { options = {}; }
 
-    // assert(_.isPlainObject(options),
-    //        '"options" must be a plain object.');
-    // assert(_.isArray(options.symbols) && !_.isEmpty(options.symbols),
-    //        '"options.symbols" must be a non-empty string array.');
-    // assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
-    //        '"options.fields" must be a non-empty string array or undefined.');
+    assert(_.isObject(options),
+           '"options" must be a plain object.');
+    assert(_.isArray(options.symbols) && !_.isEmpty(options.symbols),
+           '"options.symbols" must be a non-empty string array.');
+    assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
+           '"options.fields" must be a non-empty string array or undefined.');
 
     if (!options.fields) {
       options.fields = _.keys(FIELD);  // fetch all fields if undefined
@@ -139,7 +139,7 @@ Meteor.methods({
 
       // var results = {
       //   statusCode: 200,
-      //   content: '"GOOG",543.14,"4/4/2014","4:00pm",-26.60,574.65,577.77,543.00"'
+      //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,34.582B,28.38,N/A,1.26'
       // };
 
       if (results.statusCode == 200) {
@@ -156,15 +156,6 @@ Meteor.methods({
             for (fieldIdx = 0; fieldIdx < options.fields.length; ++fieldIdx) {
               field = options.fields[fieldIdx];
               value = line[lineIdx++];
-
-              // Manual type conversion
-              // if (_.contains([], field)) {
-              //   value = parseInt(value, 10);
-              // } else if (_.contains(['a', 'b', 'b2', 'b3', 'p', 'o'], field)) {
-              //   value = parseFloat(value);
-              // } else if (_.contains([], field)) {
-              //   value = moment(value).toDate();
-              // }
 
               result[FIELD[field]] = value;
             }
