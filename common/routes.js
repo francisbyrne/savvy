@@ -1,14 +1,31 @@
+
+// Global config
+Router.configure({
+  layoutTemplate: 'body',
+  notFoundTemplate: 'not_found',
+  loadingTemplate: 'loading'
+});
+
+
+// Custom Controllers
+
+StockDetailController = RouteController.extend({
+  template: 'stock_detail',
+  data: function () {
+    return {stockId: this.params._id};
+  },
+  onBeforeAction: function() {
+    // get the stock details from server, see market_data.js for legend of fields
+    Meteor.call('getStockDetails', { symbols: [this.params._id], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'j1', 'r', 'y', 'e'] });
+  }
+});
+
+// Route Maps
 Router.map(function() {
   this.route('home', {path: '/'});
   this.route('portfolio');
   this.route('stock_detail', {
     path: '/stock/:_id', 
-    data: function () { return { symbol: this.params._id }; }
+    controller: StockDetailController
   });
-});
-
-Router.configure({
-  layoutTemplate: 'body',
-  notFoundTemplate: 'not_found',
-  loadingTemplate: 'loading'
 });

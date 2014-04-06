@@ -8,3 +8,7 @@ autopublish
 insecure
 iron-router
 reactive-table
+assert
+moment
+node-csv-npm
+http

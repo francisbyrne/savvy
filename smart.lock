@@ -4,7 +4,10 @@
     "basePackages": {
       "highcharts": {},
       "iron-router": {},
-      "reactive-table": {}
+      "reactive-table": {},
+      "assert": {},
+      "moment": {},
+      "node-csv-npm": {}
     },
     "packages": {
       "highcharts": {
@@ -21,6 +24,21 @@
         "git": "https://github.com/ecohealthalliance/reactive-table.git",
         "tag": "v0.3.1",
         "commit": "d96cb8c2c4c683ddd4c9ab9e954443614c8b6ce8"
+      },
+      "assert": {
+        "git": "https://github.com/peerlibrary/meteor-assert.git",
+        "tag": "v0.2.3",
+        "commit": "9c838fbf5053a9f4c9ea21cad8e2fef8f1374e7c"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "node-csv-npm": {
+        "git": "https://github.com/Dsyko/meteor-node-csv.git",
+        "tag": "v0.3.6",
+        "commit": "01be0e3e834a4f033121cb3fcc92c2697741170d"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

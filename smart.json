@@ -2,6 +2,9 @@
   "packages": {
     "highcharts": {},
     "iron-router": {},
-    "reactive-table": {}
+    "reactive-table": {},
+    "assert": {},
+    "moment": {},
+    "node-csv-npm": {}
   }
 }

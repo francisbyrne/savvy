@@ -12,6 +12,11 @@ ul li {
     list-style: none;
 }
 
+.title a {
+    color: white;
+    text-decoration: none;
+}
+
 .toolbar {
     display: inline-block;
     color: white;
