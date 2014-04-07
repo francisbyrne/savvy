@@ -71,9 +71,9 @@ var FIELD = {
   f6: 'Float Shares',
   n: 'name',
   n4: 'Notes',
-  s1: 'Shares Owned',
+  s1: 'sharesOwned',
   x: 'Stock Exchange',
-  j2: 'Shares Outstanding',
+  j2: 'sharesOutstanding',
 
   // Volume
   v: 'volume',
@@ -107,12 +107,15 @@ var FIELD = {
   v1: 'Holdings Value',
   v7: 'Holdings Value (Realtime)',
   s6: 'Revenue',
-  e1: 'Error Indication (returned for symbol changed or invalid)'
+  e1: 'errorIndication' // (returned for symbol changed or invalid)
 };
 
 Meteor.methods({
 
-  getStockDetails: function(options) {
+  /* Performs an upsert on Stocks collection for a given set of fields 
+  *  (Array: options.fields) of given stock symbols (Array: options.symbols) 
+  */
+  refreshStockDetails: function(options) {
     if (_.isUndefined(options)) { options = {}; }
 
     assert(_.isObject(options),
@@ -137,9 +140,10 @@ Meteor.methods({
         f: options.fields.join('')
       } } );
 
+      // FOR OFFLINE DEV
       // var results = {
       //   statusCode: 200,
-      //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,34.582B,28.38,N/A,1.26'
+      //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,41049936,34.582B,28.38,N/A,1.26'
       // };
 
       if (results.statusCode == 200) {
@@ -167,9 +171,6 @@ Meteor.methods({
             return result;
           });
 
-          data = [];
-          var i = 0;
-
           _.each(items, function (item) {
             Stocks.upsert( { id: item.id }, item );
           });
@@ -178,7 +179,28 @@ Meteor.methods({
       }
     } catch(error) {
       // TODO: throw error
+      console.log(error.message);
     }
+  },
+
+  // TODO: handle non-existent stocks (display error message and don't add stock)
+  // takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
+  'addHolding': function(stockId, userId) {
+    var userId = userId || this.userId;
+    check(stockId, String);
+    check(userId, String);
+    Meteor.call('refreshStockDetails', {symbols: [stockId], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1']});
+    if (! Holdings.findOne({userId: this.userId, stockId: stockId})) {
+      Holdings.insert({userId: userId, stockId: stockId});
+    }
+  },
+
+  // takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
+  'removeHolding': function(stockId, userId) {
+    var userId = userId || this.userId;
+    check(stockId, String);
+    check(userId, String);
+    Holdings.remove({userId: userId, stockId: stockId});
   }
 
 });

@@ -18,22 +18,27 @@
         </tr>
       </thead>
       <tbody>
-    {{#each holdings}}
-        <tr>
-          <th>Name</th>
-          <th>Symbol</th>
-          <th>Price</th>
-          <th>Change</th>
-          <th>Shares</th>
-          <th>Cost Basis</th>
-          <th>Market Value</th>
-          <th>Gain</th>
-          <th>Gain (%)</th>
-          <th>Day's Gain</th>
-          <th>Overall Return</th>
+      {{#each holdingDetails}}
+        <tr id="{{_id}}">
+          <td>{{name}}</td>
+          <td>{{symbol}}</td>
+          <td>{{lastTradePriceOnly}}</td>
+          <td>{{change}}</td>
+          <td>Shares</td>
+          <td>Cost Basis</td>
+          <td>Market Value</td>
+          <td>Gain</td>
+          <td>Gain (%)</td>
+          <td>Day's Gain</td>
+          <td>Overall Return</td>
+          <td><button class="remove-holding" data-id="{{_id}}">Remove</button></td>
         </tr>
-    {{/each}}
+      {{/each}}
       </tbody>
     </table>
+    <form id="add-holding">
+      <h3>Add Holding</h3>
+      <input id="symbol" type="text" placeholder="Ticker" />
+    </form>
   </div>
 </template>

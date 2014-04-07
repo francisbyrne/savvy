@@ -1,4 +1,3 @@
-
 // Global config
 Router.configure({
   layoutTemplate: 'body',
@@ -16,7 +15,7 @@ StockDetailController = RouteController.extend({
   },
   onBeforeAction: function() {
     // get the stock details from server, see market_data.js for legend of fields
-    Meteor.call('getStockDetails', { symbols: [this.params._id], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'j1', 'r', 'y', 'e'] });
+    Meteor.call('refreshStockDetails', { symbols: [this.params._id], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'] });
   }
 });
 

@@ -1,1 +1,0 @@
-Stocks = new Meteor.Collection('stocks');
