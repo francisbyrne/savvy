@@ -181,26 +181,6 @@ Meteor.methods({
       // TODO: throw error
       console.log(error.message);
     }
-  },
-
-  // TODO: handle non-existent stocks (display error message and don't add stock)
-  // takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
-  'addHolding': function(stockId, userId) {
-    var userId = userId || this.userId;
-    check(stockId, String);
-    check(userId, String);
-    Meteor.call('refreshStockDetails', {symbols: [stockId], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1']});
-    if (! Holdings.findOne({userId: this.userId, stockId: stockId})) {
-      Holdings.insert({userId: userId, stockId: stockId});
-    }
-  },
-
-  // takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
-  'removeHolding': function(stockId, userId) {
-    var userId = userId || this.userId;
-    check(stockId, String);
-    check(userId, String);
-    Holdings.remove({userId: userId, stockId: stockId});
   }
 
 });

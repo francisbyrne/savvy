@@ -5,11 +5,11 @@ Meteor.startup(function() {
 Template.portfolio.helpers({
   holdingDetails: function() {
     var holdings = Holdings.find({userId: Meteor.userId()}).fetch();
-    var ids = holdingsToStockIds(holdings);
-    var stocks = _.map(ids, function(id) {
-      return Stocks.findOne({id: id});
+    var stockHoldings = _.map(holdings, function(holding) {
+      // extend the stock document to include the holding id
+      return _.extend( {holdingId: holding._id}, Stocks.findOne({id: holding.stockId}) );
     });
-    return stocks;
+    return stockHoldings;
   }
 });
 
@@ -23,7 +23,7 @@ Template.portfolio.events({
     });
   },
   'click .remove-holding': function(event, template) {
-    Meteor.call('removeHolding', this.id, function(error, result) {
+    Meteor.call('removeHolding', this.holdingId, function(error, result) {
       if (error)
         console.log(error.message);
     });
