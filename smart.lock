@@ -7,7 +7,8 @@
       "assert": {},
       "moment": {},
       "node-csv-npm": {},
-      "meteor-errors": {}
+      "meteor-errors": {},
+      "errors": {}
     },
     "packages": {
       "highcharts": {
@@ -40,15 +41,15 @@
         "tag": "v0.1.0",
         "commit": "b91859cd98d69f5b294d7d7a2724427872103da8"
       },
+      "errors": {
+        "git": "https://github.com/tmeasday/meteor-errors.git",
+        "tag": "v0.2.1",
+        "commit": "f2af03510a9e3d9952601f5f091aa76bfbcbf224"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.2",
         "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
-      },
-      "just-i18n": {
-        "git": "https://github.com/subhog/meteor-just-i18n.git",
-        "tag": "v0.2.4",
-        "commit": "91decfcf5b3b5e67f202a67658350b862330bf3d"
       }
     }
   }

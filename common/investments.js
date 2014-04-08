@@ -22,7 +22,8 @@ Meteor.methods({
     var userId = userId || this.userId;
     check(stockId, String);
     if( ! Match.test(userId, String) ) {
-      throw new Meteor.Error(401, 'User ID invalid or non-existent. Please login to add holdings.');
+      if (Errors)
+        Errors.throw('User ID invalid or non-existent. Please login to add holdings.');
     }
 
     // if stock exists, just add it on the client
@@ -33,8 +34,9 @@ Meteor.methods({
     // update the stock details on the server and add the stock if it doesn't already exist
     if (Meteor.isServer) {
       Meteor.call('refreshStockDetails', {symbols: [stockId], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1']}, function(error, result) {
+        // TODO: get this error message sent to client (DOESNT WORK ATM!)
         if (error) 
-          console.log(error.reason);
+          throw new Meteor.Error(404, "No such stock exists.");
         else
           holdingId ? '' : Holdings.insert(holding); // if holding wasn't already added on client, add it now
       });

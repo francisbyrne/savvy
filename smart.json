@@ -5,6 +5,7 @@
     "assert": {},
     "moment": {},
     "node-csv-npm": {},
-    "meteor-errors": {}
+    "meteor-errors": {},
+    "errors": {}
   }
 }
