@@ -4,7 +4,6 @@
     "basePackages": {
       "highcharts": {},
       "iron-router": {},
-      "reactive-table": {},
       "assert": {},
       "moment": {},
       "node-csv-npm": {},
@@ -20,11 +19,6 @@
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.0",
         "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
-      },
-      "reactive-table": {
-        "git": "https://github.com/ecohealthalliance/reactive-table.git",
-        "tag": "v0.3.2",
-        "commit": "48d4f7b5195ad459bee55882b94dd158649613a0"
       },
       "assert": {
         "git": "https://github.com/peerlibrary/meteor-assert.git",
