@@ -1,2 +1,12 @@
-
+packages/highcharts
+packages/iron-router
+packages/blaze-layout
+packages/reactive-table
+packages/just-i18n
 packages/assert
+packages/moment
+packages/node-csv-npm
+packages/meteor-errors
+packages/assert
+
+packages/reactive-table

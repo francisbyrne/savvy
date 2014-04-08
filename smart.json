@@ -5,6 +5,7 @@
     "reactive-table": {},
     "assert": {},
     "moment": {},
-    "node-csv-npm": {}
+    "node-csv-npm": {},
+    "meteor-errors": {}
   }
 }

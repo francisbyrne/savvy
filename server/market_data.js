@@ -134,18 +134,23 @@ Meteor.methods({
 
     var url = 'http://download.finance.yahoo.com/d/quotes.csv';
 
+    var results = HTTP.get( url, { params: {
+      s: options.symbols.join(','),
+      f: options.fields.join('')
+    } } );
+
+    // FOR OFFLINE DEV
+    // var results = {
+    //   statusCode: 200,
+    //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,41049936,34.582B,28.38,N/A,1.26'
+    // };
+
+    // hack to handle invalid stock symbols
+    if (results.content.substr(-6,3) != "N/A") {
+      throw new Meteor.Error(404, "No such stock exists.");
+    }
+
     try {
-      var results = HTTP.get( url, { params: {
-        s: options.symbols.join(','),
-        f: options.fields.join('')
-      } } );
-
-      // FOR OFFLINE DEV
-      // var results = {
-      //   statusCode: 200,
-      //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,41049936,34.582B,28.38,N/A,1.26'
-      // };
-
       if (results.statusCode == 200) {
 
         CSV().from.string(results.content).to.array( Meteor.bindEnvironment(function (data) {
