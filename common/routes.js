@@ -14,10 +14,12 @@ StockDetailController = RouteController.extend({
     return {stockId: this.params._id};
   },
   onBeforeAction: function() {
+    Errors.clearSeen();
     // get the stock details from server, see market_data.js for legend of fields
     Meteor.call('refreshStockDetails', { symbols: [this.params._id], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'] }, function(error, results) {
-      if (error)
-        console.log(error.reason);
+      if (error) {
+        Errors.throw(error.reason);
+      }
     });
   }
 });

@@ -14,7 +14,6 @@ holdingsToStockIds = function(holdings) {
 
 Meteor.methods({
 
-  // TODO: handle non-existent stocks (display error message and don't add stock)
   // takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
   'addHolding': function(stockId, userId) {
 
@@ -36,7 +35,7 @@ Meteor.methods({
       Meteor.call('refreshStockDetails', {symbols: [stockId], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1']}, function(error, result) {
         // TODO: get this error message sent to client (DOESNT WORK ATM!)
         if (error) 
-          throw new Meteor.Error(404, "No such stock exists.");
+          throw new Meteor.Error(error.error, error.reason);
         else
           holdingId ? '' : Holdings.insert(holding); // if holding wasn't already added on client, add it now
       });

@@ -134,10 +134,15 @@ Meteor.methods({
 
     var url = 'http://download.finance.yahoo.com/d/quotes.csv';
 
-    var results = HTTP.get( url, { params: {
-      s: options.symbols.join(','),
-      f: options.fields.join('')
-    } } );
+    // Get data from market data provider; throw connection error if unavilable
+    try {
+      var results = HTTP.get( url, { params: {
+        s: options.symbols.join(','),
+        f: options.fields.join('')
+      } } );
+    } catch(error) {
+      throw new Meteor.Error(504, 'Market data provider unavailable. Stocks may be unavailable and/or prices etc. may be out of date.');
+    }
 
     // FOR OFFLINE DEV
     // var results = {
@@ -145,7 +150,7 @@ Meteor.methods({
     //   content: '"YHOO","Yahoo! Inc.",34.26,-1.50,"33.83 - 36.0499",41.72,41049936,41049936,34.582B,28.38,N/A,1.26'
     // };
 
-    // hack to handle invalid stock symbols
+    // Hack to handle invalid stock symbols
     if (results.content.substr(-6,3) != "N/A") {
       throw new Meteor.Error(404, "No such stock exists.");
     }
@@ -183,8 +188,7 @@ Meteor.methods({
         }) );
       }
     } catch(error) {
-      // TODO: throw error
-      console.log(error.message);
+      throw new Meteor.Error(500, error.message);
     }
   }
 
