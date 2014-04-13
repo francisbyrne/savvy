@@ -1,3 +1,4 @@
+// Useful form-related functions
 forms = {
   parseForm: function(form) {
     var fields = {};

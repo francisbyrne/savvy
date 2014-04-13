@@ -1,6 +1,7 @@
 <template name="portfolio">
   <div class="portfolio">
     <h2>Portfolio</h2>
+    {{#if currentHoldings}}
     <table>
       <thead>
         <tr>
@@ -18,24 +19,26 @@
         </tr>
       </thead>
       <tbody>
-      {{#each holdingDetails}}
-        <tr id="{{holdingId}}">
+      {{#each currentHoldings}}
+        <tr>
           <td>{{name}}</td>
           <td>{{symbol}}</td>
           <td>{{lastTradePriceOnly}}</td>
           <td>{{change}}</td>
-          <td>Shares</td>
-          <td>Cost Basis</td>
-          <td>Market Value</td>
+          <td>{{shares}}</td>
+          <td>{{costBasis}}</td>
+          <td>{{marketValue}}</td>
           <td>Gain</td>
           <td>Gain (%)</td>
           <td>Day's Gain</td>
           <td>Overall Return</td>
-          <td><button class="remove-holding" data-id="{{_id}}">Remove</button></td>
         </tr>
       {{/each}}
       </tbody>
     </table>
+    {{else}}
+    <p>You have no holdings at the moment.</p>
+    {{/if}}
     {{> add_transaction}}
   </div>
 </template>

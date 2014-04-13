@@ -3,21 +3,47 @@ Meteor.startup(function() {
 });
 
 Template.portfolio.helpers({
-  holdingDetails: function() {
-    var holdings = Holdings.find({userId: Meteor.userId()}).fetch();
-    var stockHoldings = _.map(holdings, function(holding) {
-      // extend the stock document to include the holding id
-      return _.extend( {holdingId: holding._id}, Stocks.findOne({id: holding.stockId}) );
+  /*
+   * This helper returns the current holdings for a user based on their transactions.
+   * It tallies 
+   */
+  currentHoldings: function() {
+    var now = moment();
+    var holdings = {};
+    var transactions = Transactions.find({userId: Meteor.userId()}).map(function(transaction) {
+      return _.extend( transaction, Stocks.findOne({id: transaction.symbol}) );
     });
-    return stockHoldings;
+    _.each(transactions, function(transaction) {
+
+      // Ignore future trade dates
+      var date = moment(transaction.date);
+      if ( now.diff(date, 'days') < 0 )
+        return;
+
+      // Subtract number of shares held if it is a sell trade
+      if (transaction.type == 'Sell')
+        transaction.shares = 0 - transaction.shares;
+
+      var id = transaction.symbol;
+      if ( holdings[id] ) {
+        holdings[id].shares += transaction.shares;
+        holdings[id].costBasis += costBasis(transaction);
+      } else {
+        holdings[id] = transaction;
+        holdings[id].costBasis = costBasis(transaction);
+      }
+    });
+
+    // Convert from object into array (Template doesn't handle objects)
+    return _.map(holdings, function(holding) {
+      return _.extend( holding, {
+        marketValue: numeral(holding.shares * holding.lastTradePriceOnly).format(),
+        costBasis: numeral(holding.costBasis).format()
+      });
+    });
   }
 });
 
-Template.portfolio.events({
-  'click .remove-holding': function(event, template) {
-    Meteor.call('removeHolding', this.holdingId, function(error, result) {
-      if (error)
-        Errors.throw(error.reason);
-    });
-  }
-});
+var costBasis = function(transaction) {
+  return transaction.shares * transaction.price + transaction.commission;
+};
