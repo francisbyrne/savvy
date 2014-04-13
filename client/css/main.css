@@ -26,37 +26,37 @@ ul li {
     margin: 1.3rem 0.5rem 0 0.5rem;
 }
 
-#ticker {
+.stock-details #ticker {
     margin: 0.2em 0;
 }
 
-#price {
+.stock-details #price {
     font-size: 1.5em;
 }
-#price #price-change {
+.stock-details #price #price-change {
     font-size: 0.8em;
     margin-left: 0.5em;
 }
-#price #price-change.gain {
+.stock-details #price #price-change.gain {
     color: green;
 }
-#price #price-change.loss {
+.stock-details #price #price-change.loss {
     color: red;
 }
 
-#fundamentals > div {
+.stock-details #fundamentals > div {
     float: left;
 }
-#fundamentals li {
+.stock-details #fundamentals li {
     width: 18em;
 }
-#fundamentals .label {
+.stock-details #fundamentals .label {
 
 }
-#fundamentals .value {
+.stock-details #fundamentals .value {
     float: right;
 }
 
-#other-fundamentals ul {
+.stock-details #other-fundamentals ul {
     padding: 0;
 }

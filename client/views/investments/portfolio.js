@@ -14,15 +14,6 @@ Template.portfolio.helpers({
 });
 
 Template.portfolio.events({
-  'submit form#add-holding': function(event, template) {
-    event.preventDefault();
-
-    var stockId = $('#symbol').val();
-    Meteor.call('addHolding', stockId, function(error, result) {
-      if (error)
-        Errors.throw(error.reason);
-    });
-  },
   'click .remove-holding': function(event, template) {
     Meteor.call('removeHolding', this.holdingId, function(error, result) {
       if (error)

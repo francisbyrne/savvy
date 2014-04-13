@@ -5,11 +5,10 @@ Meteor.publish('userHoldings', function() {
   return holdings;
 });
 
-// Meteor.startup(function() {
-//   Holdings.insert({userId: Meteor.userId(), stockId: "yhoo"});
-//   Holdings.insert({userId: Meteor.userId(), stockId: "goog"});
-// });
-
 Meteor.publish('allStocks', function() {
   return Stocks.find({});
+});
+
+Meteor.publish('userTransactions', function() {
+  return Transactions.find();
 });

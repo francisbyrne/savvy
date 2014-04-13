@@ -1,9 +1,17 @@
 Stocks = new Meteor.Collection('stocks');
 
 /**
- *  holding = { _id, userId, stockId };
+  holding: { 
+    _id, 
+    userId, 
+    stockId,
+    numShares,
+    price,
+  };
  */
 Holdings = new Meteor.Collection('holdings');
+
+Transactions = new Meteor.Collection('transactions');
 
 holdingsToStockIds = function(holdings) {
   var stocks = _.map(holdings, function(holding) {
@@ -14,14 +22,58 @@ holdingsToStockIds = function(holdings) {
 
 Meteor.methods({
 
+  // Add a buy/sell transaction for a particular stock
+  'addTransaction': function(fields) {
+    check(fields, Match.ObjectIncluding({
+      symbol: String,
+      type: String,
+      date: String,
+      shares: String,
+      price: String,
+      commission: Match.Optional(String)
+    }) );
+
+    // Get current user if not specified
+    var userId = fields.userId || this.userId;
+    if( ! Match.test(userId, String) ) {
+      if (Errors)
+        Errors.throw('User ID invalid or non-existent. Please login to add holdings.');
+      else
+        return;
+    }
+
+    var transaction = {
+      // Prevent ticker duplicates via capitals e.g. bhp, BHP
+      symbol: fields.symbol.toUpperCase(),
+      type: fields.type.toLowerCase(),
+      date: moment(fields.date).format('ll'),
+      shares: parseInt(fields.shares),
+      price: parseInt(fields.price),
+      commission: parseInt(fields.commission) || 0,
+      userId: userId
+    };
+
+    Meteor.call('refreshStockDetails', {symbols: [transaction.symbol], fields: ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1']}, function(error, result) {
+      if (error) 
+        Errors.throw(error.reason);
+      // add transaction if not already done on client
+      else {
+        Transactions.insert(transaction);
+      }
+    });
+
+  },
+
   // Takes a stock symbol, refreshes the stock details and adds a holding for the given user (or current user if blank)
-  'addHolding': function(stockId, userId) {
+  'addHolding': function(fields) {
 
     Errors ? Errors.clearSeen() : '';
 
+    check(fields.stockId, String);
+    var stockId = fields.stockId.toLowerCase();
+
     // Get current user if not specified
-    var userId = userId || this.userId;
-    check(stockId, String);
+    var userId = fields.userId || this.userId;
     if( ! Match.test(userId, String) ) {
       if (Errors)
         Errors.throw('User ID invalid or non-existent. Please login to add holdings.');
@@ -30,7 +82,6 @@ Meteor.methods({
     }
 
     // Avoid duplicates
-    stockId = stockId.toLowerCase();
     var holding = {userId: userId, stockId: stockId};
     if ( Holdings.findOne(holding) ) {
       if (Errors)

@@ -32,4 +32,5 @@ Router.map(function() {
     path: '/stock/:_id', 
     controller: StockDetailController
   });
+  this.route('transactions');
 });
