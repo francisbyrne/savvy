@@ -10,7 +10,7 @@ Template.transactions.helpers({
     // Extend the transaction document to include the cashValue of the transaction, and convert currency/date fields
     transactions = _.map(transactions, function(transaction) {
       return _.extend( transaction,  {
-        cashValue: (transaction.type == 'buy' ? '-' : '') + numeral(transaction.shares * transaction.price).format(),
+        cashFlow: numeral(transaction.cashFlow).format(),
         price: numeral(transaction.price).format(),
         commission: numeral(transaction.commission).format(),
         date: moment(transaction.date).format('ll')
