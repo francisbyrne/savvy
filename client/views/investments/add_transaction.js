@@ -41,7 +41,7 @@ Template.add_transaction.events({
     transaction.cashFlow = transaction.type === 'Buy' ? -transaction.shares * transaction.price - transaction.commission : transaction.shares * transaction.price - transaction.commission;
 
     // Check if this stock exists and update current price etc.
-    Meteor.call('refreshStockDetails', {symbols: [transaction.symbol]}, function(error, result) {
+    Meteor.call('refreshStocks', {symbols: [transaction.symbol]}, function(error, result) {
       if (error) 
         Errors.throw(error.reason);
       else {

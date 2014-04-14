@@ -115,7 +115,7 @@ Meteor.methods({
   /* Performs an upsert on Stocks collection for a given set of fields 
   *  (Array: options.fields) of given stock symbols (Array: options.symbols) 
   */
-  refreshStockDetails: function(options) {
+  refreshStocks: function(options) {
     if (_.isUndefined(options)) { options = {}; }
 
     assert(_.isObject(options),
@@ -124,7 +124,7 @@ Meteor.methods({
            '"options.symbols" must be a non-empty string array.');
     assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
            '"options.fields" must be a non-empty string array or undefined.');
-    
+
     // fetch standard fields if undefined
     if (!options.fields) {
       options.fields = ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'];
