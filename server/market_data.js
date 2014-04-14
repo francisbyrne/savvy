@@ -124,9 +124,10 @@ Meteor.methods({
            '"options.symbols" must be a non-empty string array.');
     assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
            '"options.fields" must be a non-empty string array or undefined.');
-
+    
+    // fetch standard fields if undefined
     if (!options.fields) {
-      options.fields = _.keys(FIELD);  // fetch all fields if undefined
+      options.fields = ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'];
     }
 
     // Avoid CSV column result mis-alignment (000,000,000).
