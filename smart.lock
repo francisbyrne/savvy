@@ -1,0 +1,56 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "highcharts": {},
+      "iron-router": {},
+      "assert": {},
+      "moment": {},
+      "node-csv-npm": {},
+      "meteor-errors": {},
+      "errors": {}
+    },
+    "packages": {
+      "highcharts": {
+        "git": "https://github.com/mikeschaekermann/meteor-highcharts.git",
+        "tag": "v0.1.0",
+        "commit": "eca115ee55e1cc083e389171717760dbaa727534"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+      },
+      "assert": {
+        "git": "https://github.com/peerlibrary/meteor-assert.git",
+        "tag": "v0.2.3",
+        "commit": "9c838fbf5053a9f4c9ea21cad8e2fef8f1374e7c"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "node-csv-npm": {
+        "git": "https://github.com/Dsyko/meteor-node-csv.git",
+        "tag": "v0.3.6",
+        "commit": "01be0e3e834a4f033121cb3fcc92c2697741170d"
+      },
+      "meteor-errors": {
+        "git": "https://github.com/tmeasday/meteor-errors.git",
+        "tag": "v0.1.0",
+        "commit": "b91859cd98d69f5b294d7d7a2724427872103da8"
+      },
+      "errors": {
+        "git": "https://github.com/tmeasday/meteor-errors.git",
+        "tag": "v0.2.1",
+        "commit": "f2af03510a9e3d9952601f5f091aa76bfbcbf224"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+      }
+    }
+  }
+}

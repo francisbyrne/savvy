@@ -1,0 +1,16 @@
+<template name="add_transaction">
+  <form id="add-transaction">
+    <h3>Add New Transaction</h3>
+    <input name="symbol" type="text" placeholder="Ticker" required />
+    <select name="type">
+      <option value="buy">Buy</option>
+      <option value="sell">Sell</option>
+    </select>
+    <input name="date" type="date" placeholder="Date" required />
+    <input name="shares" type="text" placeholder="Shares" required />
+    <input name="price" type="text" placeholder="Price" required />
+    <input name="commission" type="text" placeholder="Commission" />
+    <button type="submit">Add</button>
+    {{> meteorErrors}}
+  </form>
+</template>

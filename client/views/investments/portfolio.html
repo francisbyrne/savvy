@@ -1,0 +1,44 @@
+<template name="portfolio">
+  <div class="portfolio">
+    <h2>Portfolio</h2>
+    {{#if currentHoldings}}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Change</th>
+          <th>Shares</th>
+          <th>Cost Basis</th>
+          <th>Market Value</th>
+          <th>Gain</th>
+          <th>Gain (%)</th>
+          <th>Day's Gain</th>
+          <th>Overall Return</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each currentHoldings}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{symbol}}</td>
+          <td>{{lastTradePriceOnly}}</td>
+          <td>{{change}}</td>
+          <td>{{shares}}</td>
+          <td>{{costBasis}}</td>
+          <td>{{marketValue}}</td>
+          <td>Gain</td>
+          <td>Gain (%)</td>
+          <td>Day's Gain</td>
+          <td>Overall Return</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    {{else}}
+    <p>You have no holdings at the moment.</p>
+    {{/if}}
+    {{> add_transaction}}
+  </div>
+</template>

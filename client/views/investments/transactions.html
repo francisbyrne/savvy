@@ -1,0 +1,39 @@
+<template name="transactions">
+  <div class="transactions">
+    <h2>Transactions</h2>
+    {{#if transactions}}
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Shares</th>
+          <th>Price</th>
+          <th>Cash Flow</th>
+          <th>Commission</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each transactions}}
+        <tr id="{{_id}}">
+          <td>{{symbol}}</td>
+          <td>{{type}}</td>
+          <td>{{date}}</td>
+          <td>{{shares}}</td>
+          <td>{{price}}</td>
+          <td>{{cashFlow}}</td>
+          <td>{{commission}}</td>
+          <td><button class="remove-transaction" data-id="{{_id}}">Remove</button></td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    {{else}}
+    <p>There are no transactions yet.</p>
+    {{/if}}
+
+    {{> add_transaction}}
+
+  </div>
+</template>

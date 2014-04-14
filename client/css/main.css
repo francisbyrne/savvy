@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+h1 {
+    margin: 0.5em 0;
+}
+h2 {
+    margin: 0.5em 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+.title a {
+    color: white;
+    text-decoration: none;
+}
+
+.toolbar {
+    display: inline-block;
+    color: white;
+}
+
+#search {
+    margin: 1.3rem 0.5rem 0 0.5rem;
+}
+
+.stock-details #ticker {
+    margin: 0.2em 0;
+}
+
+.stock-details #price {
+    font-size: 1.5em;
+}
+.stock-details #price #price-change {
+    font-size: 0.8em;
+    margin-left: 0.5em;
+}
+.stock-details #price #price-change.gain {
+    color: green;
+}
+.stock-details #price #price-change.loss {
+    color: red;
+}
+
+.stock-details #fundamentals > div {
+    float: left;
+}
+.stock-details #fundamentals li {
+    width: 18em;
+}
+.stock-details #fundamentals .label {
+
+}
+.stock-details #fundamentals .value {
+    float: right;
+}
+
+.stock-details #other-fundamentals ul {
+    padding: 0;
+}

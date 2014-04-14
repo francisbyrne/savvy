@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "highcharts": {},
+    "iron-router": {},
+    "assert": {},
+    "moment": {},
+    "node-csv-npm": {},
+    "meteor-errors": {},
+    "errors": {}
+  }
+}

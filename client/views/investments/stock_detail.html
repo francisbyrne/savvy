@@ -1,0 +1,64 @@
+<template name="stock_detail">
+  <div class="stock-detail">
+    {{> meteorErrors}}
+    {{#if stock}}{{#with stock}}
+    <h2>
+        <span id="ticker">{{symbol}}</span> 
+        -
+        <span id="stock-name">{{name}}</span>
+    </h2>
+
+    <article>
+        <div id="price">
+            <span id="last-trade">{{lastTradePriceOnly}}</span>
+            <span id="price-change">{{change}}</span>
+        </div>
+        <div id="chart">
+        </div>
+    </article>
+
+    <aside id="fundamentals" class="clearfix">
+        <div id="other-fundamentals">
+            <ul>
+                <li id="range">
+                    <span class="label">Range</span>
+                    <span class="value">{{daysRange}}</span>
+                </li>
+                <li id="year-range">
+                    <span class="label">52-Week</span>
+                    <span class="value">{{fiftyTwoWeekHigh}}</span>
+                </li>
+                <li id="volume">
+                    <span class="label">Vol/Avg.</span>
+                    <span class="value">{{volume}}/{{averageDailyVolume}}</span>
+                </li>
+                <li id="market-cap">
+                    <span class="label">Mkt Cap</span>
+                    <span class="value">{{marketCapitalization}}</span>
+                </li>
+                <li id="price-earnings">
+                    <span class="label">P/E</span>
+                    <span class="value">{{priceEarningsRatio}}</span>
+                </li>
+                <li id="dividend-yield">
+                    <span class="label">Div Yield</span>
+                    <span class="value">{{dividendYield}}</span>
+                </li>
+                <li id="EPS">
+                    <span class="label">EPS</span>
+                    <span class="value">{{earningsPerShare}}</span>
+                </li>
+                <!-- <li id="num-shares">
+                    <span class="label">Shares</span>
+                    <span class="value">{{sharesOutstanding}}</span>
+                </li> -->
+            </ul>
+        </div>
+    </aside>
+    {{/with}}{{else}}
+    <div class="alert-error">
+      No such stock exists
+    </div>
+    {{/if}}
+  </div>
+</template>
