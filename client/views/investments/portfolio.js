@@ -42,12 +42,27 @@ Template.portfolio.helpers({
       holdings[transaction.symbol] = holding;
     });
 
-    // Convert from object into array (Template doesn't handle objects), add Stock details (price etc.) and add formatted/calculated fields
-    return _.map(holdings, function(holding) {
-      return _.extend( _.extend( holding, Stocks.findOne({id: holding.symbol}) ), {
-        marketValue: numeral(holding.shares * holding.lastTradePriceOnly).format(),
-        costBasis: numeral(-holding.cashFlow).format() // Cost Basis is +ve when Cash Flow is -ve
-      });
+    // Convert from object into array (Template doesn't handle objects) and add Stock details (price etc.) 
+    holdings = _.map(holdings, function(holding) {
+      return _.extend( holding, Stocks.findOne({id: holding.symbol}) );
     });
+
+    // Add holding-dependent fields and format accordingly
+    _.each(holdings, function(holding) {
+      var marketValue = holding.shares * holding.lastTradePriceOnly;
+      var costBasis   = -holding.cashFlow;
+      var gain        = marketValue + holding.cashFlow;
+      holding.marketValue = numeral(holding.shares * holding.lastTradePriceOnly).format();
+      holding.costBasis   = numeral(costBasis).format() // Cost Basis is +ve when Cash Flow is -ve
+      holding.gain        = numeral(gain).format();
+      holding.gainPercent = numeral(gain / costBasis).format('0.00%');
+      holding.daysGain    = numeral(holding.change * holding.shares).format();
+    });
+    
+    return holdings;
   }
 });
+
+var marketValue = function(holding) {
+
+}
