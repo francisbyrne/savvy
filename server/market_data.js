@@ -156,6 +156,7 @@ Meteor.methods({
       throw new Meteor.Error(404, "No such stock exists.");
     }
 
+    // Grab CSV file from Yahoo Finance and for each stock, insert a new Stock to the collection
     try {
       if (results.statusCode == 200) {
 

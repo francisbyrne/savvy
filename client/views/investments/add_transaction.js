@@ -22,7 +22,7 @@ Template.add_transaction.events({
         return;
     }
 
-    var transaction = {
+    var trade = {
       userId: userId,
 
       // Prevent ticker duplicates via capitals e.g. bhp, BHP
@@ -38,14 +38,15 @@ Template.add_transaction.events({
       commission: numeral().unformat(fields.commission) || 0
     };
 
-    transaction.cashFlow = transaction.type === 'Buy' ? -transaction.shares * transaction.price - transaction.commission : transaction.shares * transaction.price - transaction.commission;
+    // Cash Flow is -ve for Buys and +ve for Sells
+    trade.cashFlow = (trade.type === 'Buy' ? -trade.shares : trade.shares) * trade.price - trade.commission;
 
     // Check if this stock exists and update current price etc.
-    Meteor.call('refreshStocks', {symbols: [transaction.symbol]}, function(error, result) {
+    Meteor.call('refreshStocks', {symbols: [trade.symbol]}, function(error, result) {
       if (error) 
         Errors.throw(error.reason);
       else {
-        Transactions.insert(transaction);
+        Transactions.insert(trade);
         form.reset();
         template.find("input[name=symbol]").focus();
       }
