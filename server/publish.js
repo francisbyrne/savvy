@@ -1,5 +1,5 @@
 Meteor.publish('allStocks', function() {
-  return Stocks.find({});
+  return Stocks.find();
 });
 
 Meteor.publish('userTransactions', function() {

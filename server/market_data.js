@@ -178,13 +178,11 @@ Meteor.methods({
 
             assert(line.length === lineIdx, 'CSV column mis-alignment error');
 
-            result.id = symbol;
-
             return result;
           });
 
           _.each(items, function (item) {
-            Stocks.upsert( { id: item.id }, item );
+            Stocks.upsert( { symbol: item.symbol }, item );
           });
 
         }) );
