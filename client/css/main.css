@@ -19,7 +19,6 @@ ul li {
 
 .toolbar {
     display: inline-block;
-    color: white;
 }
 
 /* Searchbar & Typeahead
@@ -27,7 +26,7 @@ ul li {
     margin: 1.3rem 0.5rem 0 0.5rem;
 }*/
 
-.tt-hint {
+/*.tt-hint {
     color: gray;
 }
 .tt-suggestion {
@@ -36,6 +35,11 @@ ul li {
 }
 .tt-suggestion.tt-cursor {
     background-color: darkgray;
+}*/
+
+.typeahead {
+    width: 10rem;
+    height: 1rem;
 }
 
 .stock-details #ticker {

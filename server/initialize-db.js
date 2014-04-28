@@ -1,4 +1,7 @@
-[
+Meteor.startup(function () {
+  // Stocks.remove({});
+  if (!Stocks.find().count()) {
+    [
   {"name":"Australian Agricultural","symbol":"AAC.AX","stockExchange":"ASX"},
   {"name":"Ardent Leisure Group","symbol":"AAD.AX","stockExchange":"ASX"},
   {"name":"Alcoa Inc","symbol":"AAI.AX","stockExchange":"ASX"},
@@ -1491,4 +1494,7 @@
   {"name":"Zenith Minerals Ltd.","symbol":"ZNC.AX","stockExchange":"ASX"},
   {"name":"Zambezi Resources Ltd.","symbol":"ZRL.AX","stockExchange":"ASX"},
   {"name":"S&P/ASX 200","symbol":"^AXJO","stockExchange":"ASX"}
-]
+].forEach(function (symbol) {
+   Stocks.insert(symbol);
+ });
+}})

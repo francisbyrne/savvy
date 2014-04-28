@@ -1,5 +1,9 @@
 <template name="stock_search">
   <form id="search-form">
-    <input id="search" name="search" type="search" placeholder="Search Stock" />
+    <input class="form-control typeahead search" name="stocks" type="search"
+       placeholder="Stocks"
+       autocomplete="off" spellcheck="off"
+       data-source="search"/>
+     <button type="submit">Search</button>
   </form>
 </template>
