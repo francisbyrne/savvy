@@ -22,8 +22,20 @@ ul li {
     color: white;
 }
 
-#search {
+/* Searchbar & Typeahead
+/*#search {
     margin: 1.3rem 0.5rem 0 0.5rem;
+}*/
+
+.tt-hint {
+    color: gray;
+}
+.tt-suggestion {
+    background-color: gray;
+    padding: 0.5rem;
+}
+.tt-suggestion.tt-cursor {
+    background-color: darkgray;
 }
 
 .stock-details #ticker {
