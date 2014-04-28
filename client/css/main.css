@@ -21,10 +21,15 @@ ul li {
     display: inline-block;
 }
 
-/* Searchbar & Typeahead
-/*#search {
-    margin: 1.3rem 0.5rem 0 0.5rem;
-}*/
+/* Searchbar & Typeahead */
+#search-form .twitter-typeahead {
+    margin: 0.7rem 0.5rem 0 0;
+    vertical-align: middle;
+}
+
+#search-form [type='submit'] {
+    vertical-align: middle;
+}
 
 /*.tt-hint {
     color: gray;

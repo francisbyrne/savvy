@@ -62,7 +62,3 @@ Template.portfolio.helpers({
     return holdings;
   }
 });
-
-var marketValue = function(holding) {
-
-}

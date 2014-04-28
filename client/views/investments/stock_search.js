@@ -12,7 +12,6 @@ Template.stock_search.search = function(){
 Template.stock_search.events({
   'submit form#search-form': function(event, template) {
     event.preventDefault();
-
     var stockId = template.$( '.search.tt-input' ).val();
 
     // route to the stock detail for the inputted ticker
