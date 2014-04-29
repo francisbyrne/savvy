@@ -29,7 +29,7 @@ Template.transaction_tools.events({
               'price': entry.Price,
               'commission': entry.Commission
             };
-            transact.addTransaction(trade);
+            addTransaction(trade);
           });
         }
         reader.readAsText(file);

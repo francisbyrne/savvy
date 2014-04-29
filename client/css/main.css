@@ -31,6 +31,10 @@ ul li {
     vertical-align: middle;
 }
 
+#add-transaction input {
+    width: 9rem;
+}
+
 /*.tt-hint {
     color: gray;
 }
@@ -45,6 +49,12 @@ ul li {
 .typeahead {
     width: 10rem;
     height: 1rem;
+    font-size: 1rem;
+    padding: 6px 12px;
+}
+
+.tt-dropdown-menu {
+    width: auto;
 }
 
 .stock-details #ticker {

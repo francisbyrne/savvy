@@ -15,7 +15,7 @@ Template.add_transaction.events({
     var form = template.find('#add-transaction');
     var fields = forms.parseForm(form);
 
-    transact.addTransaction(fields, function() {
+    addTransaction(fields, function() {
       // Reset form and focus input
       form.reset();
       template.find("input[name=symbol]").focus();
