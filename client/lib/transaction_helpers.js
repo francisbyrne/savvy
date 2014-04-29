@@ -1,20 +1,7 @@
-Template.add_transaction.rendered = function(){
-    // initialize typeahead for search
-    Meteor.typeahead(this.$('.ticker'));
-};
 
-Template.add_transaction.search = function(){
-  // map symbols to array for typeahead datasource
-  return Stocks.find().fetch().map(function(it){ return it.symbol; });
-};
-
-Template.add_transaction.events({
-  'submit form#add-transaction': function(event, template) {
-    event.preventDefault();
-
-    var form = template.find('#add-transaction');
-    var fields = forms.parseForm(form);
-
+// TODO: Why can't I just use global functions??
+transact = {
+  addTransaction: function(fields, cb) {
     check(fields, Match.ObjectIncluding({
       symbol: String,
       type: String,
@@ -57,9 +44,8 @@ Template.add_transaction.events({
         Errors.throw(error.reason);
       else {
         Transactions.insert(trade);
-        form.reset();
-        template.find("input[name=symbol]").focus();
+        cb && cb();
       }
     });
   }
-});
+};
