@@ -1,0 +1,38 @@
+<template name="import_transactions">
+  <h3>Import Transactions</h3>
+  <input type="file" id="files" name="files[]" multiple /><output id="list"></output>
+
+  {{#if imports}}
+  <table id="import-preview">
+    {{#with firstImport}}
+    <thead>
+      <tr>
+      {{#each fields}}
+        <th>
+          <select>
+            <option value="">Select Field...</option>
+            <option value="symbol">Symbol</option>
+            <option value="type">Type</option>
+            <option value="date">Date</option>
+            <option value="shares">Shares</option>
+            <option value="price">Price</option>
+            <option value="commission">Commission</option>
+          </select>
+        </th>
+      {{/each}}
+      </tr>
+    </thead>
+    {{/with}}
+    <tbody>
+    {{#each imports}}
+      <tr>
+      {{#each fields}}
+        <td>{{this}}</td>
+      {{/each}}
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+  <button id="confirm-import">Confirm</button>
+  {{/if}}
+</template>
