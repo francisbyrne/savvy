@@ -9,7 +9,8 @@
       "node-csv-npm": {},
       "meteor-errors": {},
       "errors": {},
-      "typeahead": {}
+      "typeahead": {},
+      "jquery-csv": {}
     },
     "packages": {
       "highcharts": {
@@ -52,15 +53,15 @@
         "tag": "v0.0.7",
         "commit": "23ddb660cf7430c76b37b0dc08ec73001624428d"
       },
+      "jquery-csv": {
+        "git": "https://github.com/donskifarrell/meteor-jquery-csv.git",
+        "tag": "v0.7.1",
+        "commit": "7a7d868dd85da5d64dc4a174a3e5d5e2bbf90c03"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
         "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
-      },
-      "jquery-migrate": {
-        "git": "https://github.com/canadaduane/meteor-jquery-migrate.git",
-        "tag": "v2.0.0",
-        "commit": "636819c9de59f66410e148867b229869bb045cea"
       }
     }
   }

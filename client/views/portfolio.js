@@ -42,6 +42,7 @@ Template.portfolio.helpers({
       holdings[transaction.symbol] = holding;
     });
 
+    // TODO: this is extremely slow!!!!
     // Convert from object into array (Template doesn't handle objects) and add Stock details (price etc.) 
     holdings = _.map(holdings, function(holding) {
       return _.extend( holding, Stocks.findOne({symbol: holding.symbol}) );
@@ -52,10 +53,10 @@ Template.portfolio.helpers({
       var marketValue = holding.shares * holding.lastTradePriceOnly;
       var costBasis   = -holding.cashFlow;
       var gain        = marketValue + holding.cashFlow;
-      holding.marketValue = numeral(holding.shares * holding.lastTradePriceOnly).format();
+      holding.marketValue = holding.lastTradePriceOnly && numeral(holding.shares * holding.lastTradePriceOnly).format() || numeral(0).format();
       holding.costBasis   = numeral(costBasis).format() // Cost Basis is +ve when Cash Flow is -ve
       holding.gain        = numeral(gain).format();
-      holding.gainPercent = numeral(gain / costBasis).format('0.00%');
+      holding.gainPercent = costBasis && numeral(gain / costBasis).format('0.00%') || '0.00%';
       holding.daysGain    = numeral(holding.change * holding.shares).format();
     });
     
