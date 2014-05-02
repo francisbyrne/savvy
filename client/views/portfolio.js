@@ -42,6 +42,7 @@ Template.portfolio.helpers({
       holdings[transaction.symbol] = holding;
     });
 
+    // TODO: this is extremely slow!!!!
     // Convert from object into array (Template doesn't handle objects) and add Stock details (price etc.) 
     holdings = _.map(holdings, function(holding) {
       return _.extend( holding, Stocks.findOne({symbol: holding.symbol}) );
