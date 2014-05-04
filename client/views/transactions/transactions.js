@@ -25,4 +25,4 @@ Template.transactions.events({
     if ( confirm('Are you sure you wish to remove ' + this.type + ' ' + this.symbol + ' on ' + this.date + '?' ) )
       Transactions.remove(this._id);
   }
-})
+});

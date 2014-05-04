@@ -3,5 +3,5 @@ Meteor.publish('allStocks', function() {
 });
 
 Meteor.publish('userTransactions', function() {
-  return Transactions.find();
+  return Transactions.find({'userId': this.userId});
 });
