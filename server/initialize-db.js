@@ -2,6 +2,7 @@ Meteor.startup(function () {
   // Stocks.remove({});
   if (!Stocks.find().count()) {
     [
+  {"name":"Macquarie Group Limited","symbol":"MQG.AX","stockExchange":"ASX"},
   {"name":"Australian Agricultural","symbol":"AAC.AX","stockExchange":"ASX"},
   {"name":"Ardent Leisure Group","symbol":"AAD.AX","stockExchange":"ASX"},
   {"name":"Alcoa Inc","symbol":"AAI.AX","stockExchange":"ASX"},

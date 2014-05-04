@@ -9,6 +9,7 @@
     "errors": {},
     "typeahead": {},
     "jquery-csv": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "houston": {}
   }
 }
