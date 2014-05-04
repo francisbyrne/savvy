@@ -5,4 +5,4 @@ Meteor.methods({
     Transactions.remove({userId: this.userId});
   }
   
-})
+});
