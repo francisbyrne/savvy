@@ -8,6 +8,7 @@
     "meteor-errors": {},
     "errors": {},
     "typeahead": {},
-    "jquery-csv": {}
+    "jquery-csv": {},
+    "iron-router-progress": {}
   }
 }
