@@ -1,6 +1,10 @@
 <template name="portfolio">
   <div class="portfolio">
     <h2>Portfolio</h2>
+    <label for="show-closed">
+      Show Closed Positions
+      <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
+    </label>
     {{#if currentHoldings}}
     <table>
       <thead>
@@ -20,6 +24,7 @@
       </thead>
       <tbody>
       {{#each currentHoldings}}
+        {{#if visible}}
         <tr>
           <td>{{name}}</td>
           <td>{{symbol}}</td>
@@ -33,6 +38,7 @@
           <td>{{daysGain}}</td>
           <td>{{overallGain}}</td>
         </tr>
+        {{/if}}
       {{/each}}
       </tbody>
     </table>
