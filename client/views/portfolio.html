@@ -1,10 +1,20 @@
 <template name="portfolio">
   <div class="portfolio">
     <h2>Portfolio</h2>
-    <label for="show-closed">
-      Show Closed Positions
-      <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
-    </label>
+    <ul class="display-options">
+      <li>
+        <label for="show-closed">
+          Show closed positions
+          <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
+        </label>
+      </li>
+      <li>
+        <label>View as</label>
+        <button id="display-percent">%</button>
+        <button id="display-amount">$</button>
+      </li>
+    </ul>
+
     {{#if currentHoldings}}
     <table>
       <thead>
@@ -17,9 +27,7 @@
           <th>Market Value</th>
           <th>Day's Gain</th>
           <th>Gain</th>
-          <th>(%)</th>
           <th>Overall Gain</th>
-          <th>(%)</th>
         </tr>
       </thead>
       <tbody>
@@ -28,15 +36,29 @@
         <tr>
           <td>{{symbol}}</td>
           <td>{{formatCurrency lastTradePriceOnly}}</td>
-          <td>{{formatCurrency change}} ({{formatPercent changePercent}})</td>
+
+          {{#if displayPercent}}
+          <td>{{formatPercent changePercent}}</td>
+          {{else}}
+          <td>{{formatCurrencySign change}}</td>
+          {{/if}}
+
           <td>{{shares}}</td>
           <td>{{formatCurrency costBasis}}</td>
           <td>{{formatCurrency marketValue}}</td>
-          <td>{{formatCurrency daysGain}}</td>
-          <td>{{formatCurrency gain}}</td>
+          <td>{{formatCurrencySign daysGain}}</td>
+
+          {{#if displayPercent}}
           <td>{{formatPercent  gainPercent}}</td>
-          <td>{{formatCurrency overallGain}}</td>
-          <td>{{formatPercent  overallGainPercent}}</td>
+          {{else}}
+          <td>{{formatCurrencySign gain}}</td>
+          {{/if}}
+
+          {{#if displayPercent}}
+          <td>{{formatPercent overallGainPercent}}</td>
+          {{else}}
+          <td>{{formatCurrencySign overallGain}}</td>
+          {{/if}}
         </tr>
         {{/if}}
       {{/each}}

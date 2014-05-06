@@ -81,6 +81,13 @@ th {
 .portfolio .total {
     font-weight: bold;
 }
+.portfolio .display-options {
+    padding: 0;
+}
+.portfolio .display-options li {
+    display: inline-block;
+    padding-right: 1rem;
+}
 
 /* Stock Details */
 .stock-details #ticker {
