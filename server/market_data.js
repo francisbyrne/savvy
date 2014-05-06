@@ -25,7 +25,7 @@ var FIELD = {
   c: 'Change And Percent Change',
   c6: 'Change (Realtime)',
   k2: 'Change Percent (Realtime)',
-  p2: 'Change in Percent',
+  p2: 'changePercent',
   d1: 'Last Trade Date',
   d2: 'Trade Date',
   t1: 'Last Trade Time',
@@ -127,7 +127,7 @@ Meteor.methods({
 
     // fetch standard fields if undefined
     if (!options.fields) {
-      options.fields = ['s', 'n', 'l1', 'c1', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'];
+      options.fields = ['s', 'n', 'l1', 'c1', 'p2', 'm', 'k', 'v', 'a2', 'j1', 'r', 'y', 'e', 'e1'];
     }
 
     // Avoid CSV column result mis-alignment (000,000,000).

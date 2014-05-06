@@ -9,52 +9,53 @@
     <table>
       <thead>
         <tr>
-          <th>Name</th>
           <th>Symbol</th>
           <th>Price</th>
           <th>Change</th>
           <th>Shares</th>
           <th>Cost Basis</th>
           <th>Market Value</th>
-          <th>Gain</th>
-          <th>Gain (%)</th>
           <th>Day's Gain</th>
+          <th>Gain</th>
+          <th>(%)</th>
           <th>Overall Gain</th>
+          <th>(%)</th>
         </tr>
       </thead>
       <tbody>
       {{#each currentHoldings}}
         {{#if visible}}
         <tr>
-          <td>{{name}}</td>
           <td>{{symbol}}</td>
           <td>{{formatCurrency lastTradePriceOnly}}</td>
-          <td>{{formatCurrency change}}</td>
-          <td>{{#if shares}}{{shares}}{{else}}0 (Closed){{/if}}</td>
+          <td>{{formatCurrency change}} ({{formatPercent changePercent}})</td>
+          <td>{{shares}}</td>
           <td>{{formatCurrency costBasis}}</td>
           <td>{{formatCurrency marketValue}}</td>
-          <td>{{formatCurrency gain}}</td>
-          <td>{{formatPercent gainPercent}}</td>
           <td>{{formatCurrency daysGain}}</td>
-          <td>{{formatPercent overallGain}}</td>
+          <td>{{formatCurrency gain}}</td>
+          <td>{{formatPercent  gainPercent}}</td>
+          <td>{{formatCurrency overallGain}}</td>
+          <td>{{formatPercent  overallGainPercent}}</td>
         </tr>
         {{/if}}
       {{/each}}
 
       {{#with total}}
-        <tr>
+        <tr class="total">
           <td>Total</td>
           <td></td>
           <td></td>
-          <td>{{change}}</td>
           <td></td>
-          <td>{{costBasis}}</td>
-          <td>{{marketValue}}</td>
-          <td>{{gain}}</td>
-          <td>{{gainPercent}}</td>
-          <td>{{daysGain}}</td>
+          <td>{{formatCurrency costBasis}}</td>
+          <td>{{formatCurrency marketValue}}</td>
+          <td>{{formatCurrency daysGain}}</td>
+          <td>{{formatCurrency gain}}</td>
+          <td>{{formatPercent  gainPercent}}</td>
+          <td>{{formatCurrency overallGain}}</td>
+          <td>{{formatPercent  overallGainPercent}}</td>
         </tr>
-        {{/with}}
+      {{/with}}
 
       </tbody>
     </table>
