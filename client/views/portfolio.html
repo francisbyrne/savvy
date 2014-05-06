@@ -28,18 +28,34 @@
         <tr>
           <td>{{name}}</td>
           <td>{{symbol}}</td>
-          <td>{{lastTradePriceOnly}}</td>
+          <td>{{formatCurrency lastTradePriceOnly}}</td>
+          <td>{{formatCurrency change}}</td>
+          <td>{{#if shares}}{{shares}}{{else}}0 (Closed){{/if}}</td>
+          <td>{{formatCurrency costBasis}}</td>
+          <td>{{formatCurrency marketValue}}</td>
+          <td>{{formatCurrency gain}}</td>
+          <td>{{formatPercent gainPercent}}</td>
+          <td>{{formatCurrency daysGain}}</td>
+          <td>{{formatPercent overallGain}}</td>
+        </tr>
+        {{/if}}
+      {{/each}}
+
+      {{#with total}}
+        <tr>
+          <td>Total</td>
+          <td></td>
+          <td></td>
           <td>{{change}}</td>
-          <td>{{shares}}</td>
+          <td></td>
           <td>{{costBasis}}</td>
           <td>{{marketValue}}</td>
           <td>{{gain}}</td>
           <td>{{gainPercent}}</td>
           <td>{{daysGain}}</td>
-          <td>{{overallGain}}</td>
         </tr>
-        {{/if}}
-      {{/each}}
+        {{/with}}
+
       </tbody>
     </table>
     {{else}}
