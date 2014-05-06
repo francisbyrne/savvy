@@ -1,5 +1,6 @@
 Template.portfolio.helpers({
   visible: function() {
+    // Only show current holdings unless option is specified
     return Session.get('showClosed') || this.shares > 0;
   },
   showClosed: function() {

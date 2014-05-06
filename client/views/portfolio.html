@@ -62,8 +62,10 @@
         </tr>
         {{/if}}
       {{/each}}
+      </tbody>
 
       {{#with total}}
+      <tfoot>
         <tr class="total">
           <td>Total</td>
           <td></td>
@@ -72,14 +74,21 @@
           <td>{{formatCurrency costBasis}}</td>
           <td>{{formatCurrency marketValue}}</td>
           <td>{{formatCurrency daysGain}}</td>
-          <td>{{formatCurrency gain}}</td>
-          <td>{{formatPercent  gainPercent}}</td>
-          <td>{{formatCurrency overallGain}}</td>
-          <td>{{formatPercent  overallGainPercent}}</td>
-        </tr>
-      {{/with}}
 
-      </tbody>
+          {{#if displayPercent}}
+          <td>{{formatPercent  gainPercent}}</td>
+          {{else}}
+          <td>{{formatCurrency gain}}</td>
+          {{/if}}
+
+          {{#if displayPercent}}
+          <td>{{formatPercent  overallGainPercent}}</td>
+          {{else}}
+          <td>{{formatCurrency overallGain}}</td>
+          {{/if}}
+        </tr>
+      </tfoot>
+      {{/with}}
     </table>
     {{else}}
     <p>You have no holdings at the moment.</p>

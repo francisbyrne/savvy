@@ -1,7 +1,3 @@
-Meteor.startup(function() {
-  Meteor.subscribe('userTransactions');
-});
-
 Template.transactions.helpers({
   transactions: function() {
     // Get all transactions for current user - sorted by ticker (asc) then date (asc)
