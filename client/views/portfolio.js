@@ -8,6 +8,22 @@ Template.portfolio.helpers({
   },
   displayPercent: function() {
     return Session.get('displayPercent');
+  },
+  settings: function() {
+    return {
+      showFilter: false,
+      fields: [
+        {key: 'symbol',             label: 'Symbol'},
+        {key: 'lastTradePriceOnly', label: 'Price',        fn: formatCurrency},
+        {key: 'change',             label: 'Change',       fn: formatCurrencySign},
+        {key: 'shares',             label: 'Shares'},
+        {key: 'costBasis',          label: 'Cost Basis',   fn: formatCurrency},
+        {key: 'marketValue',        label: 'Market Value', fn: formatCurrency},
+        {key: 'daysGain',           label: 'Day\'s Gain',  fn: formatCurrencySign},
+        {key: 'gain',               label: 'Gain',         fn: formatCurrencySign},
+        {key: 'overallGain',        label: 'Overall Gain', fn: formatCurrencySign}
+      ]
+    };
   }
 })
 
