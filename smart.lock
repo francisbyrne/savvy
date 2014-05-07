@@ -12,7 +12,8 @@
       "typeahead": {},
       "jquery-csv": {},
       "iron-router-progress": {},
-      "houston": {}
+      "houston": {},
+      "jquery-datatables": {}
     },
     "packages": {
       "highcharts": {
@@ -70,15 +71,20 @@
         "tag": "v1.0.4",
         "commit": "e76bda40587ac80ce51ee417047be8272664625c"
       },
+      "jquery-datatables": {
+        "git": "https://github.com/lumapictures/meteor-jquery-datatables",
+        "tag": "v0.1.24",
+        "commit": "b9855a029825843fb82aeaebc9c8f6a49dfc019f"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
-        "tag": "v0.2.5",
-        "commit": "273e3ab7d005d91a1a59c71bd224533b4dae2fbd"
+        "tag": "v0.2.4",
+        "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
-        "tag": "v0.1.2",
-        "commit": "35e0c6112df2b4cfeb60b559276a93cac5ee2dd6"
+        "tag": "v0.2.0",
+        "commit": "0ac0fede45bbc87003f13363f7bf50dfb4102cf5"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",

@@ -1,15 +1,9 @@
+
 Template.portfolio.helpers({
-  visible: function() {
-    // Only show current holdings unless option is specified
-    return Session.get('showClosed') || this.shares > 0;
-  },
   showClosed: function() {
     return Session.get('showClosed');
-  },
-  displayPercent: function() {
-    return Session.get('displayPercent');
   }
-})
+});
 
 Template.portfolio.events({
   'click #show-closed': function(event, template) {
@@ -21,4 +15,14 @@ Template.portfolio.events({
   'click #display-amount': function(event, template) {
     Session.set('displayPercent', undefined);
   }
-})
+});
+
+Template.portfolio_table.helpers({
+  displayPercent: function() {
+    return Session.get('displayPercent');
+  },
+  visible: function() {
+    // Only show current holdings unless option is specified
+    return Session.get('showClosed') || this.shares > 0;
+  }
+});

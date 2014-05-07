@@ -10,6 +10,7 @@
     "typeahead": {},
     "jquery-csv": {},
     "iron-router-progress": {},
-    "houston": {}
+    "houston": {},
+    "jquery-datatables": {}
   }
 }
