@@ -1,7 +1,7 @@
 <template name="portfolio">
   <div class="portfolio">
     <h2>Portfolio</h2>
-    <ul class="display-options">
+    <ul id="display-options">
       <li>
         <label for="show-closed">
           Show closed positions
@@ -15,7 +15,7 @@
       </li>
     </ul>
 
-    {{#dataTable selector="dom-source-datatable" dom=true }}
+    {{#dataTable selector="portfolio-table" dom=true options=options }}
       {{> portfolio_table this}}
     {{/dataTable}}
     {{> transaction_tools}}

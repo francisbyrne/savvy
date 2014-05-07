@@ -1,5 +1,11 @@
-
 Template.portfolio.helpers({
+  options: function() {
+    return {
+      fnInitComplete: function() {
+        $('#portfolio-table .datatable-header').prepend( $('.portfolio #display-options').detach() );
+      }
+    }
+  },
   showClosed: function() {
     return Session.get('showClosed');
   }

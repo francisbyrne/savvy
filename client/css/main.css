@@ -78,15 +78,31 @@ th {
 /******* Pages ********/
 
 /* Portfolio */
-.portfolio .total {
-    font-weight: bold;
+#portfolio-table {
+    margin-bottom: 2rem;
 }
-.portfolio .display-options {
+.portfolio #display-options {
     padding: 0;
+    float: left;
+    margin: 0;
 }
-.portfolio .display-options li {
+.portfolio #display-options li {
     display: inline-block;
     padding-right: 1rem;
+}
+.portfolio .datatable-header > div {
+    display: inline-block;
+    margin-left: 1rem;
+    float: right;
+}
+.portfolio .dataTables_info {
+    float: left;
+}
+.portfolio .dataTables_paginate {
+    float: right;
+}
+.portfolio .total {
+    font-weight: bold;
 }
 
 /* Stock Details */
