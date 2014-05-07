@@ -1,7 +1,7 @@
 <template name="portfolio">
   <div class="portfolio">
     <h2>Portfolio</h2>
-    <ul class="display-options">
+    <ul id="display-options">
       <li>
         <label for="show-closed">
           Show closed positions
@@ -15,84 +15,90 @@
       </li>
     </ul>
 
-    {{#if currentHoldings}}
-    <table>
-      <thead>
-        <tr>
-          <th>Symbol</th>
-          <th>Price</th>
-          <th>Change</th>
-          <th>Shares</th>
-          <th>Cost Basis</th>
-          <th>Market Value</th>
-          <th>Day's Gain</th>
-          <th>Gain</th>
-          <th>Overall Gain</th>
-        </tr>
-      </thead>
-      <tbody>
-      {{#each currentHoldings}}
-        {{#if visible}}
-        <tr>
-          <td>{{symbol}}</td>
-          <td>{{formatCurrency lastTradePriceOnly}}</td>
-
-          {{#if displayPercent}}
-          <td>{{formatPercent changePercent}}</td>
-          {{else}}
-          <td>{{formatCurrencySign change}}</td>
-          {{/if}}
-
-          <td>{{shares}}</td>
-          <td>{{formatCurrency costBasis}}</td>
-          <td>{{formatCurrency marketValue}}</td>
-          <td>{{formatCurrencySign daysGain}}</td>
-
-          {{#if displayPercent}}
-          <td>{{formatPercent  gainPercent}}</td>
-          {{else}}
-          <td>{{formatCurrencySign gain}}</td>
-          {{/if}}
-
-          {{#if displayPercent}}
-          <td>{{formatPercent overallGainPercent}}</td>
-          {{else}}
-          <td>{{formatCurrencySign overallGain}}</td>
-          {{/if}}
-        </tr>
-        {{/if}}
-      {{/each}}
-      </tbody>
-
-      {{#with total}}
-      <tfoot>
-        <tr class="total">
-          <td>Total</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>{{formatCurrency costBasis}}</td>
-          <td>{{formatCurrency marketValue}}</td>
-          <td>{{formatCurrency daysGain}}</td>
-
-          {{#if displayPercent}}
-          <td>{{formatPercent  gainPercent}}</td>
-          {{else}}
-          <td>{{formatCurrency gain}}</td>
-          {{/if}}
-
-          {{#if displayPercent}}
-          <td>{{formatPercent  overallGainPercent}}</td>
-          {{else}}
-          <td>{{formatCurrency overallGain}}</td>
-          {{/if}}
-        </tr>
-      </tfoot>
-      {{/with}}
-    </table>
-    {{else}}
-    <p>You have no holdings at the moment.</p>
-    {{/if}}
+    {{#dataTable selector="portfolio-table" dom=true options=options }}
+      {{> portfolio_table this}}
+    {{/dataTable}}
     {{> transaction_tools}}
   </div>
+</template>
+
+<template name="portfolio_table">
+  {{#if currentHoldings}}
+  <table>
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>Price</th>
+        <th>Change</th>
+        <th>Shares</th>
+        <th>Cost Basis</th>
+        <th>Market Value</th>
+        <th>Day's Gain</th>
+        <th>Gain</th>
+        <th>Overall Gain</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each currentHoldings}}
+      {{#if visible}}
+      <tr>
+        <td>{{symbol}}</td>
+        <td>{{formatCurrency lastTradePriceOnly}}</td>
+
+        {{#if displayPercent}}
+        <td>{{formatPercent changePercent}}</td>
+        {{else}}
+        <td>{{formatCurrencySign change}}</td>
+        {{/if}}
+
+        <td>{{shares}}</td>
+        <td>{{formatCurrency costBasis}}</td>
+        <td>{{formatCurrency marketValue}}</td>
+        <td>{{formatCurrencySign daysGain}}</td>
+
+        {{#if displayPercent}}
+        <td>{{formatPercent  gainPercent}}</td>
+        {{else}}
+        <td>{{formatCurrencySign gain}}</td>
+        {{/if}}
+
+        {{#if displayPercent}}
+        <td>{{formatPercent overallGainPercent}}</td>
+        {{else}}
+        <td>{{formatCurrencySign overallGain}}</td>
+        {{/if}}
+      </tr>
+      {{/if}}
+    {{/each}}
+    </tbody>
+
+    {{#with total}}
+    <tfoot>
+      <tr class="total">
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{formatCurrency costBasis}}</td>
+        <td>{{formatCurrency marketValue}}</td>
+        <td>{{formatCurrency daysGain}}</td>
+
+        {{#if displayPercent}}
+        <td>{{formatPercent  gainPercent}}</td>
+        {{else}}
+        <td>{{formatCurrency gain}}</td>
+        {{/if}}
+
+        {{#if displayPercent}}
+        <td>{{formatPercent  overallGainPercent}}</td>
+        {{else}}
+        <td>{{formatCurrency overallGain}}</td>
+        {{/if}}
+      </tr>
+    </tfoot>
+    {{/with}}
+  </table>
+  {{else}}
+  <p>You have no holdings at the moment.</p>
+  {{/if}}
 </template>
