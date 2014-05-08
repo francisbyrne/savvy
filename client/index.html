@@ -1,27 +1,23 @@
 <head>
-  <title>finance</title>
+  <title>savvy.</title>
   <link rel="icon" sizes="16x16 32x32" href="/favicon.ico?v=2">
 </head>
 
 <template name="body">
     <div class="header-container">
-        <header class="wrapper clearfix">
+        <header id="site-header" class="wrapper clearfix">
 
-            <h1 class="title"><a href="{{pathFor 'home'}}">Finance</a></h1>
+            <h1 class="title"><a href="{{pathFor 'portfolio'}}">savvy.</a></h1>
 
-            <div class="toolbar">
-                {{> stock_search}}
-            </div>
+            {{> stock_search}}
+            {{> loginButtons}}
 
             <nav>
                 <ul>
-                    <li><a href="{{pathFor 'home'}}">Home</a></li>
-                    <li><a href="{{pathFor 'portfolio'}}">Portfolio</a></li>
-                    <li><a href="{{pathFor 'transactions'}}">Transactions</a></li>
+                    <li><a href="{{pathFor 'transactions'}}" class="{{selected 'transactions'}}">Transactions</a></li>
+                    <li><a href="{{pathFor 'portfolio'}}" class="{{selected '/'}}">Portfolio</a></li>
                 </ul>
             </nav>
-
-            {{> loginButtons}}
 
         </header>
     </div>
@@ -32,11 +28,5 @@
           {{> yield}}
 
         </div>
-    </div>
-
-    <div class="footer-container">
-        <footer class="wrapper">
-            <h3>Francis Byrne 2014</h3>
-        </footer>
     </div>
 </template>

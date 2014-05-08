@@ -1,0 +1,27 @@
+/* Portfolio */
+#portfolio-table {
+    margin-bottom: 2rem;
+    #display-options {
+        padding: 0;
+        float: left;
+        margin: 0;
+    }
+    #display-options li {
+        display: inline-block;
+        padding-right: 1rem;
+    }
+    .datatable-header > div {
+        display: inline-block;
+        margin-left: 1rem;
+        float: right;
+    }
+    .dataTables_info {
+        float: left;
+    }
+    .dataTables_paginate {
+        float: right;
+    }
+    .total {
+        font-weight: bold;
+    }
+}

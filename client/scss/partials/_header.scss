@@ -1,0 +1,92 @@
+/* Top Menu */
+.header-container {
+  background: $dark-grey;
+}
+#site-header {
+  height: 130px;
+  color: $mid-grey;
+  & > * {
+    padding: 75px 0 20px 0;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  nav, #stock-search, #login-buttons {
+    float: right;
+  }
+
+  #stock-search {
+    .twitter-typeahead {
+      margin-left: 1rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+nav {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: block;
+      margin-bottom: 10px;
+      padding: 15px 0;
+
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+
+      color: $mid-grey;
+      &:visited {
+        color: $mid-grey;
+      }
+      &:hover {
+        color: $light-grey;
+      }
+      &.selected {
+        color: $lighter-grey;
+      }
+    }
+  }
+
+@media only screen and (min-width: 480px) {
+
+/* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
+    nav a {
+        float: right;
+        margin: 0 1.7%;
+        padding: 0 5% 1em 2%;
+        margin-bottom: 0;
+    }
+
+    nav li:first-child a {
+        margin-left: 0;
+    }
+
+    nav li:last-child a {
+        margin-right: 0;
+    }
+
+/* ========================
+    INTERMEDIATE: IE Fixes
+   ======================== */
+
+    nav ul li {
+        display: inline;
+    }
+
+    .oldie nav a {
+        margin: 0 0.7%;
+    }
+}

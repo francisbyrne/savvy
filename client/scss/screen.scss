@@ -1,0 +1,17 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "compass/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/variables";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "compass";
+
+
+// Partials
+@import "partials/general";
+@import "partials/header";
+@import "partials/typeahead";
+@import "partials/add_transaction";
+@import "partials/portfolio_table";
+@import "partials/stock_details";

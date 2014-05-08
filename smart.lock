@@ -13,7 +13,8 @@
       "jquery-csv": {},
       "iron-router-progress": {},
       "houston": {},
-      "jquery-datatables": {}
+      "jquery-datatables": {},
+      "foundation": {}
     },
     "packages": {
       "highcharts": {
@@ -76,6 +77,11 @@
         "tag": "v0.1.24",
         "commit": "b9855a029825843fb82aeaebc9c8f6a49dfc019f"
       },
+      "foundation": {
+        "git": "https://github.com/ewall/meteor-foundation.git",
+        "tag": "v4.3.2",
+        "commit": "4cd0dc6ac5c69bf7477917a836d9078262d273a0"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
@@ -83,8 +89,8 @@
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
-        "tag": "v0.2.0",
-        "commit": "0ac0fede45bbc87003f13363f7bf50dfb4102cf5"
+        "tag": "v0.2.1",
+        "commit": "f44d171badcc2e6f87c752580be16c955cdb3bb8"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",

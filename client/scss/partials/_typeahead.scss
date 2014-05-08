@@ -1,0 +1,22 @@
+/* Typeahead Styles */
+.tt-hint {
+    color: gray;
+}
+.tt-suggestion {
+    background-color: gray;
+    padding: 0.5rem;
+}
+.tt-suggestion.tt-cursor {
+    background-color: darkgray;
+}
+
+.typeahead {
+    width: 10rem;
+    height: 1rem;
+    font-size: 1rem;
+    padding: 6px 12px;
+}
+
+.tt-dropdown-menu {
+    width: auto;
+}
