@@ -12,6 +12,6 @@
     "iron-router-progress": {},
     "houston": {},
     "jquery-datatables": {},
-    "foundation": {}
+    "iron-router-active": {}
   }
 }

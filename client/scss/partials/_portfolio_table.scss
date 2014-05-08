@@ -1,6 +1,6 @@
 /* Portfolio */
 #portfolio-table {
-    margin-bottom: 2rem;
+    @include clearfix();
     #display-options {
         padding: 0;
         float: left;

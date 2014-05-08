@@ -1,34 +1,61 @@
 /* Top Menu */
+
+$header-top: 70px; // Top padding for header elements in desktop
+
 .header-container {
+  @include clearfix();
   background: $dark-grey;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
 }
 #site-header {
   height: 130px;
   color: $mid-grey;
   & > * {
-    padding: 75px 0 20px 0;
+    padding-top: $header-top;
   }
   h1 {
     font-size: 3rem;
     margin: 0;
-    a {
-      color: white;
-      text-decoration: none;
-    }
+    font-weight: bold;
+    a {color: white;}
   }
+  a {text-decoration: none;}
 
   nav, #stock-search, #login-buttons {
     float: right;
   }
 
+  // Search Bar
   #stock-search {
-    .twitter-typeahead {
-      margin-left: 1rem;
-      vertical-align: middle;
-    }
+    padding-top: $header-top - 3px;
+    margin-left: 2.5rem;
+  }
+  .twitter-typeahead {
+    vertical-align: middle;
+  }
+  .typeahead {
+    width: 8rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 
+// Progress Bar
+#iron-router-progress {
+  background-color : $green;
+  box-shadow       : 0 0 5px $green;
+  height           : 0.5rem;
+}
+
+// Login
+#login-buttons {
+  padding-top: $header-top + 4px;
+  font-weight: 300;
+  padding-left: 1.25rem;
+}
+
+// Navigation
 nav {
     ul {
       margin: 0;
@@ -51,7 +78,8 @@ nav {
       &:hover {
         color: $light-grey;
       }
-      &.selected {
+      &.active {
+        @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
         color: $lighter-grey;
       }
     }
@@ -65,8 +93,7 @@ nav {
 
     nav a {
         float: right;
-        margin: 0 1.7%;
-        padding: 0 5% 1em 2%;
+        padding: 0 1.25rem 2rem 1.25rem;
         margin-bottom: 0;
     }
 

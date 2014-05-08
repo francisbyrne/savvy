@@ -14,8 +14,8 @@
 
             <nav>
                 <ul>
-                    <li><a href="{{pathFor 'transactions'}}" class="{{selected 'transactions'}}">Transactions</a></li>
-                    <li><a href="{{pathFor 'portfolio'}}" class="{{selected '/'}}">Portfolio</a></li>
+                    <li><a href="{{pathFor 'transactions'}}" class="{{isActiveRoute 'transactions'}}">transactions</a></li>
+                    <li><a href="{{pathFor 'portfolio'}}" class="{{isActiveRoute 'portfolio'}}">portfolio</a></li>
                 </ul>
             </nav>
 

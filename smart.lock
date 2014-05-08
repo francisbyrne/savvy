@@ -14,7 +14,7 @@
       "iron-router-progress": {},
       "houston": {},
       "jquery-datatables": {},
-      "foundation": {}
+      "iron-router-active": {}
     },
     "packages": {
       "highcharts": {
@@ -77,10 +77,10 @@
         "tag": "v0.1.24",
         "commit": "b9855a029825843fb82aeaebc9c8f6a49dfc019f"
       },
-      "foundation": {
-        "git": "https://github.com/ewall/meteor-foundation.git",
-        "tag": "v4.3.2",
-        "commit": "4cd0dc6ac5c69bf7477917a836d9078262d273a0"
+      "iron-router-active": {
+        "git": "https://github.com/XpressiveCode/iron-router-active.git",
+        "tag": "v0.2.0",
+        "commit": "1b05aad5325c3dfdb5186b9c288aa53013d767b8"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

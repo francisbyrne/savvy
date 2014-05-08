@@ -1,0 +1,11 @@
+// override glowing outline of focussed inputs
+@mixin glowing-outline( $color: rgba(81, 203, 238, 1) ) {
+  @include transition(all 0.30s ease-in-out);
+  outline: none;
+  padding-top: 0;
+  &:focus {
+    box-shadow: 0 0 5px $color;
+    border: 1px solid $color;
+    padding-top: 0;
+  }
+}
