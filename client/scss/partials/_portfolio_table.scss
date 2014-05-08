@@ -10,6 +10,9 @@
         display: inline-block;
         padding-right: 1rem;
     }
+    .datatable-header {
+        @include clearfix();
+    }
     .datatable-header > div {
         display: inline-block;
         margin-left: 1rem;

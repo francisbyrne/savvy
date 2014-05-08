@@ -12,12 +12,8 @@ textarea {
 }
 
 body {
-    font-size: 1em;
-    line-height: 1.4;
-}
-
-body {
-    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+  font: 16px/26px 'Oswald', sans-serif;
+  font-weight: 300;
 }
 
 .wrapper {
@@ -70,24 +66,14 @@ ul li {
 }
 
 th, td {
-    padding: 0.2rem 0.5rem;
-    box-sizing: content-box;
+  padding: 0.2rem 0.5rem;
+  box-sizing: content-box;
+  font-weight: 300;
+  text-align: left;
 }
-th {
-    text-align: left;
-}
-
-.main {
-    padding: 20px 0;
-}
-
-.main article h1 {
-    font-size: 2em;
-}
-
-.main aside {
-    padding: 0px 5% 10px;
-}
+th, tfoot td {
+  font-weight: 400;
+} 
 
 .footer-container footer {
     color: white;
