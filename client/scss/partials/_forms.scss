@@ -6,18 +6,33 @@ input[type="search"] {
 }
 
 // Replace Checkboxes with Font-Awesome checkboxes
-input[type=checkbox] { display:none; } /* to hide the checkbox itself */
-input[type=checkbox] + label:after {
-  font-family: FontAwesome;
-  display: inline-block;
+input[type=checkbox] { 
+  display:none;
+  & + label:hover {
+    cursor: pointer;
+  }
+  & + label:after {
+    font-family: FontAwesome;
+    display: inline-block;
+  }
+  & + label:after { 
+    content: $fa-var-square-o;
+    padding: 0 2px 0 5px;
+  }
+  &:checked + label:after { 
+    content: $fa-var-check-square-o;
+    padding-right: 0;
+  }
 }
 
-input[type=checkbox] + label:after { 
-  content: $fa-var-square-o;
-  padding: 0 2px 0 5px;
-} /* unchecked icon */
-
-input[type=checkbox]:checked + label:after { 
-  content: $fa-var-check-square-o;
-  padding-right: 0;
-} /* checked icon */
+// Replace Radios with Font-Awesome
+input[type='radio'] {
+  display: none;
+  & + label {
+    @include fa-icon($fa-var-square-o, 2px);
+    cursor: pointer;
+  }
+  &:checked + label {
+    @include fa-icon($fa-var-square, 2px);
+  }
+}

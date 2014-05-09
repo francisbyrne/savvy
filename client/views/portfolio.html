@@ -6,9 +6,11 @@
           <label for="show-closed">show closed positions</label>
       </li>
       <li>
-        <label>view as</label>
-        <button id="display-percent">%</button>
-        <button id="display-amount">$</button>
+        <span>view as:</span>
+        <input name="view-as" type="radio" id="display-percent" checked="{{displayPercent}}" />
+        <label for="display-percent">%</label>
+        <input name="view-as" type="radio" id="display-amount" checked="{{displayAmount}}" />
+        <label for="display-amount">$</label>
       </li>
     </ul>
 
