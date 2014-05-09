@@ -2,13 +2,11 @@
   <div class="portfolio">
     <ul id="display-options">
       <li>
-        <label for="show-closed">
-          Show closed positions
           <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
-        </label>
+          <label for="show-closed">show closed positions</label>
       </li>
       <li>
-        <label>View as</label>
+        <label>view as</label>
         <button id="display-percent">%</button>
         <button id="display-amount">$</button>
       </li>
@@ -17,7 +15,7 @@
     {{#dataTable selector="portfolio-table" dom=true options=options }}
       {{> portfolio_table this}}
     {{/dataTable}}
-    {{> transaction_tools}}
+    {{> transaction_menu}}
   </div>
 </template>
 
@@ -26,15 +24,15 @@
   <table>
     <thead>
       <tr>
-        <th>Symbol</th>
-        <th>Price</th>
-        <th>Change</th>
-        <th>Shares</th>
-        <th>Cost Basis</th>
-        <th>Market Value</th>
-        <th>Day's Gain</th>
-        <th>Gain</th>
-        <th>Overall Gain</th>
+        <th>symbol</th>
+        <th>price</th>
+        <th>change</th>
+        <th>shares</th>
+        <th>cost basis</th>
+        <th>market value</th>
+        <th>day's gain</th>
+        <th>gain</th>
+        <th>overall gain</th>
       </tr>
     </thead>
     <tbody>

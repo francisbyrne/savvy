@@ -4,3 +4,20 @@ input[type="search"] {
   border: 1px solid $mid-grey;
   border-radius: 8px;
 }
+
+// Replace Checkboxes with Font-Awesome checkboxes
+input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+input[type=checkbox] + label:after {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:after { 
+  content: $fa-var-square-o;
+  padding: 0 2px 0 5px;
+} /* unchecked icon */
+
+input[type=checkbox]:checked + label:after { 
+  content: $fa-var-check-square-o;
+  padding-right: 0;
+} /* checked icon */

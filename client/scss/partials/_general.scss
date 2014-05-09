@@ -65,16 +65,6 @@ ul li {
     list-style: none;
 }
 
-th, td {
-  padding: 0.2rem 0.5rem;
-  box-sizing: content-box;
-  font-weight: 300;
-  text-align: left;
-}
-th, tfoot td {
-  font-weight: 400;
-} 
-
 .footer-container footer {
     color: white;
     padding: 20px 0;
@@ -90,5 +80,18 @@ th, tfoot td {
 @media only screen and (min-height: 768px) {
     .main-container {
         min-height: 564px;
+    }
+}
+
+
+@media only screen and (min-width: 1140px) {
+
+/* ===============
+    Maximal Width
+   =============== */
+
+    .wrapper {
+        width: 960px;
+        margin: 0 auto;
     }
 }

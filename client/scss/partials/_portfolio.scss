@@ -1,0 +1,25 @@
+/* Portfolio */
+#portfolio-table {
+  @include clearfix();
+  @include breakpoint($medium) {
+    @include span(8 of 10);
+  }
+  #display-options {
+    padding: 0;
+    float: left;
+    margin: 0;
+  }
+  #display-options li {
+    display: inline-block;
+    padding-right: 1rem;
+  }
+  .total {
+    font-weight: bold;
+  }
+}
+
+.transaction-menu {
+  @include breakpoint($medium) {
+    @include span(last 2 of 10);
+  }
+}

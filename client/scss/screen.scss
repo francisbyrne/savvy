@@ -4,8 +4,12 @@
 // Dependencies
 @import "dependencies/variables";
 @import "dependencies/fonts";
+@import "dependencies/font-awesome/font-awesome";
 
+// Libs/Frameworks
 @import "compass";
+@import "breakpoint";
+@import "susy";
 
 // Mixins
 @import "mixins/arrows";
@@ -17,6 +21,7 @@
 @import "partials/forms";
 @import "partials/general";
 @import "partials/header";
-@import "partials/portfolio_table";
+@import "partials/portfolio";
 @import "partials/stock_details";
+@import "partials/tables";
 @import "partials/typeahead";

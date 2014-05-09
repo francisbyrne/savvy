@@ -1,0 +1,8 @@
+.transaction-menu {
+  @include breakpoint($medium) {
+    float: left;
+    width: $sidebar-width;
+  }
+}
+
+/* Other tools */

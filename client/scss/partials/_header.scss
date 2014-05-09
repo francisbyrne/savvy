@@ -118,3 +118,11 @@ nav {
         margin: 0 0.7%;
     }
 }
+
+@media only screen and (min-width: 768px) {
+  .header-container {
+    -webkit-box-shadow: 0 5px 10px #aaa;
+       -moz-box-shadow: 0 5px 10px #aaa;
+            box-shadow: 0 5px 10px #aaa;
+  }
+}

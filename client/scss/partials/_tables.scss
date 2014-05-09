@@ -1,0 +1,59 @@
+
+th, td {
+  padding: 0.2rem 0.5rem;
+  box-sizing: content-box;
+  text-align: left;
+  border-bottom: 1px solid $lighter-grey;
+}
+th, tfoot td {
+  font-weight: 400;
+  color: $mid-grey;
+}
+th {
+  padding-bottom: 1rem;
+  white-space: nowrap;
+}
+td {
+  font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+  font-weight: 300;
+}
+tfoot td {
+  font-weight: 700;
+}
+
+// Datatables
+.datatable-header {
+  @include clearfix();
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+  color: $light-grey;
+  input[type="search"] {
+    width: 8rem;
+  }
+  & > div {
+    display: inline-block;
+    margin-left: 1rem;
+    float: right;
+  }
+}
+.dataTables_wrapper {
+  th:hover, a:hover:not(.current):not(.disabled) {
+    cursor: pointer;
+    color: $light-grey;
+  }
+}
+.datatable-scroll {
+  margin-bottom: 0.5rem;
+}
+.dataTables_info {
+  float: left;
+}
+.dataTables_paginate {
+  float: right;
+  a { 
+    padding: 0 2px;
+    &:not(.current):not(.disabled) {
+      font-weight: 400;
+    }
+  }
+}
