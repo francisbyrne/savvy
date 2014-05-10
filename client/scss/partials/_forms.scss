@@ -29,10 +29,30 @@ input[type=checkbox] {
 input[type='radio'] {
   display: none;
   & + label {
-    @include fa-icon($fa-var-square-o, 2px);
+    @include fa-icon($fa-var-square-o, true, "after");
     cursor: pointer;
   }
-  &:checked + label {
-    @include fa-icon($fa-var-square, 2px);
+  &:checked + label:after {
+    content: $fa-var-square;
   }
+}
+
+// Select Dropdown
+select {
+  @include border-radius(4px);
+  @include box-shadow(0 3px 0 #ccc, 0 -1px #fff inset);
+  @include appearance(none);
+  background: url(/img/chevron-down.png) no-repeat 90% 50% #f8f8f8;
+  padding: 3px;
+  margin: 0;
+  color: $light-grey !important;
+  border: none;
+  outline: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
 }

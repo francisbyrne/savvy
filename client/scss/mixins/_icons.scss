@@ -1,6 +1,6 @@
-@mixin fa-icon($type: $fa-var-check, $padding: 0) {
+@mixin fa-icon($type: $fa-var-check, $text: true, $position: "before", $padding: 3px) {
   display: inline-block;
-  &:before {
+  &:#{$position} {
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
@@ -8,6 +8,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: $type;
-    padding-right: $padding;
+    @if $text == true {
+      @if $position == "after" {
+        margin-left: $padding;
+      } @else {
+        margin-right: $padding;
+      }
+    }
   }
 }
