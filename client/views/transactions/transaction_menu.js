@@ -1,4 +1,4 @@
-Template.transaction_tools.events({
+Template.transaction_menu.events({
   'click #clear': function(event, template) {
     if ( confirm('Are you sure you wish to Clear All Transactions?') ) {
       Meteor.call('clearTransactions', function(error, result) {

@@ -1,0 +1,21 @@
+// @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+
+/* OFFLINE */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url(/fonts/oswald-light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(/fonts/oswald-normal.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url(/fonts/oswald-bold.woff) format('woff');
+}

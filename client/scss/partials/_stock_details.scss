@@ -1,0 +1,36 @@
+
+
+/* Stock Details */
+.stock-details #ticker {
+    margin: 0.2em 0;
+    #price {
+        font-size: 1.5em;
+    }
+    #price #price-change {
+        font-size: 0.8em;
+        margin-left: 0.5em;
+    }
+    #price #price-change.gain {
+        color: green;
+    }
+    #price #price-change.loss {
+        color: red;
+    }
+
+    #fundamentals > div {
+        float: left;
+    }
+    #fundamentals li {
+        width: 18em;
+    }
+    #fundamentals .label {
+
+    }
+    #fundamentals .value {
+        float: right;
+    }
+
+    #other-fundamentals ul {
+        padding: 0;
+    }
+}

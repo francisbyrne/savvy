@@ -1,6 +1,5 @@
 <template name="transactions">
-  <div class="transactions">
-    <h2>Transactions</h2>
+  <div id="transactions">
     {{#if transactions}}
     <table>
       <thead>
@@ -12,6 +11,7 @@
           <th>Price</th>
           <th>Cash Flow</th>
           <th>Commission</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +33,6 @@
     <p>There are no transactions yet.</p>
     {{/if}}
 
-    {{> transaction_tools}}
-
+    {{> transaction_menu}}
   </div>
 </template>

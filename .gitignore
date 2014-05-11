@@ -12,3 +12,5 @@ packages/assert
 packages/reactive-table
 
 packages/reactive-table
+
+client/.sass-cache/*

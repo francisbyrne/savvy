@@ -13,7 +13,8 @@
       "jquery-csv": {},
       "iron-router-progress": {},
       "houston": {},
-      "jquery-datatables": {}
+      "jquery-datatables": {},
+      "iron-router-active": {}
     },
     "packages": {
       "highcharts": {
@@ -53,8 +54,8 @@
       },
       "typeahead": {
         "git": "https://github.com/sergeyt/meteor-typeahead.git",
-        "tag": "v0.0.8",
-        "commit": "3e83afe7bd3ba47a801cb7fec2bff4678aefd5dc"
+        "tag": "v0.0.9",
+        "commit": "6aa2228a7cc93e89e94520bd60f1af4e7542dfcf"
       },
       "jquery-csv": {
         "git": "https://github.com/donskifarrell/meteor-jquery-csv.git",
@@ -76,6 +77,11 @@
         "tag": "v0.1.24",
         "commit": "b9855a029825843fb82aeaebc9c8f6a49dfc019f"
       },
+      "iron-router-active": {
+        "git": "https://github.com/XpressiveCode/iron-router-active.git",
+        "tag": "v0.2.0",
+        "commit": "1b05aad5325c3dfdb5186b9c288aa53013d767b8"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "tag": "v0.2.4",
@@ -83,8 +89,8 @@
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
-        "tag": "v0.2.0",
-        "commit": "0ac0fede45bbc87003f13363f7bf50dfb4102cf5"
+        "tag": "v0.2.1",
+        "commit": "f44d171badcc2e6f87c752580be16c955cdb3bb8"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",

@@ -1,16 +1,22 @@
 <template name="add_transaction">
   <form id="add-transaction">
-    <h3>Add New Transaction</h3>
-    <input class="form-control typeahead ticker" name="symbol" type="text" placeholder="Ticker" required autocomplete="off" spellcheck="off" data-source="search" />
-    <select name="type">
-      <option value="buy">Buy</option>
-      <option value="sell">Sell</option>
-    </select>
-    <input name="date" type="date" placeholder="Date" required />
-    <input name="shares" type="text" placeholder="Shares" required />
-    <input name="price" type="text" placeholder="Price" required />
-    <input name="commission" type="text" placeholder="Commission" />
-    <button type="submit">Add</button>
-    {{> meteorErrors}}
+    <h3>add new transaction</h3>
+    <input class="form-control typeahead ticker" 
+           name="symbol" type="text" 
+           placeholder="ticker" 
+           required autocomplete="off" 
+           spellcheck="off" 
+           data-source="search" />
+    <div class="{{formActive}}">
+      <select name="type">
+        <option value="buy">buy</option>
+        <option value="sell">sell</option>
+      </select>
+      <input name="date" type="date" placeholder="date" required />
+      <input name="shares" type="text" placeholder="shares" required />
+      <input name="price" type="text" placeholder="price" required />
+      <input name="commission" type="text" placeholder="commission" />
+      <input type="submit" value="add" />
+    </div>
   </form>
 </template>

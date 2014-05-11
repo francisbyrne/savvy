@@ -1,13 +1,20 @@
 Template.portfolio.helpers({
   options: function() {
     return {
+      // Move the display options inside the datatables header after it initialises
       fnInitComplete: function() {
-        $('#portfolio-table .datatable-header').prepend( $('.portfolio #display-options').detach() );
+        $('#portfolio-table .datatable-header').prepend( $('#portfolio #display-options').detach() );
       }
     }
   },
   showClosed: function() {
     return Session.get('showClosed');
+  },
+  displayPercent: function() {
+    return Session.get('displayPercent');
+  },
+  displayAmount: function() {
+    return ! Session.get('displayPercent');
   }
 });
 

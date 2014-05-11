@@ -1,0 +1,74 @@
+input, select, button {
+ @include border-radius(4px);
+  border: 1px solid $lighter-grey;
+  padding: 6px;
+  max-width: 10rem;
+  color: $mid-grey;
+}
+input[type="search"] {
+  @include appearance(none);
+}
+input[type="file"] {
+  max-width: none;
+}
+
+// Replace Checkboxes with Font-Awesome checkboxes
+input[type=checkbox] { 
+  display:none;
+  & + label:hover {
+    cursor: pointer;
+  }
+  & + label:after {
+    font-family: FontAwesome;
+    display: inline-block;
+  }
+  & + label:after { 
+    content: $fa-var-square-o;
+    padding: 0 2px 0 5px;
+  }
+  &:checked + label:after { 
+    content: $fa-var-check-square-o;
+    padding-right: 0;
+  }
+}
+
+// Replace Radios with Font-Awesome
+input[type='radio'] {
+  display: none;
+  & + label {
+    @include fa-icon($fa-var-square-o, true, "after");
+    cursor: pointer;
+  }
+  &:checked + label:after {
+    content: $fa-var-square;
+  }
+}
+
+// Button-like inputs
+select, button, input[type="submit"] {
+  @include appearance(none);
+  background-color: $off-white;
+  margin: 0;
+  color: $light-grey;
+  border: 1px solid $lighter-grey;
+  outline: none;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    background-color: #DDD;
+    color: $light-grey;
+  }
+  &:active {
+    background-color: $lighter-grey;
+    color: $mid-grey;
+  }
+}
+
+select {
+  background: url(/img/arrow-down.png) no-repeat 90% 50% $off-white;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:22px}
+}
