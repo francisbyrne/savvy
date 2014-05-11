@@ -48,6 +48,12 @@
     margin-right: 0;
     display: block;
   }
+  .twitter-typeahead {
+    margin-bottom: 0.5rem;
+    input.typeahead {
+      margin-bottom: 0;
+    }
+  }
   #add-transaction {
     margin-bottom: 1rem;
   }
