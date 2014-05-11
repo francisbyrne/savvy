@@ -18,11 +18,17 @@
   }
 }
 
+#portfolio #transaction-menu {
+    @include breakpoint($large) {
+      margin-top: 3.2rem;
+    }
+}
+
 #transaction-menu {
   clear: both;
+  margin-top: 0.3rem;
   @include breakpoint($large) {
     @include span(last 2 of 12);
-    margin-top: 3.2rem;
     clear: none;
     input {
         width: 100%;

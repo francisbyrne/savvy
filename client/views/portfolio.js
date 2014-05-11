@@ -3,7 +3,7 @@ Template.portfolio.helpers({
     return {
       // Move the display options inside the datatables header after it initialises
       fnInitComplete: function() {
-        $('#portfolio-table .datatable-header').prepend( $('.portfolio #display-options').detach() );
+        $('#portfolio-table .datatable-header').prepend( $('#portfolio #display-options').detach() );
       }
     }
   },

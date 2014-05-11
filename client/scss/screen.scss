@@ -18,11 +18,14 @@
 @import "mixins/icons";
 @import "mixins/layout";
 
-// Partials
+// Partials: General
 @import "partials/general";
 @import "partials/forms";
+@import "partials/tables";
 @import "partials/header";
+@import "partials/typeahead";
+
+// Partials: Page-specific
 @import "partials/portfolio";
 @import "partials/stock_details";
-@import "partials/tables";
-@import "partials/typeahead";
+@import "partials/transactions";

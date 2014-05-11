@@ -1,0 +1,7 @@
+#transactions {
+  table {
+    @include breakpoint($large) {
+      @include span(9 of 12);
+    }
+  }
+}
