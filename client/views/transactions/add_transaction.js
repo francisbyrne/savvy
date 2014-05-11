@@ -3,12 +3,20 @@ Template.add_transaction.rendered = function(){
     Meteor.typeahead(this.$('.ticker'));
 };
 
-Template.add_transaction.search = function(){
-  // map symbols to array for typeahead datasource
-  return Stocks.find().fetch().map(function(it){ return it.symbol; });
-};
+Template.add_transaction.helpers({
+  formActive: function() {
+    return Session.get('addTransactionActive') ? 'menu': 'menu closed';
+  },
+  search: function() {
+    // map symbols to array for typeahead datasource
+    return Stocks.find().fetch().map(function(it){ return it.symbol; });
+  }
+});
 
 Template.add_transaction.events({
+  'focus #add-transaction .ticker': function(event, template) {
+    Session.set('addTransactionActive', true);
+  },
   'submit form#add-transaction': function(event, template) {
     event.preventDefault();
 

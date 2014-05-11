@@ -1,9 +1,12 @@
 <template name="transaction_menu">
-  <div class="transaction-menu">
+  <div id="transaction-menu">
     {{> add_transaction}}
-    <ul>
-      <li><button id="import-csv">Import CSV</button></li>
-      <li><button id="clear">Clear All</button></li>
-    </ul>
+    <div id="other-tools">
+      <h3>other tools</h3>
+      <ul>
+        <li><button id="import-csv">import csv</button></li>
+        <li><button id="clear">clear all</button></li>
+      </ul>
+    </div>
   </div>
 </template>

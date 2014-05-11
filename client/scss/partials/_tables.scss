@@ -5,13 +5,11 @@ th, td {
   text-align: left;
   border-bottom: 1px solid $lighter-grey;
 }
-th, tfoot td {
-  font-weight: 400;
-  color: $mid-grey;
-}
 th {
   padding-bottom: 1rem;
   white-space: nowrap;
+  font-weight: 400;
+  color: $mid-grey;
 }
 td {
   font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
@@ -19,6 +17,7 @@ td {
 }
 tfoot td {
   font-weight: 700;
+  color: black;
 }
 
 // Datatables

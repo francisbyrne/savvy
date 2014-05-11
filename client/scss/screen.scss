@@ -5,6 +5,7 @@
 @import "dependencies/variables";
 @import "dependencies/fonts";
 @import "dependencies/font-awesome/font-awesome";
+@import "dependencies/normalize";
 
 // Libs/Frameworks
 @import "compass";
@@ -18,9 +19,8 @@
 @import "mixins/layout";
 
 // Partials
-@import "partials/add_transaction";
-@import "partials/forms";
 @import "partials/general";
+@import "partials/forms";
 @import "partials/header";
 @import "partials/portfolio";
 @import "partials/stock_details";

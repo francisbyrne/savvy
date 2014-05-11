@@ -2,7 +2,7 @@
 #portfolio-table {
   @include clearfix();
   @include breakpoint($medium) {
-    @include span(8 of 10);
+    @include span(10 of 12);
   }
   #display-options {
     padding: 0;
@@ -14,12 +14,50 @@
     padding-right: 1rem;
   }
   .total {
-    font-weight: bold;
+    color: black;
   }
 }
 
-.transaction-menu {
-  @include breakpoint($medium) {
-    @include span(last 2 of 10);
+#transaction-menu {
+  clear: both;
+  @include breakpoint($large) {
+    @include span(last 2 of 12);
+    margin-top: 3.2rem;
+    clear: none;
+    input {
+        width: 100%;
+    }
+    input[type="date"] {
+        font-size:14px;
+    }
+  }
+  h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    font-weight: bold;
+    color: $light-grey;
+  }
+  input, select, button {
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+    display: block;
+  }
+  #add-transaction {
+    margin-bottom: 1rem;
+  }
+  .extended-form {
+    display: none;
+  }
+  .ticker:focus + .extended-form {
+    display: block;
+  }
+  #other-tools {
+    h3 { 
+        margin-bottom: 0.5rem;
+    }
+    ul { 
+        padding-left: 0;
+        margin-top: 0.5rem;
+    }
   }
 }

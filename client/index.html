@@ -4,29 +4,30 @@
 </head>
 
 <template name="body">
-    <div class="header-container">
-        <header id="site-header" class="wrapper clearfix">
+  <div class="header-container">
+    <header id="site-header" class="wrapper clearfix">
 
-            <h1 class="title"><a href="{{pathFor 'portfolio'}}">savvy.</a></h1>
+      <h1 class="title"><a href="{{pathFor 'portfolio'}}">savvy.</a></h1>
 
-            {{> stock_search}}
-            {{> loginButtons}}
+      {{> stock_search}}
+      {{> loginButtons}}
 
-            <nav>
-                <ul>
-                    <li><a href="{{pathFor 'transactions'}}" class="{{isActiveRoute 'transactions'}}">transactions</a></li>
-                    <li><a href="{{pathFor 'portfolio'}}" class="{{isActiveRoute 'portfolio'}}">portfolio</a></li>
-                </ul>
-            </nav>
+      <nav>
+        <ul>
+          <li><a href="{{pathFor 'transactions'}}" class="{{isActiveRoute 'transactions'}}">transactions</a></li>
+          <li><a href="{{pathFor 'portfolio'}}" class="{{isActiveRoute 'portfolio'}}">portfolio</a></li>
+        </ul>
+      </nav>
 
-        </header>
+    </header>
+  </div>
+
+  <div class="main-container">
+    <div class="main wrapper clearfix">
+      
+      <div class="errors">{{> meteorErrors}}</div>
+      {{> yield}}
+
     </div>
-
-    <div class="main-container">
-        <div class="main wrapper clearfix">
-            
-          {{> yield}}
-
-        </div>
-    </div>
+  </div>
 </template>
