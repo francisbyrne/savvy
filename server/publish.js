@@ -15,17 +15,17 @@ Meteor.publish('userHoldings', function() {
       if (loading)
         return;
 
+      // Check if there is a pre-existing holding for this stock
       var holding = Holdings.findOne({'symbol': transaction.symbol});
       if (holding) {
         // If holding exists update it and publish change
-        var newHolding = updateHolding(holding, transaction);
-        Holdings.update(holding._id, newHolding);
-        sub.changed('holdings', holding._id, newHolding);
+        var fields = updateHolding(holding, transaction);
+        Holdings.update(holding._id, {$set: fields});
+        sub.changed('holdings', holding._id, fields);
       } else {
         // Else add new holding for this stock and publish new document
-        var id = new Meteor.Collection.ObjectID()._str;
         var newHolding = addHolding(sub.userId, transaction);
-        Holdings.insert(newHolding);
+        var id = Holdings.insert(newHolding);
         sub.added('holdings', id, newHolding);
       }
     }
@@ -37,7 +37,11 @@ Meteor.publish('userHoldings', function() {
   sub.onStop(function() {
     handle.stop();
   });
+
+  // Return the Holdings for given user
+  return Holdings.find({'userId': sub.userId});
 });
+
 
 var updateHolding = function updateHolding(holding, trade) {
   return {
