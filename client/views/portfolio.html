@@ -15,11 +15,37 @@
     </ul>
 
     {{#dataTable selector="portfolio-table" dom=true options=options }}
-      {{> portfolio_table this}}
+      {{> portfolio_table2}}
     {{/dataTable}}
     {{> transaction_menu}}
   </div>
 </template>
+
+<template name="portfolio_table2">
+  {{#if currentHoldings}}
+  <table>
+    <thead>
+      <tr>
+        <th>symbol</th>
+        <th>shares</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each currentHoldings}}
+      {{#if visible}}
+      <tr>
+        <td>{{symbol}}</td>
+        <td>{{shares}}</td>
+      </tr>
+      {{/if}}
+    {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <p>You have no holdings at the moment.</p>
+  {{/if}}
+</template>
+
 
 <template name="portfolio_table">
   {{#if currentHoldings}}

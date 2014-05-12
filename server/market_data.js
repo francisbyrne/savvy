@@ -1,4 +1,3 @@
-
 // TODO: camelize all fields
 var FIELD = {
   s: 'symbol',
