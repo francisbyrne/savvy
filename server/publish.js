@@ -28,6 +28,11 @@ Meteor.publish('userHoldings', function() {
         var id = Holdings.insert(newHolding);
         sub.added('holdings', id, newHolding);
       }
+      updateHoldingValue(sub.userId, transaction.symbol);
+      // Meteor.call('refreshHoldings', sub.userId, transaction.symbol, function(error, results) {
+      //   if (error)
+      //     throw Meteor.Error(500, error.message);
+      // });
     }
   });
 
@@ -44,15 +49,25 @@ Meteor.publish('userHoldings', function() {
 
 
 var updateHolding = function updateHolding(holding, trade) {
-  return {
-    'shares': (trade.type === 'Buy' ? holding.shares + trade.shares : holding.shares - trade.shares)
-  };
+  var fields = {};
+  fields.shares        = (trade.type === 'Buy' ? holding.shares + trade.shares : holding.shares - trade.shares);
+  fields.totalCost     = (trade.type === 'Buy' ? holding.totalCost - trade.cashFlow : holding.totalCost);
+  fields.totalShares   = (trade.type === 'Buy' ? holding.totalShares + trade.shares : holding.totalShares);
+  fields.costPerShare  = fields.totalCost / fields.totalShares;
+  fields.costBasis     = fields.costPerShare * fields.shares;
+
+  return fields;
 };
 
 var addHolding = function addHolding(userId, trade) {
-  return {
-    'userId': userId,
-    'symbol': trade.symbol,
-    'shares': (trade.type === 'Buy' ? trade.shares : -trade.shares)
-  };
+  var holding = {}
+  holding.userId        = userId;
+  holding.symbol        = trade.symbol;
+  holding.shares        = (trade.type === 'Buy' ? trade.shares : -trade.shares)
+  holding.totalCost     = (trade.type === 'Buy' ? -trade.cashFlow : 0);
+  holding.totalShares   = (trade.type === 'Buy' ? trade.shares : 0);
+  holding.costPerShare  = holding.totalCost / holding.totalShares;
+  holding.costBasis     = holding.costPerShare * holding.shares;
+
+  return holding;
 };

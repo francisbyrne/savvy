@@ -9,7 +9,7 @@ var FIELD = {
   b3: 'Bid (Realtime)',
   p: 'Previous Close',
   o: 'Open',
-  l1: 'lastTradePriceOnly',
+  l1: 'lastTrade',
   k1: 'Last Trade (Realtime) With Time',
   l: 'Last Trade (With Time)',
 
@@ -189,6 +189,49 @@ Meteor.methods({
     } catch(error) {
       throw new Meteor.Error(500, error.message);
     }
+  },
+
+  refreshHoldings: function(userId, symbol) {
+    var userId = userId || Meteor.userId();
+    var symbols = symbol ? [symbol] : Holdings.find({'userId': userId}).map(function(holding) {return holding.symbol});
+
+    if (symbols.length < 1)
+      return;
+
+    Meteor.call('refreshStocks', {'symbols': symbols, 'fields': ['s','l1','c1','p2','e1']}, function(error, results) {
+      if (error) {
+        throw new Meteor.Error(500, error.message);
+        return;
+      }
+
+      // Get an array of all relevant stocks, indexed by symbol, for merging with holdings
+      var stocks = _.indexBy(
+        Stocks.find({'symbol': { $in: symbols } }).fetch(), 
+        function(stock) { return stock.symbol; }
+      );
+
+      var cursor = symbol ? Holdings.find({'userId': userId, 'symbol': symbol}) : Holdings.find({'userId': userId});
+      cursor.forEach(function(holding) {
+        updateHoldingValue(userId, holding.symbol);
+      });
+    });
   }
 
 });
+
+updateHoldingValue = function (userId, symbol) {
+  stock = Stocks.findOne({'symbol':symbol});
+  userId = userId || Meteor.userId();
+
+  var holding = Holdings.findOne({'userId': userId, 'symbol': symbol});
+  holding.lastTrade   = stock.lastTrade;
+  holding.change      = stock.change;
+  holding.marketValue = holding.shares * stock.lastTrade;
+  holding.gain        = holding.marketValue - holding.costBasis;
+  holding.gainPercent = holding.gain / holding.costBasis || 0;
+  holding.daysGain    = holding.shares * stock.change;
+  // Overall Gain is the net gain of all trades plus the current market value, divided by the total cost of all bought shares
+  // holding.overallGain = _.reduce(tradeArray, function(memo, trade) {return memo + trade.cashFlow;}, 0) + holding.marketValue;
+  // holding.overallGainPercent = holding.overallGain / holding.totalCost;
+  Holdings.update(holding._id, holding);
+};
