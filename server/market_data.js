@@ -205,33 +205,16 @@ Meteor.methods({
       }
 
       // Get an array of all relevant stocks, indexed by symbol, for merging with holdings
-      var stocks = _.indexBy(
-        Stocks.find({'symbol': { $in: symbols } }).fetch(), 
-        function(stock) { return stock.symbol; }
-      );
+      // var stocks = _.indexBy(
+      //   Stocks.find({'symbol': { $in: symbols } }).fetch(), 
+      //   function(stock) { return stock.symbol; }
+      // );
 
       var cursor = symbol ? Holdings.find({'userId': userId, 'symbol': symbol}) : Holdings.find({'userId': userId});
       cursor.forEach(function(holding) {
-        updateHoldingValue(userId, holding.symbol);
+        updateHoldingValue(holding.symbol, userId);
       });
     });
   }
 
 });
-
-updateHoldingValue = function (userId, symbol) {
-  stock = Stocks.findOne({'symbol':symbol});
-  userId = userId || Meteor.userId();
-
-  var holding = Holdings.findOne({'userId': userId, 'symbol': symbol});
-  holding.lastTrade   = stock.lastTrade;
-  holding.change      = stock.change;
-  holding.marketValue = holding.shares * stock.lastTrade;
-  holding.gain        = holding.marketValue - holding.costBasis;
-  holding.gainPercent = holding.gain / holding.costBasis || 0;
-  holding.daysGain    = holding.shares * stock.change;
-  // Overall Gain is the net gain of all trades plus the current market value, divided by the total cost of all bought shares
-  // holding.overallGain = _.reduce(tradeArray, function(memo, trade) {return memo + trade.cashFlow;}, 0) + holding.marketValue;
-  // holding.overallGainPercent = holding.overallGain / holding.totalCost;
-  Holdings.update(holding._id, holding);
-};

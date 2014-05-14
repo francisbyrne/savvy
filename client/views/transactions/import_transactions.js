@@ -52,14 +52,25 @@ Template.import_transactions.events({
       trade = {};
       // Set each field of the trade, based on the selected header
       _.each(item.fields, function(field, index) {
-
         if (keys[index]) { // Filter out unselected fields
           keys[index] === 'symbol' && field.length > 0 && field.length < 4 && (field = field.concat(".AX")); // Convert Google to Yahoo; only for Aus shares
           trade[keys[index]] = field;
         }
       });
-      addTransaction(trade);
+      if (trade.symbol) {
+        addTransaction(trade);
+        // TODO: In edge cases where two transactions are exactly the same, it will remove both!
+        Imports.remove(item);
+      }
     }, keys);
+
+    // Provide feedback on which imports failed
+    var failed = Imports.find().fetch();
+    if (failed.length > 0) {
+      var failedRows = _.map(failed, function(row) {return row.fields.toString() + '<br>';});
+      // TODO: format this better!
+      Errors && Errors.throw('<p>The following imports were ignore due to missing stock symbols:</p>' + failedRows.toString());
+    }
 
     // Go back to portfolio to view imported transactions
     Router.go('portfolio');
