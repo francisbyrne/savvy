@@ -117,12 +117,19 @@ Meteor.methods({
   refreshStocks: function(options) {
     if (_.isUndefined(options)) { options = {}; }
 
-    assert(_.isObject(options),
-           '"options" must be a plain object.');
-    assert(_.isArray(options.symbols) && !_.isEmpty(options.symbols),
-           '"options.symbols" must be a non-empty string array.');
-    assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
-           '"options.fields" must be a non-empty string array or undefined.');
+    try {
+      check(options, Match.ObjectIncluding({
+        'symbols': [String],
+        'fields' : Match.Optional([String])
+      }));
+
+      check( options.symbols, Match.Where(function(item) {
+        return ! _.isEmpty(item);
+      }));
+    } catch(error) {
+      console.log(error);
+      throw new Meteor.Error(error.sanitizedError.error, 'Could not refresh stock prices, please contact technical support.');
+    }
 
     // fetch standard fields if undefined
     if (!options.fields) {
@@ -189,32 +196,6 @@ Meteor.methods({
     } catch(error) {
       throw new Meteor.Error(500, error.message);
     }
-  },
-
-  refreshHoldings: function(userId, symbol) {
-    var userId = userId || Meteor.userId();
-    var symbols = symbol ? [symbol] : Holdings.find({'userId': userId}).map(function(holding) {return holding.symbol});
-
-    if (symbols.length < 1)
-      return;
-
-    Meteor.call('refreshStocks', {'symbols': symbols, 'fields': ['s','l1','c1','p2','e1']}, function(error, results) {
-      if (error) {
-        throw new Meteor.Error(500, error.message);
-        return;
-      }
-
-      // Get an array of all relevant stocks, indexed by symbol, for merging with holdings
-      // var stocks = _.indexBy(
-      //   Stocks.find({'symbol': { $in: symbols } }).fetch(), 
-      //   function(stock) { return stock.symbol; }
-      // );
-
-      var cursor = symbol ? Holdings.find({'userId': userId, 'symbol': symbol}) : Holdings.find({'userId': userId});
-      cursor.forEach(function(holding) {
-        updateHoldingValue(holding.symbol, userId);
-      });
-    });
   }
 
 });

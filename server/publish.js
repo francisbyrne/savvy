@@ -74,41 +74,25 @@ Meteor.publish('watchTransactions', function() {
 });
 
 // Whenever a holding is added, pull latest stock price in order to recalculate
-// Meteor.publish('watchHoldings', function() {
-//   var sub = this,
-//       loading = true;
-
-//   var handle = Holdings.find({'userId': sub.userId}).observe({
-    
-//     added: function(holding) {
-//       if (loading)
-//         return;
-
-
-//     }
-//   });
-
-//   loading = false;
-//   sub.ready();
-
-//   sub.onStop(function() {
-//     handle.stop();
-//   });
-// });
-
-// Whenever a stock is updated, recalculate holdings for current user
-Meteor.publish('watchStocks', function() {
+Meteor.publish('watchHoldings', function() {
   var sub = this,
       loading = true;
 
-  var symbols = Holdings.find({'userId': sub.userId}).map(function(holding) {return holding.symbol});
+  var handle = Holdings.find({'userId': sub.userId}).observe({
+    
+    added: function(holding) {
+      if (loading)
+        return;
 
-  var handle = Stocks.find({'symbol': {$in: symbols} }).observe({
-    changed: function(stock, oldStock) {
-      Holdings.find({'symbol': stock.symbol}).forEach(function(holding) {
-        var holdingFields = updateHoldingValue(holding, stock);
-        Holdings.update(holding._id, {$set: holdingFields});
-      });
+      // Update holding value (should probably be in watchTransactions but easier to do it here)
+      var stock = Stocks.findOne({'symbol': holding.symbol});
+      if (stock.lastTrade) {
+        var fields = updateHoldingValue(holding, stock);
+        Holdings.update(holding._id, {$set: fields});
+      }
+
+      // Now pull latest stock prices
+      refreshHeldStocks(sub.userId, holding.symbol);
     }
   });
 
@@ -119,22 +103,3 @@ Meteor.publish('watchStocks', function() {
     handle.stop();
   });
 });
-
-
-// Updates Holdings collection with latest stock data and market value, gains, etc.
-// Takes the stock symbol to update and an optional userId (defaults to current user)
-updateHoldingValue = function updateHoldingValue(holding, stock) {
-  var fields = {};
-  fields.lastTrade   = stock.lastTrade;
-  fields.change      = stock.change;
-  fields.marketValue = holding.shares * stock.lastTrade;
-  fields.gain        = fields.marketValue - holding.costBasis;
-  fields.gainPercent = (holding.costBasis ? fields.gain / holding.costBasis : 0);
-  fields.daysGain    = holding.shares * stock.change;
-  // Overall Gain is the net gain of all trades plus the current market value, divided by the total cost of all bought shares
-  // holding.overallGain = _.reduce(tradeArray, function(memo, trade) {return memo + trade.cashFlow;}, 0) + holding.marketValue;
-  // holding.overallGainPercent = holding.overallGain / holding.totalCost;
-  return fields;
-};
-
-
