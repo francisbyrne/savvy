@@ -57,7 +57,7 @@ Template.import_transactions.events({
           trade[keys[index]] = field;
         }
       });
-      if (trade.symbol) {
+      if (trade.symbol && trade.price && trade.shares && trade.date) {
         addTransaction(trade);
         // TODO: In edge cases where two transactions are exactly the same, it will remove both!
         Imports.remove(item);
@@ -67,9 +67,10 @@ Template.import_transactions.events({
     // Provide feedback on which imports failed
     var failed = Imports.find().fetch();
     if (failed.length > 0) {
-      var failedRows = _.map(failed, function(row) {return row.fields.toString() + '<br>';});
+      var failedRows = _.map(failed, function(row) {return row.fields.toString() + '\n';});
       // TODO: format this better!
       Errors && Errors.throw('<p>The following imports were ignore due to missing stock symbols:</p>' + failedRows.toString());
+      Imports.remove({});
     }
 
     // Go back to portfolio to view imported transactions
