@@ -1,10 +1,10 @@
 Template.portfolio.rendered = function() {
-  Session.set('rowOptions', {'shares': {$ne: 0} } );
+  Session.set('zeroShares', 0);
 };
 
 Template.portfolio.helpers({
   showClosed: function() {
-    return ! Session.get('rowOptions');
+    return typeof Session.get('zeroShares') == 'undefined' ;
   },
   displayPercent: function() {
     return Session.get('displayPercent');
@@ -12,50 +12,15 @@ Template.portfolio.helpers({
   displayAmount: function() {
     return ! Session.get('displayPercent');
   },
-  table: function() {
-    return { 
-      options: {
-        // Move the display options inside the datatables header after it initialises
-        fnInitComplete: function() {
-          $('#portfolio-table .datatable-header').prepend( $('#portfolio #display-options').detach() );
-        }
-      },
-      rows: Holdings.find( Session.get('rowOptions') ).fetch(),
-      columns: [{
-        title: "symbol",
-        data: "symbol"
-      },{
-        title: "price",
-        data: "lastTrade"
-      },{
-        title: "change",
-        data: "change"
-      },{
-        title: "shares",
-        data: "shares"
-      },{
-        title: "cost basis",
-        data: "costBasis"
-      },{
-        title: "market value",
-        data: "marketValue"
-      },{
-        title: "day's gain",
-        data: "daysGain"
-      },{
-        title: "gain",
-        data: "gain"
-      }]
-    }
-  }
+  table: initializePortfolioTable()
 });
 
 Template.portfolio.events({
   'click #show-closed': function(event, template) {
-    if ( Session.get('rowOptions') ) {
-      Session.set('rowOptions', undefined);
+    if ( Session.get('zeroShares') === 0 ) {
+      Session.set('zeroShares', undefined);
     } else {
-      Session.set('rowOptions', {'shares': {$ne: 0} } );
+      Session.set('zeroShares', 0);
     }
   },
   'click #display-percent': function(event, template) {

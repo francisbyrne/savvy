@@ -11,6 +11,8 @@ Meteor.publish('userHoldings', function() {
   return Holdings.find({'userId': this.userId});
 });
 
+DataTable.publish('holdings', Holdings);
+
 
 // Whenever a trade is added, removed or changed, 
 // update the holdings for that stock for the subscribed user
