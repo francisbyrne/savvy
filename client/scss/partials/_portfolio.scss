@@ -31,7 +31,7 @@
     @include span(last 2 of 12);
     clear: none;
     input {
-        width: 100%;
+        width: 97%;
     }
     input[type="date"] {
         font-size:14px;
@@ -44,9 +44,8 @@
     color: $light-grey;
   }
   input, select, button {
-    margin-bottom: 0.5rem;
-    margin-right: 0;
     display: block;
+    margin: 0 1% 0.5rem;
   }
   .twitter-typeahead {
     margin-bottom: 0.5rem;

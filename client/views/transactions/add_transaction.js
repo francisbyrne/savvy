@@ -1,6 +1,9 @@
 Template.add_transaction.rendered = function(){
-    // initialize typeahead for search
+    // Initialize typeahead for ticker field
     Meteor.typeahead(this.$('.ticker'));
+
+    // Set default date to today
+    this.$('input[type="date"]').val(moment().format('YYYY-MM-DD'));
 };
 
 Template.add_transaction.helpers({

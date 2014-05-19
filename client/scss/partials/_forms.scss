@@ -51,7 +51,6 @@ select, button, input[type="submit"] {
   margin: 0;
   color: $light-grey;
   border: 1px solid $lighter-grey;
-  outline: none;
   display: inline-block;
   cursor: pointer;
   &:hover {

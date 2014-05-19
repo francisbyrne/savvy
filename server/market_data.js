@@ -118,12 +118,19 @@ Meteor.methods({
   refreshStocks: function(options) {
     if (_.isUndefined(options)) { options = {}; }
 
-    assert(_.isObject(options),
-           '"options" must be a plain object.');
-    assert(_.isArray(options.symbols) && !_.isEmpty(options.symbols),
-           '"options.symbols" must be a non-empty string array.');
-    assert((_.isArray(options.fields) && !_.isEmpty(options.fields)) || _.isUndefined(options.fields),
-           '"options.fields" must be a non-empty string array or undefined.');
+    try {
+      check(options, Match.ObjectIncluding({
+        'symbols': [String],
+        'fields' : Match.Optional([String])
+      }));
+
+      check( options.symbols, Match.Where(function(item) {
+        return ! _.isEmpty(item);
+      }));
+    } catch(error) {
+      console.log(error);
+      throw new Meteor.Error(error.sanitizedError.error, 'Could not refresh stock prices, please contact technical support.');
+    }
 
     // fetch standard fields if undefined
     if (!options.fields) {
