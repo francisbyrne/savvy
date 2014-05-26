@@ -4,8 +4,11 @@ Template.portfolio.helpers({
       options: {
         // Move the display options inside the datatables header after it initialises
         fnInitComplete: function() {
-          UI.insert( UI.render(Template.display_options), $('#portfolio .datatable-header').get()[0], $('#portfolio .dataTables_filter').get()[0] );
-          // $('#portfolio #display-options').detach();
+          UI.insert( 
+            UI.render(Template.display_options), 
+            $('#portfolio .datatable-header').get()[0], 
+            $('#portfolio .dataTables_filter').get()[0] 
+          );
         }
       },
       subscription: "holdings",

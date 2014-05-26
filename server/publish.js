@@ -111,3 +111,28 @@ Meteor.publish('watchHoldings', function() {
     handle.stop();
   });
 });
+
+// Whenever a stock is modified, update the holding value
+Meteor.publish('watchStocks', function() {
+  var sub = this,
+      loading = true;
+
+  var handle = Stocks.find().observe({
+      added: function(stock) {
+        if (loading)
+          return;
+
+        updateHoldingsForStock(stock);
+      },
+      changed: function(stock, oldStock) {
+        updateHoldingsForStock(stock);
+      }
+    });
+
+  loading = false;
+  sub.ready();
+
+  sub.onStop(function() {
+    handle.stop();
+  });
+})
