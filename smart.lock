@@ -74,8 +74,8 @@
       },
       "jquery-datatables": {
         "git": "https://github.com/lumapictures/meteor-jquery-datatables",
-        "tag": "v0.1.24",
-        "commit": "b9855a029825843fb82aeaebc9c8f6a49dfc019f"
+        "tag": "v1.0.1",
+        "commit": "9de95875a41fe98f59c904b810d9b88aaf750bca"
       },
       "iron-router-active": {
         "git": "https://github.com/XpressiveCode/iron-router-active.git",
@@ -89,13 +89,18 @@
       },
       "paginated-subscription": {
         "git": "https://github.com/tmeasday/meteor-paginated-subscription.git",
-        "tag": "v0.2.1",
-        "commit": "f44d171badcc2e6f87c752580be16c955cdb3bb8"
+        "tag": "v0.2.2",
+        "commit": "2133a2163575f569f90253f81314f21b2bf08d20"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
         "tag": "v0.2.2",
         "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "luma-component": {
+        "git": "https://github.com/LumaPictures/meteor-luma-component",
+        "tag": "v1.0.5",
+        "commit": "9d567068048e9ca82699b096e78c3f7ec76c0fa4"
       }
     }
   }

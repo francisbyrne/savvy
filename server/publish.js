@@ -11,7 +11,12 @@ Meteor.publish('userHoldings', function() {
   return Holdings.find({'userId': this.userId});
 });
 
-DataTable.publish('holdings', Holdings);
+PortfolioTable = new DataTableComponent({
+  subscription: 'holdings',
+  collection: Holdings
+});
+
+PortfolioTable.publish();
 
 
 // Whenever a trade is added, removed or changed, 

@@ -1,23 +1,25 @@
 <template name="portfolio">
   <div id="portfolio">
-    <ul id="display-options">
-      <li>
-          <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
-          <label for="show-closed">show closed positions</label>
-      </li>
-      <li>
-        <span>view as:</span>
-        <input name="view-as" type="radio" id="display-percent" checked="{{displayPercent}}" />
-        <label for="display-percent">%</label>
-        <input name="view-as" type="radio" id="display-amount" checked="{{displayAmount}}" />
-        <label for="display-amount">$</label>
-      </li>
-    </ul>
-
-    {{> dataTable table}}
+    {{> DataTable table}}
 
     {{> transaction_menu}}
   </div>
+</template>
+
+<template name="display_options">
+  <ul id="display-options">
+    <li>
+      <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
+      <label for="show-closed">show closed positions</label>
+    </li>
+    <li>
+      <span>view as:</span>
+      <input name="view-as" type="radio" id="display-percent" checked="{{displayPercent}}" />
+      <label for="display-percent">%</label>
+      <input name="view-as" type="radio" id="display-amount" checked="{{displayAmount}}" />
+      <label for="display-amount">$</label>
+    </li>
+  </ul>
 </template>
 
 <template name="portfolio_table2">

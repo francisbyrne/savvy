@@ -1,5 +1,5 @@
 /* Portfolio */
-#portfolio-table {
+#portfolio .dataTables_wrapper {
   @include clearfix();
   @include breakpoint($medium) {
     @include span(10 of 12);
