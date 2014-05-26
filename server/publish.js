@@ -13,7 +13,8 @@ Meteor.publish('userHoldings', function() {
 
 PortfolioTable = new DataTableComponent({
   subscription: 'holdings',
-  collection: Holdings
+  collection: Holdings,
+  query: function(component) { return { 'userId': this.userId }; }
 });
 
 PortfolioTable.publish();

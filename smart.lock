@@ -64,8 +64,8 @@
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.3.1",
-        "commit": "3f7900feb4bb70a1289b39a1fdcd1f438c0335b3"
+        "tag": "v0.4.0",
+        "commit": "02f78bdaca4c13d59f548d5a0ce83408c34b56d1"
       },
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
@@ -74,8 +74,8 @@
       },
       "jquery-datatables": {
         "git": "https://github.com/lumapictures/meteor-jquery-datatables",
-        "tag": "v1.0.1",
-        "commit": "9de95875a41fe98f59c904b810d9b88aaf750bca"
+        "tag": "v1.0.3",
+        "commit": "37d0995035f6e2915bab29556a69543ae93c54bc"
       },
       "iron-router-active": {
         "git": "https://github.com/XpressiveCode/iron-router-active.git",
