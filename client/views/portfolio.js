@@ -9,6 +9,10 @@ Template.portfolio.helpers({
             $('#portfolio .datatable-header').get()[0], 
             $('#portfolio .dataTables_filter').get()[0] 
           );
+          UI.insert( 
+            UI.render(Template.portfolio_total), 
+            $('#portfolio table').get()[0]
+          );
         }
       },
       subscription: "holdings",
@@ -84,6 +88,10 @@ Template.display_options.helpers({
   displayAmount: function() {
     return ! Session.get('displayPercent');
   }
+});
+
+Template.portfolio_total.helpers({
+  total: totalHoldings
 });
 
 Template.portfolio_table.helpers({

@@ -1,7 +1,6 @@
 <template name="portfolio">
   <div id="portfolio">
     {{> DataTable table}}
-
     {{> transaction_menu}}
   </div>
 </template>
@@ -20,6 +19,28 @@
       <label for="display-amount">$</label>
     </li>
   </ul>
+</template>
+
+<template name="portfolio_total">
+{{#with total}}
+  <tfoot>
+    <tr class="total">
+      <td>Total</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{formatCurrency costBasis}}</td>
+      <td>{{formatCurrency marketValue}}</td>
+      <td>{{formatCurrency daysGain}}</td>
+
+      {{#if displayPercent}}
+      <td>{{formatPercent  gainPercent}}</td>
+      {{else}}
+      <td>{{formatCurrency gain}}</td>
+      {{/if}}
+    </tr>
+  </tfoot>
+{{/with}}
 </template>
 
 <template name="portfolio_table2">

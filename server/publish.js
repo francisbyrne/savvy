@@ -11,15 +11,6 @@ Meteor.publish('userHoldings', function() {
   return Holdings.find({'userId': this.userId});
 });
 
-PortfolioTable = new DataTableComponent({
-  subscription: 'holdings',
-  collection: Holdings,
-  query: function(component) { return { 'userId': this.userId }; }
-});
-
-PortfolioTable.publish();
-
-
 // Whenever a trade is added, removed or changed, 
 // update the holdings for that stock for the subscribed user
 Meteor.publish('watchTransactions', function() {
@@ -136,3 +127,28 @@ Meteor.publish('watchStocks', function() {
     handle.stop();
   });
 })
+
+
+
+// DataTable publication
+PortfolioTable = new DataTableComponent({
+  subscription: 'holdings',
+  collection: Holdings,
+  query: function(component) { return { 'userId': this.userId }; }
+});
+
+PortfolioTable.publish();
+
+// Calling `_ensureIndex` is necessary in order to sort and filter collections.
+// [see mongod docs for more info](http://docs.mongodb.org/manual/reference/method/db.collection.ensureIndex/)
+Meteor.startup(function(){
+  Holdings._ensureIndex({ _id: 1 }, { unique: 1 });
+  Holdings._ensureIndex({'symbol': 1});
+  Holdings._ensureIndex({'price': 1});
+  Holdings._ensureIndex({'change': 1});
+  Holdings._ensureIndex({'shares': 1});
+  Holdings._ensureIndex({'costBasis': 1});
+  Holdings._ensureIndex({'marketValue': 1});
+  Holdings._ensureIndex({'daysGain': 1});
+  Holdings._ensureIndex({'gain': 1});
+});
