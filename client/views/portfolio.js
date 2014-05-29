@@ -9,10 +9,12 @@ Template.portfolio.helpers({
             $('#portfolio .datatable-header').get()[0], 
             $('#portfolio .dataTables_filter').get()[0] 
           );
-          UI.insert( 
-            UI.render(Template.portfolio_total), 
-            $('#portfolio table').get()[0]
-          );
+          if ( $('#portfolio #portfolio-total').length <= 0 ) {
+            UI.insert( 
+              UI.render(Template.portfolio_total), 
+              $('#portfolio table').get()[0]
+            );
+          }
         }
       },
       subscription: "holdings",
