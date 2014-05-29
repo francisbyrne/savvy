@@ -91,7 +91,13 @@ Template.display_options.helpers({
 });
 
 Template.portfolio_total.helpers({
-  total: totalHoldings
+  total: totalHoldings,
+  displayPercent: function() {
+    return Session.get('displayPercent');
+  },
+  displayAmount: function() {
+    return ! Session.get('displayPercent');
+  }
 });
 
 Template.portfolio_table.helpers({
@@ -103,16 +109,3 @@ Template.portfolio_table.helpers({
     return Session.get('showClosed') || this.shares > 0;
   }
 });
-
-Template.portfolio_table2.helpers({
-  currentHoldings: function() {
-    return Holdings.find({'userId': Meteor.userId()}).fetch();
-  },
-  displayPercent: function() {
-    return Session.get('displayPercent');
-  },
-  visible: function() {
-    // Only show current holdings unless option is specified
-    return Session.get('showClosed') || this.shares > 0;
-  }
-})

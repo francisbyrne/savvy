@@ -22,7 +22,7 @@
 </template>
 
 <template name="portfolio_total">
-{{#with total}}
+  {{#with total}}
   <tfoot>
     <tr class="total">
       <td>Total</td>
@@ -40,55 +40,7 @@
       {{/if}}
     </tr>
   </tfoot>
-{{/with}}
-</template>
-
-<template name="portfolio_table2">
-  {{#if currentHoldings}}
-  <table>
-    <thead>
-      <tr>
-        <th>symbol</th>
-        <th>price</th>
-        <th>change</th>
-        <th>shares</th>
-        <th>cost basis</th>
-        <th>market value</th>
-        <th>day's gain</th>
-        <th>gain</th>
-      </tr>
-    </thead>
-    <tbody>
-    {{#each currentHoldings}}
-      {{#if visible}}
-      <tr>
-        <td>{{symbol}}</td>
-        <td>{{formatCurrency lastTrade}}</td>
-
-        {{#if displayPercent}}
-        <td>{{formatPercent changePercent}}</td>
-        {{else}}
-        <td>{{formatCurrencySign change}}</td>
-        {{/if}}
-
-        <td>{{shares}}</td>
-        <td>{{formatCurrency costBasis}}</td>
-        <td>{{formatCurrency marketValue}}</td>
-        <td>{{formatCurrencySign daysGain}}</td>
-
-        {{#if displayPercent}}
-        <td>{{formatPercent  gainPercent}}</td>
-        {{else}}
-        <td>{{formatCurrencySign gain}}</td>
-        {{/if}}
-      </tr>
-      {{/if}}
-    {{/each}}
-    </tbody>
-  </table>
-  {{else}}
-  <p>You have no holdings at the moment.</p>
-  {{/if}}
+  {{/with}}
 </template>
 
 
