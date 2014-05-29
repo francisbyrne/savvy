@@ -31,12 +31,10 @@ Meteor.publish('watchTransactions', function() {
         // If holding exists update it and publish change
         var fields = updateHolding(holding, transaction);
         Holdings.update(holding._id, {$set: fields});
-        sub.changed('holdings', holding._id, fields);
       } else {
         // Else add new holding for this stock and publish new document
         var newHolding = addHolding(sub.userId, transaction);
         var id = Holdings.insert(newHolding);
-        sub.added('holdings', id, newHolding);
       }
     },
 
@@ -56,10 +54,8 @@ Meteor.publish('watchTransactions', function() {
       if ( tradesExist ) {
         var fields  = updateHolding(holding, transaction, true);
         Holdings.update(holding._id, {$set: fields});
-        sub.changed('holdings', holding._id, fields);
       } else {
         Holdings.remove(holding._id);
-        sub.removed('holdings', holding._id);
       }
     }
   });
