@@ -74,8 +74,8 @@
       },
       "jquery-datatables": {
         "git": "https://github.com/lumapictures/meteor-jquery-datatables",
-        "tag": "v1.0.3",
-        "commit": "37d0995035f6e2915bab29556a69543ae93c54bc"
+        "tag": "v1.0.4",
+        "commit": "93c1173295ea25ba40ca7c3403a4adc06a671a3f"
       },
       "iron-router-active": {
         "git": "https://github.com/XpressiveCode/iron-router-active.git",

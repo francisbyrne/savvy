@@ -1,5 +1,5 @@
 <template name="stock_detail">
-  <div class="stock-detail">
+  <div id="stock-detail">
     {{#if stock}}{{#with stock}}
     <h2>
         <span id="ticker">{{symbol}}</span> 
@@ -54,10 +54,7 @@
             </ul>
         </div>
     </aside>
-    {{/with}}{{else}}
-    <div class="alert-error">
-      No such stock exists
-    </div>
+    {{/with}}
     {{/if}}
   </div>
 </template>
