@@ -1,4 +1,3 @@
-
 // TODO: camelize all fields
 var FIELD = {
   s: 'symbol',
@@ -10,7 +9,7 @@ var FIELD = {
   b3: 'Bid (Realtime)',
   p: 'Previous Close',
   o: 'Open',
-  l1: 'lastTradePriceOnly',
+  l1: 'lastTrade',
   k1: 'Last Trade (Realtime) With Time',
   l: 'Last Trade (With Time)',
 

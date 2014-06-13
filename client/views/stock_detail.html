@@ -1,6 +1,5 @@
 <template name="stock_detail">
-  <div class="stock-detail">
-    {{> meteorErrors}}
+  <div id="stock-detail">
     {{#if stock}}{{#with stock}}
     <h2>
         <span id="ticker">{{symbol}}</span> 
@@ -10,7 +9,7 @@
 
     <article>
         <div id="price">
-            <span id="last-trade">{{lastTradePriceOnly}}</span>
+            <span id="last-trade">{{lastTrade}}</span>
             <span id="price-change">{{change}}</span>
         </div>
         <div id="chart">
@@ -55,10 +54,7 @@
             </ul>
         </div>
     </aside>
-    {{/with}}{{else}}
-    <div class="alert-error">
-      No such stock exists
-    </div>
+    {{/with}}
     {{/if}}
   </div>
 </template>

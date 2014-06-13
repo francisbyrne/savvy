@@ -1,8 +1,8 @@
 Meteor.methods({
 
-  // Clear all transactions for the current user
+  // Clear all transactions & holdings for the current user
   'clearTransactions': function() {
-    Transactions.remove({userId: this.userId});
+    Transactions.remove({'userId': Meteor.userId()});
   }
   
 });
