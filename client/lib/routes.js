@@ -10,6 +10,14 @@ Router.onBeforeAction(function() {
   Session.set('addTransactionActive', false);
 });
 
+function checkLoggedIn() {
+  AccountsEntry.signInRequired(this);
+}
+
+// Check logged in for 
+Router.onBeforeAction(checkLoggedIn, {only: ['portfolio', 'transactions', 'import_transactions']});
+
+
 
 // Custom Controllers
 StockDetailController = RouteController.extend({
