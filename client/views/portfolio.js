@@ -9,12 +9,19 @@ Template.portfolio.helpers({
             $('#portfolio .datatable-header').get()[0], 
             $('#portfolio .dataTables_filter').get()[0] 
           );
-          if ( $('#portfolio #portfolio-total').length <= 0 ) {
-            UI.insert( 
-              UI.render(Template.portfolio_total), 
-              $('#portfolio table').get()[0]
-            );
-          }
+        },
+        drawCallback: function() {
+
+          // This is a hack due to the fact that UI.render doesn't behave reactively
+          
+          // Remove current total template
+          $('#portfolio #portfolio-total').remove();
+
+          // Insert new total template
+          UI.insert( 
+            UI.render(Template.portfolio_total), 
+            $('#portfolio table').get()[0]
+          );
         }
       },
       subscription: "holdings",
@@ -93,20 +100,7 @@ Template.display_options.helpers({
 });
 
 Template.portfolio_total.helpers({
-  total: function() {
-    var holdings = Holdings.find({ 'userId': (Meteor.userId()) }).fetch();
-    var total = {};
-    total.marketValue        = _.reduce(holdings, function(memo, holding) {return memo + holding.marketValue;}, 0);
-    total.costBasis          = _.reduce(holdings, function(memo, holding) {return memo + holding.costBasis;}, 0);
-    total.daysGain           = _.reduce(holdings, function(memo, holding) {return memo + holding.daysGain;}, 0);
-    total.gain               = _.reduce(holdings, function(memo, holding) {return memo + holding.gain;}, 0);
-    total.gainPercent        = total.gain / total.costBasis;
-    // total.overallGain        = _.reduce(holdings, function(memo, holding) {return memo + holding.overallGain;}, 0);
-    var totalCost            = _.reduce(holdings, function(memo, holding) {return memo + holding.totalCost;}, 0);
-    // total.overallGainPercent = total.overallGain / totalCost;
-
-    return total;
-  },
+  total: totalHoldings,
   displayPercent: function() {
     return Session.get('displayPercent');
   },
