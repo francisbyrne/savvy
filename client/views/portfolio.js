@@ -13,7 +13,7 @@ Template.portfolio.helpers({
         drawCallback: function() {
 
           // This is a hack due to the fact that UI.render doesn't behave reactively
-          
+
           // Remove current total template
           $('#portfolio #portfolio-total').remove();
 
@@ -106,15 +106,5 @@ Template.portfolio_total.helpers({
   },
   displayAmount: function() {
     return ! Session.get('displayPercent');
-  }
-});
-
-Template.portfolio_table.helpers({
-  displayPercent: function() {
-    return Session.get('displayPercent');
-  },
-  visible: function() {
-    // Only show current holdings unless option is specified
-    return Session.get('showClosed') || this.shares > 0;
   }
 });
