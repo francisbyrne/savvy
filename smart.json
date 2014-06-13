@@ -1,6 +1,5 @@
 {
   "packages": {
-    "highcharts": {},
     "iron-router": {},
     "assert": {},
     "moment": {},
