@@ -1,7 +1,15 @@
 #transactions {
-  table {
+  .dataTables_wrapper {
+    @include clearfix();
+    max-width: 44rem;
     @include breakpoint($large) {
       @include span(9 of 12);
+    }
+  }
+  #transaction-menu {
+    @include breakpoint($large) {
+      @include span(last 3 of 12);
+      margin-top: 0.3rem;
     }
   }
 }

@@ -1,16 +1,17 @@
 <template name="transactions">
   <div id="transactions">
-    {{#if transactions}}
+  {{#if transactions}}
+    {{# DataTable dom=true}}
     <table>
       <thead>
         <tr>
-          <th>Symbol</th>
-          <th>Type</th>
-          <th>Date</th>
-          <th>Shares</th>
-          <th>Price</th>
-          <th>Cash Flow</th>
-          <th>Commission</th>
+          <th>symbol</th>
+          <th>type</th>
+          <th>date</th>
+          <th>shares</th>
+          <th>price</th>
+          <th>cash flow</th>
+          <th>commission</th>
           <th></th>
         </tr>
       </thead>
@@ -29,9 +30,10 @@
       {{/each}}
       </tbody>
     </table>
-    {{else}}
+    {{/DataTable}}
+  {{else}}
     <p>There are no transactions yet.</p>
-    {{/if}}
+  {{/if}}
 
     {{> transaction_menu}}
   </div>
