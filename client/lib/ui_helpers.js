@@ -8,7 +8,12 @@ formatCurrency = function formatCurrency(field) {
 
 formatCurrencySign = function formatCurrencySign(field) {
   // Workaround for Numeral.js issue #89: $+0.00 instead of +$0.00
-  return (field > 0 ? '+' : '') + numeral(field || 0).format('$0,0.00');
+  var amount = (field > 0 ? '+' : '') + numeral(field || 0).format('$0,0.00');
+  if (field > 0)
+    amount = '<span class="gain">' + amount + '</span>';
+  else if (field < 0)
+    amount = '<span class="loss">' + amount + '</span>';
+  return amount;
 };
 
 formatDate = function formatDate(field) {

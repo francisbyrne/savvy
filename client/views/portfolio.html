@@ -31,12 +31,12 @@
       <td></td>
       <td>{{formatCurrency costBasis}}</td>
       <td>{{formatCurrency marketValue}}</td>
-      <td>{{formatCurrency daysGain}}</td>
+      <td>{{{formatCurrencySign daysGain}}}</td>
 
       {{#if displayPercent}}
       <td>{{formatPercent  gainPercent}}</td>
       {{else}}
-      <td>{{formatCurrency gain}}</td>
+      <td>{{{formatCurrencySign gain}}}</td>
       {{/if}}
     </tr>
   </tfoot>
