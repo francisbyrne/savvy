@@ -51,13 +51,6 @@ $header-top: 70px; // Top padding for header elements in desktop
   box-shadow       : 0 0 5px $green;
 }
 
-// Login
-#login-buttons {
-  padding-top: $header-top + 4px;
-  font-weight: 300;
-  padding-left: 1.25rem;
-}
-
 // Navigation
 nav {
     ul {
