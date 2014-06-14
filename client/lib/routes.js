@@ -37,6 +37,18 @@ StockDetailController = RouteController.extend({
 // Route Maps
 Router.map(function() {
 
+  this.route('sign-in', {
+    path: '/sign-in'
+  });
+
+  this.route('sign-out', {
+    path: '/sign-out'
+  });
+
+  this.route('import_transactions', {
+    path: '/import-transactions'
+  });
+
   this.route('portfolio', {
     path: '/',
     waitOn: function() {
@@ -56,9 +68,5 @@ Router.map(function() {
     waitOn: function() {
       return Meteor.subscribe('userTransactions');
     }
-  });
-
-  this.route('import_transactions', {
-    path: '/import-transactions'
   });
 });

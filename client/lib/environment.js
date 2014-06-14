@@ -4,4 +4,9 @@ Meteor.startup(function() {
   });
 
   Session.set('mutedErrors', []);
+
+  AccountsEntry.config({
+    homeRoute: '/',
+    dashboardRoute: '/'
+  });
 });

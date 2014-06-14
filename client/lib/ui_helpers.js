@@ -24,3 +24,6 @@ UI.registerHelper('formatPercent', formatPercent);
 UI.registerHelper('formatCurrency', formatCurrency);
 UI.registerHelper('formatCurrencySign', formatCurrencySign);
 UI.registerHelper('formatDate', formatDate);
+UI.registerHelper('signedIn', function(){
+  return !! Meteor.user();
+});
