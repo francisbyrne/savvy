@@ -5,24 +5,7 @@
 
 <template name="body">
   <div class="header-container">
-    <header id="site-header" class="wrapper clearfix">
-
-      <h1 class="title"><a href="{{pathFor 'portfolio'}}">savvy.</a></h1>
-
-      {{> stock_search}}
-      <nav>
-        <ul>
-          {{#if signedIn}}
-          <li><a href="{{pathFor 'sign-out'}}" class="{{isActiveRoute 'sign-out'}}">sign-out</a></li>
-          {{else}}
-          <li><a href="{{pathFor 'sign-in'}}" class="{{isActiveRoute 'sign-in'}}">sign-in</a></li>
-          {{/if}}
-          <li><a href="{{pathFor 'transactions'}}" class="{{isActiveRoute 'transactions'}}">transactions</a></li>
-          <li><a href="{{pathFor 'portfolio'}}" class="{{isActiveRoute 'portfolio'}}">portfolio</a></li>
-        </ul>
-      </nav>
-
-    </header>
+    {{> header}}
   </div>
 
   <div class="main-container">

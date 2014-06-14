@@ -1,0 +1,10 @@
+@mixin sliding-menu($height: 500px) {
+  overflow-y: hidden;
+  max-height: $height;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  &.closed {
+    max-height: 0;
+  }
+}

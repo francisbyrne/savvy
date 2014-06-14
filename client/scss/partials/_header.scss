@@ -10,39 +10,21 @@ $header-top: 70px; // Top padding for header elements in desktop
   margin-bottom: 2rem;
 }
 #site-header {
-  height: 130px;
   color: $mid-grey;
-  & > * {
-    padding-top: $header-top;
+  @include breakpoint($medium) {
+    & > * {
+      padding-top: $header-top;
+    }
   }
   h1 {
-    font-size: 3rem;
-    margin: 0;
+    font-size: 2rem;
+    line-height: 1em;
     font-weight: bold;
+    float: left;
+    margin: 1rem 2rem 1rem 0;
     a {color: white;}
   }
   a {text-decoration: none;}
-
-  nav, #stock-search, #login-buttons {
-    float: right;
-  }
-
-  // Search Bar
-  input[type="search"] {
-    border: none;
-  }
-  #stock-search {
-    padding-top: $header-top - 3px;
-    margin-left: 2.5rem;
-  }
-  .twitter-typeahead {
-    vertical-align: middle;
-  }
-  .typeahead {
-    width: 8rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
 }
 
 // Progress Bar
@@ -51,63 +33,96 @@ $header-top: 70px; // Top padding for header elements in desktop
   box-shadow       : 0 0 5px $green;
 }
 
-// Navigation
-nav {
-    ul {
-      margin: 0;
-      padding: 0;
+// Stock Search
+#stock-search {
+  margin: 1rem 0;
+  float: right;
+  @include breakpoint($medium) {
+    padding-top: $header-top - 3px;
+  }
+  input[type="search"] {
+    border: none;
+  }
+  .twitter-typeahead {
+    vertical-align: middle;
+  }
+  .typeahead {
+    width: 8rem;
+    @include breakpoint($medium) {
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
+  }
+}
 
-    a {
-      display: block;
-      margin-bottom: 10px;
-      padding: 15px 0;
 
-      text-align: center;
-      text-decoration: none;
-      font-weight: bold;
+// Navigation
+nav a, #mobile-menu {
+  display: block;
 
-      color: $mid-grey;
-      &:visited {
-        color: $mid-grey;
-      }
-      &:hover {
-        color: $light-grey;
-      }
-      &.active {
-        @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
-        color: $lighter-grey;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+
+  color: $mid-grey;
+  &:visited {
+    color: $mid-grey;
+  }
+  &:hover {
+    color: $light-grey;
+  }
+  &.active {
+    color: $lighter-grey;
+  }
+}
+
+#mobile-menu {
+  @include fa-icon($fa-var-bars, false);
+  float: right;
+  margin: 0;
+  font-size: 1.8rem;
+  padding: 1rem;
+  @include breakpoint($medium) {
+    display: none;
+  }
+  .menu-open & {
+    color: $lighter-grey;
+  }
+}
+
+nav {
+  @include clearfix();
+  @include sliding-menu();
+  clear: both;
+  @include breakpoint($medium) {
+    display: block;
+    float: right;
+    clear: none;
+  }
+  .menu-closed & {
+    max-height: 0;
+    @include breakpoint($medium) {
+      max-height: 500px;
+    }
+  }
+  ul {
+    margin: 0;
+    li {
+      border-bottom: solid 1px;
+      @include breakpoint($medium) {
+        border-bottom: none;
+        display: inline-block;
       }
     }
   }
-
-@media only screen and (min-width: 480px) {
-
-/* ====================
-    INTERMEDIATE: Menu
-   ==================== */
-
-    nav a {
-        float: right;
-        padding: 0 1.25rem 2rem 1.25rem;
-        margin-bottom: 0;
+  a {
+    padding: 1rem;
+    margin-bottom: 10px;
+    &:last-child {
+      padding-right: 2rem;
     }
-    nav li:first-child a {
-        margin-left: 0;
-    }
-    nav li:last-child a {
-        margin-right: 0;
-    }
-
-/* ========================
-    INTERMEDIATE: IE Fixes
-   ======================== */
-
-    nav ul li {
-        display: inline;
-    }
-
-    .oldie nav a {
-        margin: 0 0.7%;
-    }
+  }
+  a.active {
+    @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
+  }
 }

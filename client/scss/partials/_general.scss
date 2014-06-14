@@ -6,7 +6,7 @@
 html,
 input,
 textarea {
-    color: black;
+  color: black;
 }
 
 body {
@@ -15,57 +15,69 @@ body {
 }
 
 .wrapper {
+  width: 96%;
+  margin: 0 2%;
+  @include breakpoint($medium) {
     width: 90%;
     margin: 0 5%;
+  }
+  @include breakpoint($large) {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+
+.main-container {
+  @include breakpoint($medium) {
+    min-height: 564px;
+  }
 }
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
+ul {
+  padding: 0;
+}
 ul li {
-    list-style: none;
-}
-
-.footer-container footer {
-    color: white;
-    padding: 20px 0;
+  list-style: none;
 }
 
 .errors {
@@ -73,39 +85,8 @@ ul li {
 }
 
 .gain {
-    color: $green;
+  color: $green;
 }
 .loss {
-    color: $red;
-}
-
-.menu {
-    overflow-y: hidden;
-    max-height: 500px; /* approximate max height */
-
-    transition-property: all;
-    transition-duration: 1s;
-    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-.menu.closed {
-    max-height: 0;
-}
-
-@media only screen and (min-height: 768px) {
-    .main-container {
-        min-height: 564px;
-    }
-}
-
-
-@media only screen and (min-width: 1140px) {
-
-/* ===============
-    Maximal Width
-   =============== */
-
-    .wrapper {
-        width: 960px;
-        margin: 0 auto;
-    }
+  color: $red;
 }

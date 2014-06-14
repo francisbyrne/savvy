@@ -17,6 +17,7 @@
 @import "mixins/forms";
 @import "mixins/icons";
 @import "mixins/layout";
+@import "mixins/menus";
 
 // Partials: General
 @import "partials/auth";
@@ -30,3 +31,4 @@
 @import "partials/portfolio";
 @import "partials/stock_details";
 @import "partials/transactions";
+@import "partials/transaction_menu";
