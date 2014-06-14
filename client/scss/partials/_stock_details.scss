@@ -1,8 +1,11 @@
-
-
 /* Stock Details */
-.stock-details #ticker {
-    margin: 0.2em 0;
+#stock-detail {
+    ul {
+        padding-left: 0;
+    }
+    #ticker {
+        margin: 0.2em 0;
+    }
     #price {
         font-size: 1.5em;
     }

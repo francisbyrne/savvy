@@ -186,6 +186,7 @@ Meteor.methods({
 
             return result;
           });
+          // console.log('Loading Stock Prices...');
 
           _.each(items, function (item) {
             Stocks.upsert( { symbol: item.symbol }, item );
