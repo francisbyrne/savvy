@@ -1,8 +1,10 @@
 #transaction-menu {
+  @include clearfix();
   clear: both;
-  margin-top: 0.3rem;
-  @include breakpoint($medium) {
+  margin-top: 2rem;
+  @include breakpoint($large) {
     @include span(last 2 of 12);
+    margin-top: 0.3rem;
   }
   @include breakpoint($large) {
     clear: none;
@@ -21,7 +23,7 @@
   }
   input, select, button {
     display: block;
-    margin: 0 1% 0.5rem;
+    margin-bottom: 0.5rem;
   }
   .menu {
     @include sliding-menu();
@@ -32,14 +34,20 @@
       margin-bottom: 0;
     }
   }
+  #add-transaction, #other-tools {
+    float: left;
+    min-width: 10rem;
+    @include breakpoint($large) {
+      float: none;
+      min-width: none;
+    }
+  }
   #add-transaction {
     margin-bottom: 1rem;
-  }
-  .extended-form {
-    display: none;
-  }
-  .ticker:focus + .extended-form {
-    display: block;
+    margin-right: 2rem;
+    @include breakpoint($large) {
+      margin-right: 0;
+    }
   }
   #other-tools {
     h3 { 

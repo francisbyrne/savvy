@@ -1,13 +1,21 @@
 /* Portfolio */
-#portfolio .dataTables_wrapper {
-  @include clearfix();
-  @include breakpoint($medium) {
-    @include span(10 of 12);
+#portfolio {
+  .dataTables_wrapper {
+    @include clearfix();
+    @include breakpoint($large) {
+      @include span(10 of 12);
+    }
+  }
+  .dataTables_length {
+    display: none;
+    @include breakpoint($medium) {
+      display: inline-block;
+    }
   }
   #display-options {
     padding: 0;
-    float: left;
     margin: 0;
+    float: left;
   }
   #display-options li {
     display: inline-block;
@@ -16,10 +24,9 @@
   #portfolio-total {
     color: black;
   }
-}
-
-#portfolio #transaction-menu {
+  #transaction-menu {
     @include breakpoint($large) {
       margin-top: 3.2rem;
     }
+  }
 }
