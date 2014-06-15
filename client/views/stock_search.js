@@ -16,6 +16,6 @@ Template.stock_search.events({
     stockId = ( typeof stockId === 'string' && stockId.toUpperCase() );
 
     // route to the stock detail for the inputted ticker
-    Router.go('stock_detail', {_id: stockId });
+    Router.go('stock-detail', {_id: stockId });
   }
 });

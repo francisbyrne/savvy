@@ -59,12 +59,20 @@ Router.map(function() {
     }
   });
 
-  this.route('stock_detail', {
+  this.route('stock-detail', {
     path: '/stock/:_id', 
     controller: StockDetailController
   });
 
   this.route('transactions', {
+    waitOn: function() {
+      return Meteor.subscribe('userTransactions');
+    }
+  });
+
+  this.route('capital-gains', {
+    path: '/capital-gains',
+    template: 'capital_gains',
     waitOn: function() {
       return Meteor.subscribe('userTransactions');
     }

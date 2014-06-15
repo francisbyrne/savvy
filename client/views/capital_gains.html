@@ -1,0 +1,66 @@
+<template name="capital_gains">
+  <h2>capital gains calculator</h2>
+  <p>enter dates below and calculate the capital gains for share trades during this period.</p>
+  <form id="cgt-form">
+    <label class="field">
+      start date
+      <input id="start-date" name="start-date" type="date" placeholder="start date" />
+    </label>
+    <label class="field">
+      end date
+      <input id="end-date" name="end-date" type="date" placeholder="end date" />
+    </label>
+    <input id="cgt-submit" type="submit" value="calculate" />
+  </form>
+
+  {{> cgt_results}}
+</template>
+
+<template name="cgt_results">
+{{#if trades}}
+  <table>
+    <thead>
+      <tr>
+        <th>symbol</th>
+        <th>date</th>
+        <th>shares</th>
+        <th>price</th>
+        <th>commission</th>
+        <th>cost basis</th>
+        <th>sale value</th>
+        <th>capital gain</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each trades}}
+      <tr id="{{_id}}">
+        <td>{{symbol}}</td>
+        <td>{{formatDate date}}</td>
+        <td>{{shares}}</td>
+        <td>{{formatCurrency price}}</td>
+        <td>{{formatCurrency commission}}</td>
+        <td>{{formatCurrency costBasis}}</td>
+        <td>{{formatCurrency cashFlow}}</td>
+        <td>{{formatCurrency gain}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+    {{#with total}}
+    <tfoot>
+      <tr>
+        <td>total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{formatCurrency cost}}</td>
+        <td>{{formatCurrency value}}</td>
+        <td>{{{formatCurrencySign totalGain}}}</td>
+      </tr>
+    </tfoot>
+    {{/with}}
+  </table>
+{{else}}
+  <p>No trades exist for this period.</p>
+{{/if}}
+</template>
