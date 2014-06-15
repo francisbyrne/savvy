@@ -1,9 +1,26 @@
 #cgt-form {
   margin-bottom: 1rem;
   .field {
-    margin-right: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    @include breakpoint($medium) {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 0;
+    }
   }
   [type="submit"] {
     padding: 6px;
+    margin-left: 3rem;
+    @include breakpoint($medium) {
+      margin-left: 0;
+    }
+  }
+}
+
+#capital-gains {
+  #total-summary {
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 }

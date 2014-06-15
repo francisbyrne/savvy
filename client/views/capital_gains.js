@@ -28,6 +28,9 @@ Template.cgt_results.helpers({
   gain: function() {
     return this.cashFlow - costBasis(this);
   },
+  gainOrLoss: function() {
+    return (this.totalGain >= 0 ? 'gain' : 'loss');
+  },
   total: function() {
     var trades = capitalEvents();
     var value  = _.reduce(trades, function(memo, trade) {return memo + trade.cashFlow;}, 0);
