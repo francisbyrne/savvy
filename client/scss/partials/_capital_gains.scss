@@ -21,6 +21,9 @@
 #capital-gains {
   #total-summary {
     font-size: 1.2rem;
-    font-weight: bold;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $lighter-grey;
+    max-width: 42rem;
   }
 }

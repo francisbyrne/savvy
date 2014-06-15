@@ -20,6 +20,10 @@
 
 <template name="cgt_results">
 {{#if trades}}
+  {{#with total}}
+    <p id="total-summary">you have a total capital {{gainOrLoss}} of {{{formatCurrencySign totalGain}}} for this period.</p>
+  {{/with}}
+  <h3>capital gain events</h3>
   <table>
     <thead>
       <tr>
@@ -62,9 +66,6 @@
     </tfoot>
     {{/with}}
   </table>
-  {{#with total}}
-    <p id="total-summary">You have a total capital {{gainOrLoss}} of {{{formatCurrencySign totalGain}}}.</p>
-  {{/with}}
 {{else}}
   <p>No trades exist for this period.</p>
 {{/if}}
