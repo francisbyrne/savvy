@@ -4,10 +4,8 @@
   margin-top: 2rem;
   @include breakpoint($large) {
     @include span(last 2 of 12);
-    margin-top: 0.3rem;
-  }
-  @include breakpoint($large) {
     clear: none;
+    margin-top: 3.2rem;
     input {
         width: 97%;
     }

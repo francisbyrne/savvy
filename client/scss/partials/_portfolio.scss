@@ -24,9 +24,4 @@
   #portfolio-total {
     color: black;
   }
-  #transaction-menu {
-    @include breakpoint($large) {
-      margin-top: 3.2rem;
-    }
-  }
 }
