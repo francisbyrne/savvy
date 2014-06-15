@@ -98,3 +98,8 @@ table.dataTable thead {
     }
   }
 }
+
+.empty-table {
+  @include span(9 of 12);
+  margin-top: 3.2rem;
+}
