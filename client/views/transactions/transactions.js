@@ -9,5 +9,8 @@ Template.transactions.events({
   'click button.remove-transaction': function(event, template) {
     if ( confirm('Are you sure you wish to remove ' + this.type + ' ' + this.symbol + ' on ' + this.date + '?' ) )
       Transactions.remove(this._id);
+  },
+  'click #focus-add-trade': function(event, template) {
+    template.$('#add-transaction .ticker').focus();
   }
 });

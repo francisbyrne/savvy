@@ -1,4 +1,7 @@
 Template.portfolio.helpers({
+  holdingsExist: function() {
+    return !! Holdings.find({'userId': Meteor.userId()}).count();
+  },
   table: function() {
     return {
       options: {
@@ -79,6 +82,9 @@ Template.portfolio.events({
   },
   'click #display-amount': function(event, template) {
     Session.set('displayPercent', undefined);
+  },
+  'click #focus-add-trade': function(event, template) {
+    template.$('#add-transaction .ticker').focus();
   }
 });
 
