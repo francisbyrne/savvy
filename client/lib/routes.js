@@ -11,7 +11,7 @@ Router.onBeforeAction(function() {
 });
 
 // Check logged in for pages that require user login
-Router.onBeforeAction(checkLoggedIn, {only: ['portfolio', 'transactions', 'import_transactions']});
+Router.onBeforeAction(checkLoggedIn, {only: ['portfolio', 'transactions', 'import_transactions', 'capital-gains']});
 
 function checkLoggedIn() {
   AccountsEntry.signInRequired(this);
