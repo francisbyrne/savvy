@@ -28,7 +28,7 @@ Template.portfolio.helpers({
         }
       },
       subscription: "holdings",
-      id: "portfolio-table",
+      id: Meteor.uuid(),
       columns: [{
           title: "symbol",
           data: "symbol"
