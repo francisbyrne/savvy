@@ -5,9 +5,11 @@
 </head>
 
 <template name="body">
+  {{#if headerExists}}
   <div class="header-container">
     {{> header}}
   </div>
+  {{/if}}
 
   <div class="main-container">
     <div class="main wrapper clearfix">

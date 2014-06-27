@@ -49,6 +49,10 @@ Router.map(function() {
     path: '/import-transactions'
   });
 
+  this.route('landing', {
+    path: '/landing'
+  });
+
   this.route('portfolio', {
     path: '/',
     waitOn: function() {
