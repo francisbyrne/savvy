@@ -29,12 +29,15 @@ Meteor.publish('watchTransactions', function() {
       var holding = Holdings.findOne({'symbol': transaction.symbol, 'userId': transaction.userId});
       if (holding) {
         // If holding exists update it and publish change
-        var fields = updateHolding(holding, transaction);
+        var fields = recalculateHolding(holding, transaction);
         Holdings.update(holding._id, {$set: fields});
+        _.extend(holding, fields);
+        updateHoldingValue(holding);
       } else {
         // Else add new holding for this stock and publish new document
-        var newHolding = addHolding(sub.userId, transaction);
-        var id = Holdings.insert(newHolding);
+        var newHolding = createHolding(sub.userId, transaction);
+        newHolding._id = Holdings.insert(newHolding);
+        updateHoldingValue(newHolding);
       }
     },
 
@@ -52,8 +55,9 @@ Meteor.publish('watchTransactions', function() {
 
       // Check if this is the last transaction to remove and if so, remove the holding completely
       if ( tradesExist ) {
-        var fields  = updateHolding(holding, transaction, true);
+        var fields  = recalculateHolding(holding, transaction, true);
         Holdings.update(holding._id, {$set: fields});
+        updateHoldingValue(holding);
       } else {
         Holdings.remove(holding._id);
       }
@@ -78,13 +82,6 @@ Meteor.publish('watchHoldings', function() {
     added: function(holding) {
       if (loading)
         return;
-
-      // Update holding value (should probably be in watchTransactions but easier to do it here)
-      var stock = Stocks.findOne({'symbol': holding.symbol});
-      if (stock.lastTrade) {
-        var fields = updateHoldingValue(holding, stock);
-        Holdings.update(holding._id, {$set: fields});
-      }
 
       // Now pull latest stock prices
       refreshHeldStocks(sub.userId, holding.symbol);
