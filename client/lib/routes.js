@@ -53,8 +53,15 @@ Router.map(function() {
     path: '/landing'
   });
 
-  this.route('portfolio', {
+  this.route('dashboard', {
     path: '/',
+    waitOn: function() {
+      return Meteor.subscribe('userHoldings');
+    }
+  });
+
+  this.route('portfolio', {
+    path: '/portfolio',
     waitOn: function() {
       return Meteor.subscribe('userHoldings');
     },

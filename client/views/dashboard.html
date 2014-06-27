@@ -1,0 +1,28 @@
+<template name="dashboard">
+  <div id="dashboard">
+    <div id="winners">
+      {{#if winners}}
+      <h2>winners</h2>
+      <ul>
+        {{#each winners}}
+        <li>{{symbol}}: {{{formatCurrencySign daysGain}}}</li>
+        {{/each}}
+      </ul>
+      {{else}}
+        <p>no winners today! :(</p>
+      {{/if}}
+    </div>
+    <div id="losers">
+      {{#if losers}}
+      <h2>losers</h2>
+      <ul>
+        {{#each losers}}
+        <li>{{symbol}}: {{{formatCurrencySign daysGain}}}</li>
+        {{/each}}
+      </ul>
+      {{else}}
+        <p>no losers today! :)</p>
+      {{/if}}
+    </div>
+  </div>
+</template>
