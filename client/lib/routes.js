@@ -5,17 +5,6 @@ Router.configure({
   loadingTemplate: 'loading'
 });
 
-// Clear session vars on new pages
-Router.onBeforeAction(function() {
-  Session.set('addTransactionActive', false);
-});
-
-// Check logged in for pages that require user login
-Router.onBeforeAction(checkLoggedIn, {only: ['portfolio', 'transactions', 'import_transactions', 'capital-gains']});
-
-function checkLoggedIn() {
-  AccountsEntry.signInRequired(this);
-}
 
 // Custom Controllers
 StockDetailController = RouteController.extend({
@@ -34,8 +23,12 @@ StockDetailController = RouteController.extend({
   }
 });
 
+
 // Route Maps
 Router.map(function() {
+
+
+  /**** Accounts/Login *****/
 
   this.route('sign-in', {
     path: '/sign-in'
@@ -45,9 +38,12 @@ Router.map(function() {
     path: '/sign-out'
   });
 
-  this.route('import_transactions', {
-    path: '/import-transactions'
+  this.route('sign-up', {
+    path: '/sign-up'
   });
+
+
+  /******** Pages *********/
 
   this.route('landing', {
     path: '/landing'
@@ -60,6 +56,11 @@ Router.map(function() {
     }
   });
 
+  this.route('stock-detail', {
+    path: '/stock/:_id', 
+    controller: StockDetailController
+  });
+
   this.route('portfolio', {
     path: '/portfolio',
     waitOn: function() {
@@ -70,15 +71,14 @@ Router.map(function() {
     }
   });
 
-  this.route('stock-detail', {
-    path: '/stock/:_id', 
-    controller: StockDetailController
-  });
-
   this.route('transactions', {
     waitOn: function() {
       return Meteor.subscribe('userTransactions');
     }
+  });
+
+  this.route('import_transactions', {
+    path: '/import-transactions'
   });
 
   this.route('capital-gains', {
@@ -89,3 +89,22 @@ Router.map(function() {
     }
   });
 });
+
+// Clear session vars on new pages
+Router.onBeforeAction(function() {
+  Session.set('addTransactionActive', false);
+});
+
+// Pages that don't require login (easier than checking those that do)
+Router.onBeforeAction(checkLoggedIn, {except: [
+  'landing', 
+  'entrySignIn', 
+  'entrySignUp', 
+  'entryForgotPassword', 
+  'entryResetPassword', 
+  'stock-detail'
+  ]});
+
+function checkLoggedIn() {
+  AccountsEntry.signInRequired(this);
+}
