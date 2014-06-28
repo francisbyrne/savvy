@@ -1,9 +1,24 @@
 #dashboard {
-  #winners {
+  .label {
     float: left;
-    margin-right: 5rem;
   }
-  #losers {
+  .value {
+    float: right;
+  }
+  ul, li {
+    @include clearfix();
+  }
+  #summary {
+    max-width: 12rem;
+    .label, .value {
+      font-size: 1.2rem;
+    }
+  }
+  #winners, #losers {
     float: left;
+    width: 8rem;
+  }
+  #winners {
+    margin-right: 5rem;
   }
 }

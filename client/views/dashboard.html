@@ -1,11 +1,33 @@
 <template name="dashboard">
   <div id="dashboard">
+    <div id="summary">
+      {{#with total}}
+      <h2>portfolio overview</h2>
+      <ul>
+        <li>
+          <span class="label">market value:</span>
+          <span class="value">{{formatCurrency marketValue}}</span>
+        </li>
+        <li>
+          <span class="label">day's gain:</span>
+          <span class="value">{{{formatCurrencySign daysGain}}}</span>
+        </li>
+        <li>
+          <span class="label">total gain:</span>
+          <span class="value">{{{formatCurrencySign gain}}}</span>
+        </li>
+      </ul>
+      {{/with}}
+    </div>
     <div id="winners">
       {{#if winners}}
-      <h2>winners</h2>
+      <h3>winners</h3>
       <ul>
         {{#each winners}}
-        <li>{{symbol}}: {{{formatCurrencySign daysGain}}}</li>
+        <li>
+          <span class="label">{{symbol}}:</span>
+          <span class="value">{{{formatCurrencySign daysGain}}}</span>
+        </li>
         {{/each}}
       </ul>
       {{else}}
@@ -14,10 +36,13 @@
     </div>
     <div id="losers">
       {{#if losers}}
-      <h2>losers</h2>
+      <h3>losers</h3>
       <ul>
         {{#each losers}}
-        <li>{{symbol}}: {{{formatCurrencySign daysGain}}}</li>
+        <li>
+          <span class="label">{{symbol}}:</span>
+          <span class="value">{{{formatCurrencySign daysGain}}}</span>
+        </li>
         {{/each}}
       </ul>
       {{else}}
