@@ -5,16 +5,16 @@
       <h2>portfolio overview</h2>
       <ul>
         <li>
-          <span class="label">market value:</span>
+          <span class="label">market value</span>
           <span class="value">{{formatCurrency marketValue}}</span>
         </li>
         <li>
-          <span class="label">day's gain:</span>
-          <span class="value">{{{formatCurrencySign daysGain}}}</span>
+          <span class="label">day's gain</span>
+          <span class="value">{{{formatCurrencySign daysGain}}} <br> {{{formatPercent daysGainPercent}}}</span>
         </li>
         <li>
-          <span class="label">total gain:</span>
-          <span class="value">{{{formatCurrencySign gain}}}</span>
+          <span class="label">total gain</span>
+          <span class="value">{{{formatCurrencySign gain}}} <br> {{{formatPercent gainPercent}}}</span>
         </li>
       </ul>
       {{/with}}

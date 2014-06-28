@@ -1,22 +1,38 @@
 #dashboard {
-  .label {
-    float: left;
-  }
-  .value {
-    float: right;
-  }
-  ul, li {
+  ul {
     @include clearfix();
   }
   #summary {
-    max-width: 12rem;
+    max-width: 40rem;
+    li {
+      @include span(2 of 6);
+      &:last-child {
+        @include span(last 2 of 6);
+      }
+    }
     .label, .value {
-      font-size: 1.2rem;
+      display: block;
+    }
+    .label {
+      color: $mid-grey;
+      font-weight: bold;
+    }
+    .value {
+      font-size: 1.2em;
     }
   }
   #winners, #losers {
     float: left;
     width: 8rem;
+    ul {
+      margin-top: 0.5rem;
+    }
+    .label {
+      float: left;
+    }
+    .value {
+      float: right;
+    }
   }
   #winners {
     margin-right: 5rem;
