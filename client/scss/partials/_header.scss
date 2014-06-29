@@ -70,12 +70,6 @@ $header-top: 70px; // Top padding for header elements in desktop
       clear: none;
       overflow-y: visible; // avoid hiding arrow box
     }
-    .menu-closed & {
-      max-height: 0;
-      @include breakpoint($medium) {
-        max-height: 500px;
-      }
-    }
     ul {
       margin: 0;
       li {
@@ -96,6 +90,13 @@ $header-top: 70px; // Top padding for header elements in desktop
       @include breakpoint($medium) {
         @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
       }
+    }
+  }
+
+  &.menu-closed nav {
+    max-height: 0;
+    @include breakpoint($medium) {
+      max-height: 500px;
     }
   }
 }

@@ -1,8 +1,8 @@
 <template name="dashboard">
   <div id="dashboard">
+    {{#if holdingsExist}}
     <div id="summary">
       {{#with total}}
-      <h2>portfolio overview</h2>
       <ul>
         <li>
           <span class="label">market value</span>
@@ -31,7 +31,7 @@
         {{/each}}
       </ul>
       {{else}}
-        <p>no winners today! :(</p>
+        <p>No winners today! :(</p>
       {{/if}}
     </div>
     <div id="losers">
@@ -46,8 +46,11 @@
         {{/each}}
       </ul>
       {{else}}
-        <p>no losers today! :)</p>
+        <p>No losers today! :)</p>
       {{/if}}
     </div>
+    {{else}}
+    <p class="empty-table">There are no holdings yet.<br> Add a trade to your <a href="/portfolio">Portfolio</a> or <a href="/import-transactions">Import a CSV file</a> of trades.</p>
+    {{/if}}
   </div>
 </template>

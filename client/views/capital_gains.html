@@ -1,14 +1,14 @@
 <template name="capital_gains">
   <div id="capital-gains">
-    <h2>capital gains calculator</h2>
-    <p>enter dates below and calculate the capital gains for capital gain events (sells) during this period.</p>
+    <h2>Capital Gains Calculator</h2>
+    <p>Enter dates below and calculate the capital gains for capital gain events (sells) during this period.</p>
     <form id="cgt-form">
       <label class="field">
-        start date
+        Start date
         <input id="start-date" name="start-date" type="date" placeholder="start date" />
       </label>
       <label class="field">
-        end date
+        End date
         <input id="end-date" name="end-date" type="date" placeholder="end date" />
       </label>
       <input id="cgt-submit" type="submit" value="calculate" />
@@ -21,9 +21,9 @@
 <template name="cgt_results">
 {{#if trades}}
   {{#with total}}
-    <p id="total-summary">you have a total capital {{gainOrLoss}} of {{{formatCurrencySign totalGain}}} for this period.</p>
+    <p id="total-summary">You have a total capital {{gainOrLoss}} of {{{formatCurrencySign totalGain}}} for this period.</p>
   {{/with}}
-  <h3>capital gain events</h3>
+  <h3>Capital Gain Events</h3>
   <table>
     <thead>
       <tr>

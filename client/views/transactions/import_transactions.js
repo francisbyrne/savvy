@@ -75,9 +75,9 @@ var loadImports = function(keys) {
   // Provide feedback on which imports failed
   var failed = Imports.find().fetch();
   if (failed.length > 0) {
-    var failedRows = _.map(failed, function(row) {return row && row.fields && row.fields.toString() + '\n';});
+    var failedRows = _.map(failed, function(row) {return row && row.fields && row.fields.toString() + '<br>';});
     // TODO: format this better!
-    Errors && Errors.throw('<p>The following imports were ignore due to missing stock symbols:</p>' + failedRows.toString());
+    Errors && Errors.throw('The following imports were ignored due to missing stock symbols:<br>' + failedRows.toString());
     Imports.remove({});
   }
 };
