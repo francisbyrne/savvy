@@ -1,11 +1,40 @@
 <template name="landing">
   <div id="landing">
+    <img id="logo" src="img/acorn.png" width="252" height="264" alt="A simple drawn version of an acorn in black ink." />
+    <div id="main">
+      <h1>savvy.</h1>
+      <p>
+        It's time to get savvy, <br>
+        an easy tool to track <br>
+        your Share Portfolio <br>
+        across your desktop <br>
+        and mobile. <a href="/sign-up">Join now</a>
+      </p>
+    </div>
+  </div>
+</template>
 
-    <!-- Shirley's HTML code goes here.... -->
+<template name="landing-layout">
+  <div id="landing-wrapper">
 
-    <p class="hello">Hello World!</p>
+    <div class="main-container">
+      <div class="wrapper clearfix">
 
-    <!-- nuff code, no ygrttes -->
+        <nav id="landing-header">
+          <a href="/sign-in">sign in</a>
+        </nav>
+        
+        <div class="errors">{{> meteorErrors}}</div>
+        {{> yield}}
 
+      </div>
+    </div>
+
+    <footer>
+      <nav>
+        <a href="/about">about</a> |
+        <a href="/contact">contact</a>
+      </nav>
+    </footer>
   </div>
 </template>

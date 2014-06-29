@@ -45,12 +45,24 @@ Router.map(function() {
 
   /******** Pages *********/
 
+  this.route('home', {
+    path: '/',
+    onBeforeAction: function() {
+      if (Meteor.user()) {
+        Router.go('dashboard');
+      } else {
+        Router.go('landing');
+      }
+    }
+  });
+
   this.route('landing', {
-    path: '/landing'
+    path: '/landing',
+    layoutTemplate: 'landing-layout'
   });
 
   this.route('dashboard', {
-    path: '/',
+    path: '/dashboard',
     waitOn: function() {
       return Meteor.subscribe('userHoldings');
     }

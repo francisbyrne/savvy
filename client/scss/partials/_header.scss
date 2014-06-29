@@ -25,6 +25,79 @@ $header-top: 70px; // Top padding for header elements in desktop
     a {color: white;}
   }
   a {text-decoration: none;}
+  
+  // Navigation
+  nav a, #mobile-menu {
+    display: block;
+
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+
+    color: $mid-grey;
+    &:visited {
+      color: $mid-grey;
+    }
+    &:hover {
+      color: $light-grey;
+    }
+    &.active {
+      color: $lighter-grey;
+    }
+  }
+
+  #mobile-menu {
+    @include fa-icon($fa-var-bars, false);
+    float: right;
+    margin: 0;
+    font-size: 1.8rem;
+    padding: 1rem;
+    @include breakpoint($medium) {
+      display: none;
+    }
+    .menu-open & {
+      color: $lighter-grey;
+    }
+  }
+
+  nav {
+    @include clearfix();
+    @include sliding-menu();
+    clear: both;
+    @include breakpoint($medium) {
+      display: block;
+      float: right;
+      clear: none;
+      overflow-y: visible; // avoid hiding arrow box
+    }
+    .menu-closed & {
+      max-height: 0;
+      @include breakpoint($medium) {
+        max-height: 500px;
+      }
+    }
+    ul {
+      margin: 0;
+      li {
+        border-bottom: solid 1px;
+        @include breakpoint($medium) {
+          border-bottom: none;
+          display: inline-block;
+        }
+      }
+    }
+    a {
+      padding: 1.25rem 1rem;
+    }
+    li:last-child a {
+      padding-right: 2rem;
+    }
+    a.active {
+      @include breakpoint($medium) {
+        @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
+      }
+    }
+  }
 }
 
 // Progress Bar
@@ -51,80 +124,6 @@ $header-top: 70px; // Top padding for header elements in desktop
     @include breakpoint($medium) {
       padding-top: 10px;
       padding-bottom: 10px;
-    }
-  }
-}
-
-
-// Navigation
-nav a, #mobile-menu {
-  display: block;
-
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-
-  color: $mid-grey;
-  &:visited {
-    color: $mid-grey;
-  }
-  &:hover {
-    color: $light-grey;
-  }
-  &.active {
-    color: $lighter-grey;
-  }
-}
-
-#mobile-menu {
-  @include fa-icon($fa-var-bars, false);
-  float: right;
-  margin: 0;
-  font-size: 1.8rem;
-  padding: 1rem;
-  @include breakpoint($medium) {
-    display: none;
-  }
-  .menu-open & {
-    color: $lighter-grey;
-  }
-}
-
-nav {
-  @include clearfix();
-  @include sliding-menu();
-  clear: both;
-  @include breakpoint($medium) {
-    display: block;
-    float: right;
-    clear: none;
-    overflow-y: visible; // avoid hiding arrow box
-  }
-  .menu-closed & {
-    max-height: 0;
-    @include breakpoint($medium) {
-      max-height: 500px;
-    }
-  }
-  ul {
-    margin: 0;
-    li {
-      border-bottom: solid 1px;
-      @include breakpoint($medium) {
-        border-bottom: none;
-        display: inline-block;
-      }
-    }
-  }
-  a {
-    padding: 1.25rem 1rem;
-  }
-  li:last-child a {
-    padding-right: 2rem;
-  }
-  a.active {
-    @include breakpoint($medium) {
-      @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
     }
   }
 }

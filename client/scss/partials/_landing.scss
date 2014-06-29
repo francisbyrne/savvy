@@ -1,12 +1,104 @@
-#landing {
-
-  // Shirley's CSS code goes in here
-
-  .hello {
-    font-size: 3rem;
-    color: blue;
+#landing-wrapper {
+  background-color: $cyan;
+  min-height: 100%;
+  nav {
+    @include clearfix();
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      line-height: 1em;
+      display: inline-block;
+    }
   }
-
-  // stop... Hammer Time!
-
+  #landing-header {
+    padding: 2rem 0;
+    @include breakpoint($medium) {
+      padding: 4rem 0;
+    }
+    a {
+      float: right;
+      font-size: 1.8rem;
+      color: black;
+      &:visited {
+        color: black;
+      }
+      &:hover {
+        color: white;
+      }
+    }
+  }
+  .main-container {
+    @include clearfix();
+    padding-bottom: 8rem; // footer height
+  }
+  #landing {
+    @include clearfix();
+    margin: 0 auto;
+    width: 20rem;
+    @include breakpoint($medium) {
+      width: 40rem;
+    }
+    & > * {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  #logo {
+    width: 125px;
+    height: 132px;
+    @include breakpoint($medium) {
+      @include span(3 of 6);
+      width: 252px;
+      height: 264px;
+      margin-top: 3rem;
+    }
+  }
+  #main {
+    text-align: center;
+    @include breakpoint($medium) {
+      @include span(last 3 of 6);
+      text-align: left;
+    }
+    h1 {
+      font-size: 5rem;
+    }
+    p {
+      color: white;
+      font-size: 1.6rem;
+      line-height: 1.2em;
+    }
+    a {
+      color: white;
+      font-weight: bold;
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  footer {
+    clear: both;
+    background-color: white;
+    color: $mid-grey;
+    padding-top: 4rem;
+    height: 8rem;
+    width: 100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    nav {
+      text-align: center;
+    }
+    a {
+      color: $mid-grey;
+      &:visited {
+        color: $mid-grey;
+      }
+      &:hover {
+        color: black;
+      }
+    }
+  }
 }
