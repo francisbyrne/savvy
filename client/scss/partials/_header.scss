@@ -21,11 +21,11 @@ $header-top: 70px; // Top padding for header elements in desktop
     line-height: 1em;
     font-weight: bold;
     float: left;
-    margin: 1rem 1rem 1rem 0;
+    margin: 1rem 1rem 0 0;
     a {color: white;}
   }
   a {text-decoration: none;}
-  
+
   // Navigation
   nav a, #mobile-menu {
     display: block;
