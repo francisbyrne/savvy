@@ -5,7 +5,6 @@ $header-top: 4.375rem; // Top padding for header elements in desktop
 .header-container {
   @include clearfix();
   background: $cyan;
-  font: $roboto;
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }

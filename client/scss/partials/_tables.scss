@@ -86,6 +86,7 @@ table.dataTable thead {
 }
 .datatable-scroll {
   margin-bottom: 0.5rem;
+  overflow-x: auto;
 }
 .dataTables_info {
   float: left;
