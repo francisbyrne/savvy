@@ -25,6 +25,8 @@ Template.portfolio.helpers({
             UI.render(Template.portfolio_total), 
             $('#portfolio table').get()[0]
           );
+
+
         }
       },
       subscription: "holdings",
@@ -39,7 +41,9 @@ Template.portfolio.helpers({
         },{
           title: "change",
           data: "change",
-          mRender: formatCurrencySign
+          mRender: function(data, type, full) {
+            return Session.get('displayPercent') && formatPercent(full.changePercent) || formatCurrencySign(data);
+          }
         },{
           title: "shares",
           data: "shares"
@@ -54,17 +58,35 @@ Template.portfolio.helpers({
         },{
           title: "day's gain",
           data: "daysGain",
-          mRender: formatCurrencySign
+          mRender: function(data, type, full) {
+            return Session.get('displayPercent') && formatPercent(full.daysGainPercent) || formatCurrencySign(data);
+          }
         },{
           title: "gain",
           data: "gain",
-          mRender: formatCurrencySign
+          mRender: function(data, type, full) {
+            return Session.get('displayPercent') && formatPercent(full.gainPercent) || formatCurrencySign(data);
+          }
         }
       ],
       query: Session.get('portfolioFilter')
     };
   }
 });
+
+var displayPercent = function() {
+  // Get the column API object
+  var column = table.column( $(this).attr('data-column') );
+
+  // Toggle the visibility
+  column.visible( ! column.visible() );
+}
+
+Deps.autorun(function() {
+  if ( Session.get('displayPercent') ) {
+    var table = 0;
+  }
+})
 
 Template.portfolio.events({
   'click #show-closed': function(event, template) {

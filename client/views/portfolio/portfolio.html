@@ -15,13 +15,13 @@
       <input id="show-closed" type="checkbox" checked="{{showClosed}}" />
       <label for="show-closed">Show closed positions</label>
     </li>
-    <!-- <li>
-      <span>view as:</span>
+    <li>
+      <span>View as:</span>
       <input name="view-as" type="radio" id="display-percent" checked="{{displayPercent}}" />
       <label for="display-percent">%</label>
       <input name="view-as" type="radio" id="display-amount" checked="{{displayAmount}}" />
       <label for="display-amount">$</label>
-    </li> -->
+    </li>
   </ul>
 </template>
 
@@ -35,10 +35,15 @@
       <td></td>
       <td>{{formatCurrency costBasis}}</td>
       <td>{{formatCurrency marketValue}}</td>
-      <td>{{{formatCurrencySign daysGain}}}</td>
 
       {{#if displayPercent}}
-      <td>{{formatPercent  gainPercent}}</td>
+      <td>{{{formatPercent  daysGainPercent}}}</td>
+      {{else}}
+      <td>{{{formatCurrencySign daysGain}}}</td>
+      {{/if}}
+
+      {{#if displayPercent}}
+      <td>{{{formatPercent  gainPercent}}}</td>
       {{else}}
       <td>{{{formatCurrencySign gain}}}</td>
       {{/if}}

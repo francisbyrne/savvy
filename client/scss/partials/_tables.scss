@@ -24,7 +24,7 @@ tfoot td {
 // Datatables
 .datatable-header {
   @include clearfix();
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
   padding: 0 0.5rem;
   color: $light-grey;
   input[type="search"] {
@@ -85,7 +85,7 @@ table.dataTable thead {
   }
 }
 .datatable-scroll {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.4rem;
   overflow-x: auto;
 }
 .dataTables_info {

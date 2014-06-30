@@ -189,6 +189,9 @@ Meteor.methods({
           // console.log('Loading Stock Prices...');
 
           _.each(items, function (item) {
+            item.change        = numeral().unformat(item.change);
+            item.changePercent = numeral().unformat(item.changePercent);
+            item.lastTrade     = numeral().unformat(item.lastTrade);
             Stocks.upsert( { symbol: item.symbol }, item );
           });
 
