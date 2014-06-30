@@ -26,6 +26,9 @@
     width: 8rem;
     ul {
       margin-top: 0.5rem;
+      li {
+        @include clearfix();
+      }
     }
     .label {
       float: left;

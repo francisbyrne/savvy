@@ -5,5 +5,8 @@ Template.dashboard.helpers({
   total: totalHoldings,
   winners: function() {
     return Holdings.find({'userId': Meteor.userId()}, {'sort': {'daysGain': -1}, 'limit': 3}).fetch();
+  },
+  holdingsExist: function() {
+    return Holdings.find({'userId': Meteor.userId()}).count() > 0;
   }
 });
