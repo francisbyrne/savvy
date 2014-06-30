@@ -1,27 +1,24 @@
 /* Top Menu */
 
-$header-top: 70px; // Top padding for header elements in desktop
+$header-top: 4.375rem; // Top padding for header elements in desktop
 
 .header-container {
   @include clearfix();
-  background: $dark-grey;
-  font-family: 'Oswald', sans-serif;
+  background: $cyan;
+  font: $roboto;
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 #site-header {
-  color: $mid-grey;
   @include breakpoint($medium) {
     & > * {
       padding-top: $header-top;
     }
   }
   h1 {
-    font-size: 2rem;
     line-height: 1em;
-    font-weight: bold;
     float: left;
-    margin: 1rem 1rem 0 0;
+    margin: 0.8rem 1rem 0 0;
     a {color: white;}
   }
   a {text-decoration: none;}
@@ -29,20 +26,17 @@ $header-top: 70px; // Top padding for header elements in desktop
   // Navigation
   nav a, #mobile-menu {
     display: block;
-
     text-align: center;
     text-decoration: none;
-    font-weight: bold;
-
-    color: $mid-grey;
+    color: black;
     &:visited {
-      color: $mid-grey;
+      color: black;
     }
     &:hover {
-      color: $light-grey;
+      color: white;
     }
     &.active {
-      color: $lighter-grey;
+      color: white;
     }
   }
 
@@ -51,7 +45,7 @@ $header-top: 70px; // Top padding for header elements in desktop
     float: right;
     margin: 0;
     font-size: 1.8rem;
-    padding: 1rem;
+    padding: 1.3rem 1rem;
     @include breakpoint($medium) {
       display: none;
     }
@@ -70,25 +64,23 @@ $header-top: 70px; // Top padding for header elements in desktop
       clear: none;
       overflow-y: visible; // avoid hiding arrow box
     }
-    ul {
-      margin: 0;
-      li {
-        border-bottom: solid 1px;
-        @include breakpoint($medium) {
-          border-bottom: none;
-          display: inline-block;
-        }
-      }
-    }
     a {
       padding: 1.25rem 1rem;
+      border-bottom: solid 1px;
+      @include breakpoint($medium) {
+        border-bottom: none;
+        display: inline-block;
+      }
     }
-    li:last-child a {
-      padding-right: 2rem;
+    a:last-child {
+      border-bottom: none;
+      @include breakpoint($medium) {
+        padding-right: 2rem;
+      }
     }
     a.active {
       @include breakpoint($medium) {
-        @include arrow-box(bottom, 50%, 0.5em, $dark-grey, 0, $dark-grey);
+        @include arrow-box(bottom, 50%, 0.5em, $cyan, 0, $cyan);
       }
     }
   }
@@ -109,10 +101,11 @@ $header-top: 70px; // Top padding for header elements in desktop
 
 // Stock Search
 #stock-search {
-  margin: 1rem 0;
+  margin: 1.3rem 0;
   float: right;
   @include breakpoint($medium) {
-    padding-top: $header-top - 3px;
+    padding-top: $header-top - 0.1875rem;
+    margin-bottom: 0;
   }
   input[type="search"] {
     border: none;

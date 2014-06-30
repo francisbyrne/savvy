@@ -23,12 +23,12 @@
   }
   #winners, #losers {
     float: left;
-    width: 8rem;
-    ul {
+    width: 9rem;
+    p, ul {
       margin-top: 0.5rem;
-      li {
-        @include clearfix();
-      }
+    }
+    li {
+      @include clearfix();
     }
     .label {
       float: left;

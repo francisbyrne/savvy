@@ -12,15 +12,13 @@ textarea {
 html, body {
   height: 100%;
 }
-body {
-  font: 16px/26px 'Oswald', sans-serif;
-  font-weight: 300;
-}
 
+h1 {
+  font-size: 2.5rem;
+}
 h3 {
   color: $mid-grey;
   margin: 1em 0 0.2em;
-  font-weight: bold;
 }
 
 .wrapper {

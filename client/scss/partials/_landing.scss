@@ -1,7 +1,7 @@
 #landing-wrapper {
   background-color: $cyan;
   min-height: 100%;
-  font: 300 16px/26px 'Roboto', sans-serif;
+  font: $roboto;
   font-size: 0.8rem;
   @include breakpoint($medium) {
     font-size: 1rem;
@@ -93,7 +93,8 @@
       text-align: left;
     }
     h1 {
-      font: bold 6.5em 'Montserrat Alternates', sans-serif;
+      font: $montserrat;
+      font-size: 6.5em;
       margin: 0;
       line-height: 1em;
     }
