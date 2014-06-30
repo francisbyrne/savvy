@@ -38,17 +38,43 @@
       padding-bottom: 8rem; // footer height
     }
   }
-  #landing {
-    @include clearfix();
-    margin: 0 auto;
-    width: 20rem;
+  footer {
+    clear: both;
+    background-color: white;
+    color: $mid-grey;
+    padding-top: 4rem;
+    height: 8rem;
+    width: 100%;
     @include breakpoint($medium) {
-      width: 40rem;
+      position:absolute;
+      bottom:0;
+      left:0;
     }
-    & > * {
-      margin: 0 auto;
-      display: block;
+    nav {
+      text-align: center;
     }
+    a {
+      color: $mid-grey;
+      &:visited {
+        color: $mid-grey;
+      }
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}
+
+#landing {
+  @include clearfix();
+  margin: 0 auto;
+  width: 20rem;
+  @include breakpoint($medium) {
+    width: 40rem;
+  }
+  & > * {
+    margin: 0 auto;
+    display: block;
   }
   #logo {
     width: 125px;
@@ -85,31 +111,6 @@
       font-weight: 500;
       &:visited {
         color: white;
-      }
-      &:hover {
-        color: black;
-      }
-    }
-  }
-  footer {
-    clear: both;
-    background-color: white;
-    color: $mid-grey;
-    padding-top: 4rem;
-    height: 8rem;
-    width: 100%;
-    @include breakpoint($medium) {
-      position:absolute;
-      bottom:0;
-      left:0;
-    }
-    nav {
-      text-align: center;
-    }
-    a {
-      color: $mid-grey;
-      &:visited {
-        color: $mid-grey;
       }
       &:hover {
         color: black;
