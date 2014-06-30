@@ -1,10 +1,13 @@
 #transactions {
   .dataTables_wrapper {
     @include clearfix();
-    max-width: 44rem;
+    max-width: 46rem;
     @include breakpoint($large) {
       @include span(9 of 12);
     }
+  }
+  td:nth-child(3) {
+    white-space: nowrap;
   }
 }
 

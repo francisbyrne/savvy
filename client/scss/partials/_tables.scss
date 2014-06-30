@@ -41,7 +41,7 @@ table.dataTable thead {
   .sorting_asc, .sorting_desc, .sorting {
     cursor: pointer;
     *cursor: hand;
-    background: no-repeat 100% 30%;
+    background: no-repeat 100% 40%;
   }
   .sorting { background-image: url("/img/sort_both.png"); }
   .sorting_asc { background-image: url("/img/sort_asc.png"); }
