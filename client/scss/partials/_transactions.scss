@@ -19,12 +19,25 @@
   .field {
     margin-bottom: 0.5rem;
   }
-  ol {
-    padding: 0;
-    margin-bottom: 1.5rem;
+  #import-preview_wrapper {
+    @include clearfix();
+    margin-bottom: 1rem;
   }
   th, td {
     text-align: center;
     padding-right: 0.5rem;
+  }
+  #confirm-import, #cancel-import {
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+  }
+  #confirm-import {
+    @include fa-icon($fa-var-check);
+    background-color: #55CE72;
+  }
+  #cancel-import {
+    @include fa-icon($fa-var-times);
+    background-color: $red;
   }
 }

@@ -62,12 +62,17 @@ Template.import_transactions.events({
     }
   },
 
+  'click #cancel-import': function(event, template) {
+    Imports.remove({});
+  },
+
   // User has previewed the import data and confirmed the import, so add new Transactions
   'click #confirm-import': function(event, template) {
 
     // Get the values of the select dropdowns as field headings & load imports
-    var keys = _.map( template.findAll(':selected'), function(item) { return item.value } );
-    loadImports(keys);
+    var fields = template.findAll('th option:selected'); // Only get select boxes in table headers
+    fields = _.map( fields, function(field) { return field.value; } ); // Get the values
+    loadImports(fields);
 
     // Go back to portfolio to view imported transactions
     Router.go('portfolio');
@@ -111,6 +116,8 @@ var loadImports = function loadImports(keys) {
   }
 };
 
+// Detect a trade field, one of:
+// 'type', 'shares', 'price', 'commission', 'date', 'symbol' or '' (empty string for none of the above)
 var detectField = function detectField(field, fields) {
   var date = new Date(field);
   if (field === 'Buy' || field === 'Sell') {

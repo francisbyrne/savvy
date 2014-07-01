@@ -1,6 +1,7 @@
 <template name="import_transactions">
   <div id="import-trades">
     <h3>Import Transactions</h3>
+    {{#unless imports}}
     <form>
       <div class="field">
         <input type="checkbox" id="ignore-header" checked="{{ignoreHeader}}" />
@@ -10,12 +11,9 @@
         <input type="file" id="files" name="files[]" multiple /><output id="list"></output>
       </div>
     </form>
+    {{/unless}}
     {{#if imports}}
-    <ol>
-      <li>1. Select the appropriate field heading for each relevant column below (we've made some guesses for you)</li>
-      <li>2. When you're happy to import, click <button id="confirm-import">Confirm</button></li>
-    </ol>
-
+    {{#DataTable dom=true}}
     <table id="import-preview">
       <thead>
         <tr>
@@ -44,6 +42,9 @@
       {{/each}}
       </tbody>
     </table>
+    {{/DataTable}}
+    <button id="confirm-import">Confirm</button>
+    <button id="cancel-import">Cancel</button>
     {{/if}}
   </div>
 </template>
