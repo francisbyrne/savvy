@@ -1,38 +1,50 @@
 <template name="import_transactions">
-  <h3>Import Transactions</h3>
-  <input type="file" id="files" name="files[]" multiple /><output id="list"></output>
+  <div id="import-trades">
+    <h3>Import Transactions</h3>
+    <form>
+      <div class="field">
+        <input type="checkbox" id="ignore-header" checked="{{ignoreHeader}}" />
+        <label for="ignore-header">Ignore header/first row?</label>
+      </div>
+      <div class="field">
+        <input type="file" id="files" name="files[]" multiple /><output id="list"></output>
+      </div>
+    </form>
+    {{#if imports}}
+    <p>Select the appropriate field heading for each relevant column below and then click "Confirm".</p>
 
-  {{#if imports}}
-  <table id="import-preview">
-    {{#with firstImport}}
-    <thead>
-      <tr>
-      {{#each fields}}
-        <th>
-          <select>
-            <option value="">Select Field...</option>
-            <option value="symbol">Symbol</option>
-            <option value="type">Type</option>
-            <option value="date">Date</option>
-            <option value="shares">Shares</option>
-            <option value="price">Price</option>
-            <option value="commission">Commission</option>
-          </select>
-        </th>
+    <table id="import-preview">
+      {{#with firstImport}}
+      <thead>
+        <tr>
+        {{#each fields}}
+          <th>
+            <select>
+              <option value="">Field</option>
+              <option value="symbol">Symbol</option>
+              <option value="type">Type</option>
+              <option value="date">Date</option>
+              <option value="shares">Shares</option>
+              <option value="price">Price</option>
+              <option value="commission">Fees</option>
+            </select>
+          </th>
+        {{/each}}
+        </tr>
+      </thead>
+      {{/with}}
+      <tbody>
+      {{#each imports}}
+        <tr>
+        {{#each fields}}
+          <td>{{this}}</td>
+        {{/each}}
+        </tr>
       {{/each}}
-      </tr>
-    </thead>
-    {{/with}}
-    <tbody>
-    {{#each imports}}
-      <tr>
-      {{#each fields}}
-        <td>{{this}}</td>
-      {{/each}}
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
-  <button id="confirm-import">Confirm</button>
-  {{/if}}
+      </tbody>
+    </table>
+
+    <button id="confirm-import">Confirm</button>
+    {{/if}}
+  </div>
 </template>

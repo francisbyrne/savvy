@@ -1,9 +1,16 @@
 // Client-only collection for pending imports (for preview)
 Imports = new Meteor.Collection(null);
 
+Template.import_transactions.created = function() {
+  Session.set('ignoreImportHeader', true);
+};
+
 Template.import_transactions.helpers({
   firstImport: function() {
     return Imports.findOne();
+  },
+  ignoreHeader: function() {
+    return Session.get('ignoreImportHeader');
   },
   imports: function() {
     return Imports.find().fetch();
@@ -22,16 +29,23 @@ Template.import_transactions.events({
         reader.onloadend = function (e) {
           var text = e.target.result;
           var all = $.csv.toArrays(text);
+
+          // If ignoring headers, splice out the first row
+          if (Session.get('ignoreImportHeader'))
+            all.splice(0, 1);
+
+          // Get column count, to ensure we have consistent columns in each row
+          var colCount = all[0].length;
+
+          // Add unsorted array of fields to Imports collection
           _.each(all, function (entry, index) {
 
-            // TODO: optionally include first row, or deal with headers cleverly
-            // Ignore first row by default (probably header)
-            if (index == 0)
-              return;
+            // Pad out empty columns on each row
+            for (var i = entry.length; i < colCount; i++) {
+              entry[i] = '';
+            }
 
-            // Add unsorted array of fields to Imports collection
             Imports.insert({'fields': entry});
-
           });
 
         }
@@ -43,13 +57,16 @@ Template.import_transactions.events({
   // User has previewed the import data and confirmed the import, so add new Transactions
   'click #confirm-import': function(event, template) {
 
-    // Get the values of the select dropdowns 
+    // Get the values of the select dropdowns as field headings & load imports
     var keys = _.map( template.findAll(':selected'), function(item) { return item.value } );
-
     loadImports(keys);
 
     // Go back to portfolio to view imported transactions
     Router.go('portfolio');
+  },
+
+  'click #ignore-header': function(event, template) {
+    Session.get('ignoreImportHeader') ? Session.set('ignoreImportHeader', false) : Session.set('ignoreImportHeader', true);
   }
 });
 

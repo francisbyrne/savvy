@@ -11,8 +11,16 @@
   }
 }
 
-#import-preview {
-  td {
+#import-trades {
+  form {
+    @include clearfix();
+    padding: 1rem 0 0.5rem 0;
+  }
+  .field {
+    margin-bottom: 0.5rem;
+  }
+  th, td {
     text-align: center;
+    padding-right: 0.5rem;
   }
 }
