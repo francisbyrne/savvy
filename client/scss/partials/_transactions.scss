@@ -14,10 +14,14 @@
 #import-trades {
   form {
     @include clearfix();
-    padding: 1rem 0 0.5rem 0;
+    padding-top: 1rem;
   }
   .field {
     margin-bottom: 0.5rem;
+  }
+  ol {
+    padding: 0;
+    margin-bottom: 1.5rem;
   }
   th, td {
     text-align: center;

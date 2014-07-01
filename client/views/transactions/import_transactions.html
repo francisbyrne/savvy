@@ -11,28 +11,29 @@
       </div>
     </form>
     {{#if imports}}
-    <p>Select the appropriate field heading for each relevant column below and then click "Confirm".</p>
+    <ol>
+      <li>1. Select the appropriate field heading for each relevant column below (we've made some guesses for you)</li>
+      <li>2. When you're happy to import, click <button id="confirm-import">Confirm</button></li>
+    </ol>
 
     <table id="import-preview">
-      {{#with firstImport}}
       <thead>
         <tr>
-        {{#each fields}}
+          {{#each fieldHeaders}}
           <th>
             <select>
-              <option value="">Field</option>
-              <option value="symbol">Symbol</option>
-              <option value="type">Type</option>
-              <option value="date">Date</option>
-              <option value="shares">Shares</option>
-              <option value="price">Price</option>
-              <option value="commission">Fees</option>
+              <option value="" selected="{{isSelected ''}}">Field</option>
+              <option value="symbol" selected="{{isSelected 'symbol'}}">Symbol</option>
+              <option value="type" selected="{{isSelected 'type'}}">Type</option>
+              <option value="date" selected="{{isSelected 'date'}}">Date</option>
+              <option value="shares" selected="{{isSelected 'shares'}}">Shares</option>
+              <option value="price" selected="{{isSelected 'price'}}">Price</option>
+              <option value="commission" selected="{{isSelected 'commission'}}">Fees</option>
             </select>
           </th>
-        {{/each}}
+          {{/each}}
         </tr>
       </thead>
-      {{/with}}
       <tbody>
       {{#each imports}}
         <tr>
@@ -43,8 +44,6 @@
       {{/each}}
       </tbody>
     </table>
-
-    <button id="confirm-import">Confirm</button>
     {{/if}}
   </div>
 </template>

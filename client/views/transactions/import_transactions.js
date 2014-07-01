@@ -6,14 +6,22 @@ Template.import_transactions.created = function() {
 };
 
 Template.import_transactions.helpers({
-  firstImport: function() {
-    return Imports.findOne();
+  fieldHeaders: function() {
+    var firstRow = Imports.findOne();
+    var fields = firstRow && firstRow.fields;
+    _.each(fields, function(field, index) {
+      fields[index] = detectField(field, fields);
+    });
+    return fields;
   },
   ignoreHeader: function() {
     return Session.get('ignoreImportHeader');
   },
   imports: function() {
     return Imports.find().fetch();
+  },
+  isSelected: function(field) {
+    return (this == field);
   }
 });
 
@@ -71,14 +79,18 @@ Template.import_transactions.events({
 });
 
 // Iterates through Imports collection and adds all valid trades, throwing errors for invalid trades
-var loadImports = function(keys) {
+var loadImports = function loadImports(keys) {
   Imports.find().forEach(function(item) {
     var keys = this; // Pass in the keys from the outer function
     var trade = {};
     // Set each field of the trade, based on the selected header
     _.each(item.fields, function(field, index) {
-      if (keys[index]) { // Filter out unselected fields
-        keys[index] === 'symbol' && field.length > 0 && field.length < 4 && (field = field.concat(".AX")); // Convert Google to Yahoo; only for Aus shares
+      if (keys[index]) {
+        // Convert Google to Yahoo; only for Aus shares
+        if (keys[index] === 'symbol' && ! isYahooAusTicker(field) ) {
+          field = toYahooAusTicker(field);
+        };
+        // Filter out unselected fields
         trade[keys[index]] = field;
       }
     });
@@ -97,4 +109,49 @@ var loadImports = function(keys) {
     Errors && Errors.throw('The following imports were ignored due to missing stock symbols:<br>' + failedRows.toString());
     Imports.remove({});
   }
+};
+
+var detectField = function detectField(field, fields) {
+  var date = new Date(field);
+  if (field === 'Buy' || field === 'Sell') {
+    return 'type';
+  } else if ( ! _.isNaN( parseFloat(field) ) ) {
+    var number = parseFloat(field);
+    var FEE_LIMIT = 200; // limit for commissions (surely no one pays more than $200 brokerage per trade!?!?)
+    if ( ! _.contains(fields, 'shares') && isInt( number ) ) {
+      return 'shares';
+    }
+    if ( ! _.contains(fields, 'price') ) {
+      return 'price';
+    }
+    if ( ! _.contains(fields, 'commission') && Math.abs(number) < FEE_LIMIT ) {
+      return 'commission';
+    }
+    return '';
+  } else if ( _.isDate( date ) && ! isNaN( date.getTime() ) ) {
+    return 'date';
+  } else if ( isValidSymbol(field) ) {
+    return 'symbol';
+  } else {
+    return '';
+  }
+};
+
+var isYahooAusTicker = function isYahooAusTicker(ticker) {
+  return ticker.substr(ticker.length - 3) === '.AX';
+};
+
+var toYahooAusTicker = function toYahooAusTicker(field) {
+  return field.concat(".AX");
+};
+
+var isValidSymbol = function isValidSymbol(ticker) {
+  if (! isYahooAusTicker(ticker) )
+    ticker = toYahooAusTicker(ticker);
+
+  return Stocks.find({'symbol': ticker}).count() > 0;
+};
+
+var isInt = function isInt(n) {
+   return n % 1 === 0;
 };
