@@ -1,7 +1,7 @@
 <template name="import_transactions">
   <div id="import-trades">
-    <h3>Import Transactions</h3>
     {{#unless imports}}
+    <h3>Import Trades</h3>
     <form>
       <div class="field">
         <input type="checkbox" id="ignore-header" checked="{{ignoreHeader}}" />
@@ -13,10 +13,11 @@
     </form>
     {{/unless}}
     {{#if imports}}
-    {{#DataTable dom=true}}
+    {{#DataTable dom=true options=options}}
     <table id="import-preview">
       <thead>
         <tr>
+          <th class="exclude-column"></th>
           {{#each fieldHeaders}}
           <th>
             <select>
@@ -34,7 +35,8 @@
       </thead>
       <tbody>
       {{#each imports}}
-        <tr>
+        <tr id="{{_id}}">
+          <td class="exclude-column"><button class="remove-import"></button></td>
         {{#each fields}}
           <td>{{this}}</td>
         {{/each}}
@@ -43,8 +45,14 @@
       </tbody>
     </table>
     {{/DataTable}}
-    <button id="confirm-import">Confirm</button>
-    <button id="cancel-import">Cancel</button>
+    <div id="import-actions">
+      <button id="confirm-import">Confirm</button>
+      <button id="cancel-import">Cancel</button>
+    </div>
     {{/if}}
   </div>
+</template>
+
+<template name="import_heading">
+  <h3 class="import-heading">Import Trades</h3>
 </template>

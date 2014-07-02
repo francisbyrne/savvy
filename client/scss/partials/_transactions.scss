@@ -23,9 +23,32 @@
     @include clearfix();
     margin-bottom: 1rem;
   }
+  .import-heading {
+    float: left;
+    margin: 0.2rem;
+    display: inline-block;
+  }
   th, td {
     text-align: center;
     padding-right: 0.5rem;
+    white-space: nowrap;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .exclude-column {
+    border: none;
+    padding: 0;
+  }
+  table.dataTable thead .exclude-column {
+    background: none;
+  }
+  .remove-import {
+    @include fa-icon($fa-var-times, false);
+    border: none;
+    background: none;
+    &:hover {
+      color: $lighter-grey;
+    }
   }
   #confirm-import, #cancel-import {
     font-size: 1.2rem;
@@ -35,9 +58,16 @@
   #confirm-import {
     @include fa-icon($fa-var-check);
     background-color: #55CE72;
+    margin-right: 1rem;
+    &:hover {
+      background-color: lighten(#55CE72, 10%);
+    }
   }
   #cancel-import {
     @include fa-icon($fa-var-times);
     background-color: $red;
+    &:hover {
+      background-color: lighten($red, 10%);
+    }
   }
 }

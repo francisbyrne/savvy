@@ -22,10 +22,25 @@ Template.import_transactions.helpers({
   },
   isSelected: function(field) {
     return (this == field);
+  },
+  options: function() {
+    return {
+      fnInitComplete: function() {
+        UI.insert( 
+          UI.render(Template.import_heading), 
+          $('#import-preview_wrapper .datatable-header').get()[0], 
+          $('#import-preview_wrapper .dataTables_filter').get()[0] 
+        );
+      },
+    }
   }
 });
 
 Template.import_transactions.events({
+
+  'click #cancel-import': function(event, template) {
+    Imports.remove({});
+  },
 
   // TODO: allow editing data before import
   // Upload csv file from system and insert as a new Transaction
@@ -62,10 +77,6 @@ Template.import_transactions.events({
     }
   },
 
-  'click #cancel-import': function(event, template) {
-    Imports.remove({});
-  },
-
   // User has previewed the import data and confirmed the import, so add new Transactions
   'click #confirm-import': function(event, template) {
 
@@ -80,6 +91,14 @@ Template.import_transactions.events({
 
   'click #ignore-header': function(event, template) {
     Session.get('ignoreImportHeader') ? Session.set('ignoreImportHeader', false) : Session.set('ignoreImportHeader', true);
+  },
+
+  'click .remove-import': function(event, template) {
+    Imports.remove(this._id);
+    // template.$('tr#' + this._id).remove();
+    // template.__component__.dom.remove('#' + this._id)
+    var table = $('#import-preview').dataTable();
+    table.fnDeleteRow( document.getElementById( this._id ) );
   }
 });
 
@@ -116,7 +135,7 @@ var loadImports = function loadImports(keys) {
   }
 };
 
-// Detect a trade field, one of:
+// Detect a trade field, which is one of:
 // 'type', 'shares', 'price', 'commission', 'date', 'symbol' or '' (empty string for none of the above)
 var detectField = function detectField(field, fields) {
   var date = new Date(field);
