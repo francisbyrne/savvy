@@ -1,5 +1,5 @@
 th, td {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   box-sizing: content-box;
   text-align: right;
   border-bottom: 1px solid $lighter-grey;
@@ -30,10 +30,16 @@ tfoot td {
   input[type="search"] {
     width: 8rem;
   }
-  & > div {
-    display: inline-block;
-    margin-left: 1rem;
+}
+
+.dataTables_length, .dataTables_filter {
+  float: none;
+  margin-right: 1rem;
+  display: inline-block;
+  @include breakpoint($medium) {
     float: right;
+    margin-right: 0;
+    margin-left: 1rem;
   }
 }
 
@@ -99,6 +105,15 @@ table.dataTable thead {
       font-weight: 400;
     }
   }
+}
+
+.exclude-column {
+  border: none;
+  padding: 0;
+}
+table.dataTable thead .exclude-column {
+  background: none;
+  max-width: 2rem;
 }
 
 .empty-table {

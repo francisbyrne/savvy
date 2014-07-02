@@ -3,19 +3,14 @@
   .dataTables_wrapper {
     @include clearfix();
     @include breakpoint($large) {
-      @include span(10 of 12);
-    }
-  }
-  .dataTables_length {
-    display: none;
-    @include breakpoint($medium) {
-      display: inline-block;
+      @include span(18 of 22);
     }
   }
   #display-options {
-    padding: 0;
-    margin: 0;
-    float: left;
+    margin: 0 0 0.5rem 0;
+    @include breakpoint($medium) {
+      float: left;
+    }
   }
   #display-options li {
     display: inline-block;

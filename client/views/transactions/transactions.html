@@ -11,8 +11,8 @@
           <th>shares</th>
           <th>price</th>
           <th>cash flow</th>
-          <th>commission</th>
-          <th></th>
+          <th>fees</th>
+          <th class="exclude-column"></th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,7 @@
           <td>{{formatCurrency price}}</td>
           <td>{{formatCurrency cashFlow}}</td>
           <td>{{formatCurrency commission}}</td>
-          <td><button class="remove-transaction" data-id="{{_id}}">remove</button></td>
+          <td class="exclude-column"><button class="remove-transaction" data-id="{{_id}}"></button></td>
         </tr>
       {{/each}}
       </tbody>

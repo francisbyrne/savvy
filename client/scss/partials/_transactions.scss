@@ -1,13 +1,16 @@
 #transactions {
   .dataTables_wrapper {
     @include clearfix();
-    max-width: 46rem;
+    max-width: 40rem;
     @include breakpoint($large) {
-      @include span(9 of 12);
+      @include span(20 of 24);
     }
   }
   td:nth-child(3) {
     white-space: nowrap;
+  }
+  .remove-transaction {
+    @include remove-button();
   }
 }
 
@@ -32,23 +35,9 @@
     text-align: center;
     padding-right: 0.5rem;
     white-space: nowrap;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-  .exclude-column {
-    border: none;
-    padding: 0;
-  }
-  table.dataTable thead .exclude-column {
-    background: none;
   }
   .remove-import {
-    @include fa-icon($fa-var-times, false);
-    border: none;
-    background: none;
-    &:hover {
-      color: $lighter-grey;
-    }
+    @include remove-button();
   }
   #confirm-import, #cancel-import {
     font-size: 1.2rem;

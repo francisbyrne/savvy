@@ -22,6 +22,7 @@ h3 {
 }
 
 .wrapper {
+  @include clearfix();
   width: 96%;
   margin: 0 2%;
   @include breakpoint($medium) {

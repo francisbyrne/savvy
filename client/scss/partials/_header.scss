@@ -6,7 +6,10 @@ $header-top: 3rem; // Top padding for header elements in desktop
   @include clearfix();
   background: $cyan;
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  @include breakpoint($medium) {
+    margin-bottom: 2rem;
+  }
 }
 #site-header {
   @include breakpoint($medium) {
@@ -17,7 +20,7 @@ $header-top: 3rem; // Top padding for header elements in desktop
   h1 {
     line-height: 1em;
     float: left;
-    margin: 0.8rem 1rem 0 0;
+    margin: 0.8rem 0 0 0;
     a {color: white;}
   }
   a {text-decoration: none;}
@@ -41,6 +44,7 @@ $header-top: 3rem; // Top padding for header elements in desktop
 
   #mobile-menu {
     @include fa-icon($fa-var-bars, false);
+    color: lighten($dark-grey, 10%);
     float: right;
     margin: 0;
     font-size: 1.8rem;
@@ -113,7 +117,7 @@ $header-top: 3rem; // Top padding for header elements in desktop
     vertical-align: middle;
   }
   .typeahead {
-    width: 8rem;
+    width: 5rem;
     @include breakpoint($medium) {
       padding-top: 10px;
       padding-bottom: 10px;

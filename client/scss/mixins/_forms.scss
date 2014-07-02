@@ -9,3 +9,12 @@
     padding-top: 0;
   }
 }
+
+@mixin remove-button() {
+  @include fa-icon($fa-var-times, false);
+  border: none;
+  background: none;
+  &:hover {
+    color: $lighter-grey;
+  }
+}
