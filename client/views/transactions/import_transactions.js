@@ -60,6 +60,9 @@ Template.import_transactions.events({
           // Get column count, to ensure we have consistent columns in each row
           var colCount = all[0].length;
 
+          // List of rejected rows
+          var rejected = [];
+
           // Add unsorted array of fields to Imports collection
           _.each(all, function (entry, index) {
 
@@ -68,8 +71,17 @@ Template.import_transactions.events({
               entry[i] = '';
             }
 
+            // Check if there are at least five fields in the row or add it to rejected list
+            var filtered = _.reject(entry, function(field) { return ! field; });
+            if ( filtered && filtered.length < 5) {
+              rejected.push(entry + '<br>');
+              return;
+            }
+
             Imports.insert({'fields': entry});
           });
+
+          Errors.throw('Rejected the following row due to lack of data: <br>' + rejected.toString() );
 
         }
         reader.readAsText(file);
@@ -95,8 +107,8 @@ Template.import_transactions.events({
 
   'click .remove-import': function(event, template) {
     Imports.remove(this._id);
-    // template.$('tr#' + this._id).remove();
-    // template.__component__.dom.remove('#' + this._id)
+
+    // Remove row from DataTables (or else is just comes back again if you go to a different page)
     var table = $('#import-preview').dataTable();
     table.fnDeleteRow( document.getElementById( this._id ) );
   }
@@ -130,7 +142,7 @@ var loadImports = function loadImports(keys) {
   if (failed.length > 0) {
     var failedRows = _.map(failed, function(row) {return row && row.fields && row.fields.toString() + '<br>';});
     // TODO: format this better!
-    Errors && Errors.throw('The following imports were ignored due to missing stock symbols:<br>' + failedRows.toString());
+    Errors && Errors.throw('The following imports were ignored due to unrecognized stock symbols:<br>' + failedRows.toString());
     Imports.remove({});
   }
 };
