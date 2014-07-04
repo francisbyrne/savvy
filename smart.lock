@@ -6,8 +6,6 @@
       "assert": {},
       "moment": {},
       "node-csv-npm": {},
-      "meteor-errors": {},
-      "errors": {},
       "typeahead": {},
       "jquery-csv": {},
       "iron-router-progress": {},
@@ -37,20 +35,10 @@
         "tag": "v0.3.6",
         "commit": "01be0e3e834a4f033121cb3fcc92c2697741170d"
       },
-      "meteor-errors": {
-        "git": "https://github.com/tmeasday/meteor-errors.git",
-        "tag": "v0.1.0",
-        "commit": "b91859cd98d69f5b294d7d7a2724427872103da8"
-      },
-      "errors": {
-        "git": "https://github.com/tmeasday/meteor-errors.git",
-        "tag": "v0.2.1",
-        "commit": "f2af03510a9e3d9952601f5f091aa76bfbcbf224"
-      },
       "typeahead": {
         "git": "https://github.com/sergeyt/meteor-typeahead.git",
-        "tag": "v0.0.9",
-        "commit": "6aa2228a7cc93e89e94520bd60f1af4e7542dfcf"
+        "tag": "v0.0.10",
+        "commit": "fe0bb03aea8493037de134d815f9663feb21a944"
       },
       "jquery-csv": {
         "git": "https://github.com/donskifarrell/meteor-jquery-csv.git",
@@ -59,18 +47,18 @@
       },
       "iron-router-progress": {
         "git": "https://github.com/Multiply/iron-router-progress.git",
-        "tag": "v0.4.0",
-        "commit": "02f78bdaca4c13d59f548d5a0ce83408c34b56d1"
+        "tag": "v0.4.1",
+        "commit": "496fcda9a6ec352b4733725f60c6f280250c3541"
       },
       "houston": {
         "git": "https://github.com/gterrono/houston.git",
-        "tag": "v1.0.4",
-        "commit": "e76bda40587ac80ce51ee417047be8272664625c"
+        "tag": "v1.0.6",
+        "commit": "49765acf835385de6de6160b0c86514d5af09395"
       },
       "jquery-datatables": {
         "git": "https://github.com/lumapictures/meteor-jquery-datatables",
-        "tag": "v1.0.4",
-        "commit": "93c1173295ea25ba40ca7c3403a4adc06a671a3f"
+        "tag": "v1.0.5",
+        "commit": "fe4fb3178386f88eeac9139b7680646b320e321d"
       },
       "iron-router-active": {
         "git": "https://github.com/XpressiveCode/iron-router-active.git",

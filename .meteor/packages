@@ -11,7 +11,6 @@ node-csv-npm
 http
 accounts-ui
 accounts-password
-errors
 typeahead
 jquery-csv
 iron-router-progress
@@ -19,3 +18,4 @@ houston
 iron-router-active
 jquery-datatables
 accounts-entry
+mighty-errors

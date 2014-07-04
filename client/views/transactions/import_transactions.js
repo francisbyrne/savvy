@@ -74,14 +74,15 @@ Template.import_transactions.events({
             // Check if there are at least five fields in the row or add it to rejected list
             var filtered = _.reject(entry, function(field) { return ! field; });
             if ( filtered && filtered.length < 5) {
-              rejected.push(entry + '<br>');
+              rejected.push( entry.toString() );
               return;
             }
 
             Imports.insert({'fields': entry});
           });
 
-          Errors.throw('Rejected the following row due to lack of data: <br>' + rejected.toString() );
+          if (rejected.length > 0)
+            Errors.throwList( rejected, 'Rejected the following row(s) due to lack of data:' );
 
         }
         reader.readAsText(file);
@@ -140,9 +141,9 @@ var loadImports = function loadImports(keys) {
   // Provide feedback on which imports failed
   var failed = Imports.find().fetch();
   if (failed.length > 0) {
-    var failedRows = _.map(failed, function(row) {return row && row.fields && row.fields.toString() + '<br>';});
+    var failedRows = _.map(failed, function(row) {return row && row.fields && '<li>' + row.fields.toString() + '</li>';});
     // TODO: format this better!
-    Errors && Errors.throw('The following imports were ignored due to unrecognized stock symbols:<br>' + failedRows.toString());
+    Errors && Errors.throw('The following imports were ignored due to unrecognized stock symbols:<ul>' + failedRows.toString() + '</ul>');
     Imports.remove({});
   }
 };
