@@ -10,6 +10,7 @@
     "houston": {},
     "jquery-datatables": {},
     "iron-router-active": {},
-    "accounts-entry": {}
+    "accounts-entry": {},
+    "mighty-errors": {}
   }
 }
