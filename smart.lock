@@ -73,8 +73,8 @@
       },
       "mighty-errors": {
         "git": "https://github.com/francisbyrne/mighty-errors.git",
-        "tag": "v0.0.2",
-        "commit": "c55757a4c84be5f74f2626304c3abc247c41e5ce"
+        "tag": "v0.0.3",
+        "commit": "476fe571754ac31905f8798481373a323146bda3"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
