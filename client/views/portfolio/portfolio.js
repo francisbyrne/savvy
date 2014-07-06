@@ -63,9 +63,9 @@ Template.portfolio.helpers({
           }
         },{
           title: "gain",
-          data: "gain",
+          data: "overallGain",
           mRender: function(data, type, full) {
-            return Session.get('displayPercent') && formatPercent(full.gainPercent) || formatCurrencySign(data);
+            return Session.get('displayPercent') && formatPercent(full.overallGainPercent) || formatCurrencySign(data);
           }
         }
       ],
