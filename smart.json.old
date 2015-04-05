@@ -1,10 +1,14 @@
 {
   "packages": {
     "iron-router": {},
+    "assert": {},
     "moment": {},
+    "node-csv-npm": {},
     "typeahead": {},
     "jquery-csv": {},
     "iron-router-progress": {},
+    "houston": {},
+    "jquery-datatables": {},
     "iron-router-active": {},
     "accounts-entry": {},
     "mighty-errors": {}
